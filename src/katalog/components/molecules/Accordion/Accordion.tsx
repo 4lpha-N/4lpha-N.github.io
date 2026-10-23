@@ -1,5 +1,6 @@
 import { useId, useState } from "react";
 import type { ReactNode } from "react";
+import { ChevronDown } from "lucide-react";
 import type { SimpleVariant } from "../../../lib/types";
 import { cx } from "../../../lib/cx";
 import "./Accordion.scss";
@@ -49,7 +50,11 @@ export function VlAccordion({
                 onClick={() => toggle(it.id)}
               >
                 {it.title}
-                <span className="vl-acc__chev" aria-hidden="true" />
+                <ChevronDown
+                  className="vl-acc__chev"
+                  size={18}
+                  aria-hidden="true"
+                />
               </button>
             </h3>
             <div

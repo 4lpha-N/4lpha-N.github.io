@@ -1,0 +1,138 @@
+/* Seitenränder und Breite liefert der GridContainer */
+.vl-navbar {
+  min-height: 56px;
+  padding: 12px 20px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--primary);
+  background: color-mix(
+    in srgb,
+    var(--surface) var(--section-pct, 72%),
+    transparent
+  );
+
+  .vl-g-row {
+    row-gap: 0;
+  }
+
+  &__brand {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding: 18px 12px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 12px;
+      bottom: -2px;
+      left: 12px;
+      height: 2px;
+      background: var(--fg);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+
+    &:hover,
+    &.is-active {
+      color: var(--fg);
+    }
+    &.is-active::after {
+      transform: scaleX(1);
+    }
+    &:focus-visible {
+      outline: 2px solid var(--primary-hover);
+      outline-offset: -2px;
+    }
+  }
+
+  &__settings {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  // Nur für Screenreader: der Button zeigt nur das Icon
+  &__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* Mobil (< 720 px): Zeile 1 Marke + Einstellungen, Zeile 2 Nav über die volle Breite */
+@media (max-width: 719.98px) {
+  .vl-navbar {
+    &__brand {
+      padding-block: 12px;
+    }
+
+    &__nav {
+      margin-inline: -1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    &__list {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      gap: 0;
+    }
+
+    &__link {
+      padding: 14px 8px;
+      text-align: center;
+    }
+  }
+}
+
+/* Inhalt des Einstellungs-Popovers */
+.vl-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  // 9 Decor-Optionen sind breiter als das Popover
+  .vl-toggle {
+    flex-wrap: wrap;
+  }
+
+  &__label {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+}

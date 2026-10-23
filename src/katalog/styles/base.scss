@@ -51,7 +51,9 @@
 
 // Schließen-Knopf (Alert, Toast, Modal, Drawer)
 .vl-x {
-  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex: none;
   width: 24px;
   height: 24px;
@@ -64,23 +66,6 @@
     background 0.2s,
     color 0.2s;
   @include cut(6px);
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 12px;
-    height: 2px;
-    background: currentColor;
-  }
-  &::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  &::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
 
   &:hover {
     background: color-mix(in srgb, var(--fg) 14%, transparent);
@@ -128,4 +113,15 @@
     font-size: 36px;
     line-height: 38px;
   }
+}
+
+/* Lucide-Icons im eckigen Stil des Designs */
+.lucide {
+  flex: none;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.vl-btn:has(> .lucide) {
+  gap: 10px;
 }

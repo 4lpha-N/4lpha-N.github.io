@@ -47,8 +47,6 @@ import {
   GridContainer,
   GridRow,
 } from "./components/layout/Grid/Grid";
-import { VlHeader } from "./components/organism/Header/Header";
-import { VlFooter } from "./components/organism/Footer/Footer";
 import { VlTooltip } from "./components/atoms/Tooltip/Tooltip";
 import { VlPopover } from "./components/molecules/Popover/Popover";
 
@@ -1035,14 +1033,6 @@ export default function Demo() {
 
       <Section title="Toast">
         <ToastDemo />
-      </Section>
-
-      <Section title="Header & Footer">
-        <div className="vl-shell">
-          <VlHeader />
-          <div className="vl-shell__main">Inhalt</div>
-          <VlFooter />
-        </div>
       </Section>
 
       <Section title="Grid">

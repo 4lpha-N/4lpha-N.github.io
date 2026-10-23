@@ -1,4 +1,10 @@
 import { useState } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from "lucide-react";
 import type { SimpleVariant } from "../../../lib/types";
 import { cx } from "../../../lib/cx";
 import "./Pagination.scss";
@@ -63,10 +69,7 @@ export function VlPagination({
               disabled={disabled || page === 1}
               onClick={() => setPage(1)}
             >
-              <span className="vl-pager__arrows">
-                <span className="vl-pager__arrow vl-pager__arrow--prev" />
-                <span className="vl-pager__arrow vl-pager__arrow--prev" />
-              </span>
+              <ChevronsLeft size={18} aria-hidden="true" />
             </button>
           </li>
         )}
@@ -78,7 +81,7 @@ export function VlPagination({
             disabled={disabled || page === 1}
             onClick={() => setPage(page - 1)}
           >
-            <span className="vl-pager__arrow vl-pager__arrow--prev" />
+            <ChevronLeft size={18} aria-hidden="true" />
           </button>
         </li>
         {pageItems(page, total).map((p, i) => (
@@ -109,7 +112,7 @@ export function VlPagination({
             disabled={disabled || page === total}
             onClick={() => setPage(page + 1)}
           >
-            <span className="vl-pager__arrow" />
+            <ChevronRight size={18} aria-hidden="true" />
           </button>
         </li>
         {edges && (
@@ -121,10 +124,7 @@ export function VlPagination({
               disabled={disabled || page === total}
               onClick={() => setPage(total)}
             >
-              <span className="vl-pager__arrows">
-                <span className="vl-pager__arrow" />
-                <span className="vl-pager__arrow" />
-              </span>
+              <ChevronsRight size={18} aria-hidden="true" />
             </button>
           </li>
         )}

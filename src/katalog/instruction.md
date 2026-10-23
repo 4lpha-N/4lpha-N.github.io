@@ -1,31 +1,32 @@
 # Katalog – Übernahme in ein neues Projekt
 
-Der Ordner `katalog` ist eigenständig: Er importiert nur `react`, `react-dom` und `framer-motion`, nichts von außerhalb.
+Der Ordner `katalog` ist eigenständig: Er importiert nur `react`, `react-dom`, `framer-motion` und `lucide-react` (Icons; das Header-Layout zusätzlich `react-router`), nichts von außerhalb.
 
 ## Struktur
 
 Jede Komponente liegt in `components/<Ebene>/<Name>/<Name>.tsx` mit passender `<Name>.scss`. Klassen sind globale `vl-`-BEM-Klassen (keine CSS Modules).
 
-| Ebene                   | Inhalt                                                                                                                                       |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `components/atoms/`     | Button (`VlButton`), Field (`VlInput`, `VlSelect`), Check, Radio, Switch, Slider, Link, Tag, Tooltip, Image, Progress, IconButton, SegToggle |
-| `components/molecules/` | Alert, Breadcrumb (`VlCrumbs`), Pagination, Tabs, Accordion, Popover, Card, Media                                                            |
-| `components/organism/`  | Header, Footer, Hero, Carousel, Overlay (Modal/Drawer)                                                                                       |
-| `components/layout/`    | `ThemeProvider`, Grid (`GridContainer`, `GridRow`, `GridCol`, `GridCell`), Decor (Hintergrund-Dekor)                                         |
-| `lib/`                  | `types` (Theme, Variant), `cx`, `ThemeClassContext`, `useFloat`, `focus`, `pad2`, `tones`                                                    |
-| `styles/`               | `_mixins.scss` (Farben, Mixins), `base.scss` (Typografie, Schließen-Knopf, Float, Reduced Motion)                                            |
+| Ebene                   | Inhalt                                                                                                                                                                                              |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `components/atoms/`     | Button (`VlButton`), Field (`VlInput`, `VlSelect`), Check, Radio, Switch, Slider, Link, Tag, Tooltip, Image, Progress, IconButton, SegToggle                                                        |
+| `components/molecules/` | Alert, Breadcrumb (`VlCrumbs`), Pagination, Tabs, Accordion, Popover, Card, Media                                                                                                                   |
+| `components/organism/`  | Hero, Carousel, Overlay (Modal/Drawer)                                                                                                                                                              |
+| `components/layout/`    | `ThemeProvider`, Grid (`GridContainer`, `GridRow`, `GridCol`, `GridCell`), Decor (Hintergrund-Dekor), Header (Marke, Nav, Einstellungs-Popover; nutzt zusätzlich `react-router` und `lucide-react`) |
+| `lib/`                  | `types` (Theme, Variant), `cx`, `ThemeClassContext`, `useFloat`, `focus`, `pad2`, `tones`                                                                                                           |
+| `styles/`               | `_mixins.scss` (Farben, Mixins), `base.scss` (Typografie, Schließen-Knopf, Float, Reduced Motion)                                                                                                   |
 
 Nur für die Demo (kann im neuen Projekt weg): `Demo.tsx` (die komplette Demo-Seite, zugleich Vorlage für Beispielaufrufe aller Komponenten), `lib/demo.ts`, `lib/decor.ts`, `styles/demo.scss`. `Demo.tsx` hat keine App-Abhängigkeiten, sie wird mit `<Demo />` gerendert.
 
 ## Pakete
 
 ```bash
-npm i react@^18.3.1 react-dom@^18.3.1 framer-motion@^12
+npm i react@^18.3.1 react-dom@^18.3.1 framer-motion@^12 lucide-react
 npm i -D sass typescript
 ```
 
 - `sass` (Dart Sass): alle Styles nutzen `@use`.
 - Tailwind oder andere UI-Bibliotheken werden nicht benötigt.
+- Icons kommen von Lucide (Chevrons in Pagination, IconButton, Link, Accordion, Select). Der eckige Stil (`stroke-linecap: square`) steht in `styles/base.scss`.
 - Das Projekt nutzt `@property` für animierte Theme-Farben (moderne Browser).
 
 ## Font
@@ -214,7 +215,7 @@ Die zugehörigen Klassen (`.vl-section`, `.vl-grid`, `.vl-col`) stehen in `style
 - `onClose`: zeigt den Schließen-Knopf (`.vl-x`). Der Alert blendet sich nicht selbst aus, der Zustand liegt beim Aufrufer.
 - `live`: Standard `true`, setzt `role="alert"` (bei `warn`) bzw. `role="status"`. Im Toast-Host `false`, weil dort der Container (`aria-live="polite"`) ansagt.
 - `extra`: freier Slot am Ende, im Toast der Timer-Balken.
-- Icon und Beispieltexte pro Ton kommen aus `lib/tones.ts` (`TONES`).
+- Icon (Lucide-Komponente) und Beispieltexte pro Ton kommen aus `lib/tones.ts` (`TONES`).
 
 Schließen mit Exit-Animation (Höhe und Abstand auf 0, damit der Rest nachrückt). `.vl-alertlist` und `__item { overflow: hidden }` stehen in `styles/demo.scss`:
 
@@ -495,4 +496,4 @@ const [theme, setTheme] = useState<Theme>("dark");
 </ThemeProvider>;
 ```
 
-Weitere Demo-Klassen (`.vl-content`, `.vl-header` der Seite, `.vl-eyebrow`, `.vl-controls`, `.vl-row`, `.vl-group`, `.vl-sub`, `.vl-stack`, `.vl-shell`, `.vl-type`) stehen in `styles/demo.scss`. Sie werden nur für die Demo-Seite gebraucht.
+Weitere Demo-Klassen (`.vl-content`, `.vl-header` der Seite, `.vl-eyebrow`, `.vl-controls`, `.vl-row`, `.vl-group`, `.vl-sub`, `.vl-stack`, `.vl-type`) stehen in `styles/demo.scss`. Sie werden nur für die Demo-Seite gebraucht.

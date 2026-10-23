@@ -25,7 +25,7 @@ export function VlPopover({
   children,
 }: {
   variant: SimpleVariant;
-  label: string;
+  label: ReactNode;
   title: string;
   side?: Side;
   children: (close: () => void) => ReactNode;

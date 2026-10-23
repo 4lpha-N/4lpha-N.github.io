@@ -5,6 +5,7 @@ import type {
   ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
+import { X } from "lucide-react";
 import {
   AnimatePresence,
   motion,
@@ -158,7 +159,9 @@ export function VlOverlay({
                 className="vl-x"
                 aria-label="Schließen"
                 onClick={onClose}
-              />
+              >
+                <X size={16} aria-hidden="true" />
+              </button>
             </div>
             <div className="vl-sheet__body">{children}</div>
             {footer && <div className="vl-sheet__foot">{footer}</div>}

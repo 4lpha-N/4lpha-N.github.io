@@ -230,23 +230,6 @@
   outline: 1px dashed var(--edge);
 }
 
-/* ---------- Header / Footer ---------- */
-
-.vl-shell {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--line);
-
-  &__main {
-    display: grid;
-    flex: 1;
-    place-items: center;
-    min-height: 120px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-}
-
 .vl-row--compact .vl-btn {
   width: auto;
   min-width: 5rem;

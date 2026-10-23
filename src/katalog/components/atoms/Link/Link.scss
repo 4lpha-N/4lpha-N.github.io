@@ -18,15 +18,8 @@
   transition: color 0.2s;
 
   // Pfeil hinter dem Text
-  &::before {
-    content: "";
-    order: 1;
-    box-sizing: border-box;
-    width: 8px;
-    height: 8px;
-    border-top: 2px solid currentColor;
-    border-right: 2px solid currentColor;
-    transform: rotate(45deg);
+  &__icon {
+    flex: none;
     transition: transform 0.2s;
   }
 
@@ -48,8 +41,8 @@
   &:focus-visible {
     color: var(--lh);
 
-    &::before {
-      transform: translateX(4px) rotate(45deg);
+    .vl-link__icon {
+      transform: translateX(4px);
     }
     &::after {
       transform: scaleX(1);

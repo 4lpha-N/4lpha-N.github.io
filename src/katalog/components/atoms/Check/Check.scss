@@ -40,19 +40,15 @@
       transition: background 0.2s;
       @include cut-inner(6px);
     }
+  }
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 46%;
-      left: 50%;
-      width: 6px;
-      height: 12px;
-      border: solid var(--ct);
-      border-width: 0 3px 3px 0;
-      transform: translate(-50%, -55%) rotate(45deg) scale(0);
-      transition: transform 0.15s;
-    }
+  &__tick {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    color: var(--ct);
+    transform: scale(0);
+    transition: transform 0.15s;
   }
 
   &__label {
@@ -71,8 +67,8 @@
   &:not(.is-disabled):hover .vl-check__input:checked + .vl-check__box::before {
     background: color-mix(in srgb, var(--cf) 82%, var(--surface));
   }
-  .vl-check__input:checked + .vl-check__box::after {
-    transform: translate(-50%, -55%) rotate(45deg) scale(1);
+  .vl-check__input:checked + .vl-check__box .vl-check__tick {
+    transform: scale(1);
   }
   .vl-check__input:focus-visible + .vl-check__box {
     --b: var(--ring);
@@ -87,18 +83,6 @@
     &::before {
       @include cut-oct(calc(8px - 0.586 * var(--bw)));
     }
-    &::after {
-      top: 50%;
-      width: 8px;
-      height: 8px;
-      border: 0;
-      background: var(--ct);
-      transform: translate(-50%, -50%) scale(0);
-      @include cut-oct(2px);
-    }
-  }
-  &--radio .vl-check__input:checked + .vl-check__box::after {
-    transform: translate(-50%, -50%) scale(1);
   }
 
   &--primary {

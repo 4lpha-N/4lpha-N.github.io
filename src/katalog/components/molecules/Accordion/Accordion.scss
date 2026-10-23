@@ -67,15 +67,10 @@
 
   &__chev {
     flex: none;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: translateY(-2px) rotate(45deg);
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   &__item.is-open &__chev {
-    transform: translateY(2px) rotate(225deg);
+    transform: rotate(180deg);
   }
 
   // Höhe über Grid-Zeile animieren; geschlossen unsichtbar und nicht fokussierbar

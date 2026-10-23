@@ -42,12 +42,7 @@
     place-items: center;
     width: 24px;
     height: 24px;
-    background: var(--bar);
-    color: var(--on);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1;
-    @include cut(6px);
+    color: var(--bar);
   }
 
   &__body {
@@ -87,19 +82,16 @@
     --b: var(--edge);
     --f: color-mix(in srgb, var(--fg) 6%, var(--surface));
     --bar: var(--fg);
-    --on: var(--on-fg);
   }
   &--success {
     --b: var(--alt);
     --f: color-mix(in srgb, var(--alt) 14%, var(--surface));
     --bar: var(--alt);
-    --on: var(--on-alt);
   }
   &--warn {
     --b: var(--error);
     --f: color-mix(in srgb, var(--error) 14%, var(--surface));
     --bar: var(--error);
-    --on: var(--surface);
   }
 }
 

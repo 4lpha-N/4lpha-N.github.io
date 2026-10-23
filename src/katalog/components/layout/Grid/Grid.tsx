@@ -26,15 +26,21 @@ function gridVars(
 export function GridContainer({
   fluid,
   max,
+  classes,
   children,
 }: {
   fluid?: boolean;
   max?: string;
+  classes?: string;
   children: ReactNode;
 }) {
   return (
     <div
-      className={cx("vl-g-container", fluid && "vl-g-container--fluid")}
+      className={cx(
+        "vl-g-container",
+        fluid && "vl-g-container--fluid",
+        classes,
+      )}
       style={max ? ({ "--container-max": max } as CSSProperties) : undefined}
     >
       {children}
@@ -45,10 +51,12 @@ export function GridContainer({
 export function GridRow({
   gap,
   align,
+  classes,
   children,
 }: {
   gap?: "sm" | "lg";
   align?: GridAlign;
+  classes?: string;
   children: ReactNode;
 }) {
   return (
@@ -57,6 +65,7 @@ export function GridRow({
         "vl-g-row",
         gap && `vl-g-row--${gap}`,
         align && `vl-g-row--${align}`,
+        classes,
       )}
     >
       {children}
@@ -70,12 +79,14 @@ export function GridCol({
   offset,
   order,
   align,
+  classes,
   children,
 }: {
   span?: Responsive<number>;
   offset?: Responsive<number>;
   order?: Responsive<number>;
   align?: GridAlign;
+  classes?: string;
   children: ReactNode;
 }) {
   const style = {
@@ -85,7 +96,7 @@ export function GridCol({
   } as CSSProperties;
   return (
     <div
-      className={cx("vl-g-col", align && `vl-g-col--${align}`)}
+      className={cx("vl-g-col", align && `vl-g-col--${align}`, classes)}
       style={style}
     >
       {children}
@@ -96,15 +107,17 @@ export function GridCol({
 export function GridCell({
   accent,
   height,
+  classes,
   children,
 }: {
   accent?: boolean;
   height?: number;
+  classes?: string;
   children: ReactNode;
 }) {
   return (
     <div
-      className={cx("vl-g-cell", accent && "vl-g-cell--accent")}
+      className={cx("vl-g-cell", accent && "vl-g-cell--accent", classes)}
       style={height ? { minHeight: height } : undefined}
     >
       {children}

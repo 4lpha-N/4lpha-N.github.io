@@ -56,33 +56,4 @@
     --ring: #{$c-white};
     color: $c-bone;
   }
-
-  &__arrow {
-    width: 10px;
-    height: 10px;
-    border-top: 2px solid currentColor;
-    border-right: 2px solid currentColor;
-    transform: translateX(-2px) rotate(45deg);
-
-    &--prev {
-      transform: translateX(2px) rotate(-135deg);
-    }
-  }
-
-  &__icon {
-    display: block;
-    width: 14px;
-    height: 14px;
-
-    &--pause {
-      box-sizing: border-box;
-      border-right: 4px solid currentColor;
-      border-left: 4px solid currentColor;
-    }
-    &--play {
-      margin-left: 2px;
-      background: currentColor;
-      clip-path: polygon(0 0, 100% 50%, 0 100%);
-    }
-  }
 }

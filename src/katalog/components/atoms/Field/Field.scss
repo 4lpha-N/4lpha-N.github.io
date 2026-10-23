@@ -74,21 +74,17 @@
     }
   }
 
-  &__box--select::after {
-    content: "";
+  &__caret {
     position: absolute;
     top: 50%;
-    right: 18px;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-right: 2px solid var(--fg);
-    border-bottom: 2px solid var(--fg);
-    transform: translateY(-70%) rotate(45deg);
+    right: 16px;
+    color: var(--fg);
+    transform: translateY(-50%);
     transition: transform 0.2s;
     pointer-events: none;
   }
-  &__box--select:focus-within::after {
-    transform: translateY(-30%) rotate(225deg);
+  &__box--select:focus-within &__caret {
+    transform: translateY(-50%) rotate(180deg);
   }
 
   &__hint {

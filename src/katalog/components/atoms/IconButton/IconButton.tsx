@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes } from "react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { cx } from "../../../lib/cx";
 import "./IconButton.scss";
 
@@ -20,15 +21,13 @@ export function IconButton({
       aria-label={label}
       {...rest}
     >
-      {icon === "prev" && (
-        <span className="vl-ibtn__arrow vl-ibtn__arrow--prev" />
+      {icon === "prev" && <ChevronLeft size={22} aria-hidden="true" />}
+      {icon === "next" && <ChevronRight size={22} aria-hidden="true" />}
+      {icon === "play" && (
+        <Play size={18} fill="currentColor" aria-hidden="true" />
       )}
-      {icon === "next" && <span className="vl-ibtn__arrow" />}
-      {(icon === "play" || icon === "pause") && (
-        <span
-          className={cx("vl-ibtn__icon", `vl-ibtn__icon--${icon}`)}
-          aria-hidden="true"
-        />
+      {icon === "pause" && (
+        <Pause size={18} fill="currentColor" aria-hidden="true" />
       )}
     </button>
   );

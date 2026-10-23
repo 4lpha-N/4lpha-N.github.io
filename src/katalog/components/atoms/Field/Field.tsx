@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { ChevronDown } from "lucide-react";
 import type { Variant } from "../../../lib/types";
 import "./Field.scss";
 
@@ -80,6 +81,11 @@ export function VlSelect({
           <option value="2">Auswahl 2</option>
           <option value="3">Auswahl 3</option>
         </select>
+        <ChevronDown
+          className="vl-field__caret"
+          size={18}
+          aria-hidden="true"
+        />
       </div>
       {hint && <span className="vl-field__hint">{hint}</span>}
     </div>

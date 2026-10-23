@@ -1,3 +1,4 @@
+import { Check, Dot } from "lucide-react";
 import type { SimpleVariant } from "../../../lib/types";
 import { cx } from "../../../lib/cx";
 import "./Check.scss";
@@ -37,7 +38,13 @@ export function VlCheck({
         defaultChecked={defaultChecked}
         disabled={disabled}
       />
-      <span className="vl-check__box" aria-hidden="true" />
+      <span className="vl-check__box" aria-hidden="true">
+        {radio ? (
+          <Dot className="vl-check__tick" size={24} strokeWidth={6} />
+        ) : (
+          <Check className="vl-check__tick" size={16} strokeWidth={3} />
+        )}
+      </span>
       <span className="vl-check__label">{label}</span>
     </label>
   );
