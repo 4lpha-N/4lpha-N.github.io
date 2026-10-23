@@ -29,6 +29,7 @@ export default defineConfig(({ mode }) => {
         },
         workbox: {
           cleanupOutdatedCaches: true,
+          globPatterns: ['**/*.{js,css,html,woff2}'],
           navigateFallback: `${appBasePath}index.html`,
           // Andere Pages-Projekte auf demselben Origin dürfen nicht mit unserer index.html beantwortet werden
           navigateFallbackDenylist: [/^\/projekt1\//, /^\/projekt2\//],
