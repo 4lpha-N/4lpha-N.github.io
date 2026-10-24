@@ -1,0 +1,10 @@
+.vl-products .vl-card {
+  height: 100%;
+}
+
+.vl-product__foot {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  gap: 12px;
+}

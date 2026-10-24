@@ -7,6 +7,7 @@ export function VlProgress({
   variant,
   label,
   value = 0,
+  max = 100,
   indeterminate,
   loading,
   segmented,
@@ -16,6 +17,8 @@ export function VlProgress({
   variant: SimpleVariant;
   label: string;
   value?: number;
+  // Obergrenze; ab != 100 wird "wert/max" statt Prozent angezeigt
+  max?: number;
   indeterminate?: boolean;
   // Fortschritt bekannt, Balken zeigt zusätzlich Aktivität
   loading?: boolean;
@@ -36,16 +39,20 @@ export function VlProgress({
     >
       <div className="vl-progress__head">
         <span className="vl-progress__label">{label}</span>
-        {!indeterminate && <span className="vl-progress__value">{value}%</span>}
+        {!indeterminate && (
+          <span className="vl-progress__value">
+            {max === 100 ? `${value}%` : `${value}/${max}`}
+          </span>
+        )}
       </div>
       <div
         className="vl-progress__bar"
         role="progressbar"
         aria-label={label}
         aria-valuemin={0}
-        aria-valuemax={100}
+        aria-valuemax={max}
         aria-valuenow={indeterminate ? undefined : value}
-        style={{ "--p": value / 100 } as CSSProperties}
+        style={{ "--p": value / max } as CSSProperties}
       >
         <span className="vl-progress__fill" />
       </div>

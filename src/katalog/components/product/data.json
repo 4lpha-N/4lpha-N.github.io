@@ -1,0 +1,1502 @@
+[
+  {
+    "id": 1,
+    "name": "Produkt 1",
+    "beschreibung": "Lorem ipsum 1",
+    "preis": {
+      "betrag": 19.9,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 2
+      }
+    ],
+    "bild": "01"
+  },
+  {
+    "id": 2,
+    "name": "Produkt 2",
+    "beschreibung": "Lorem ipsum 2",
+    "preis": {
+      "betrag": 24.5,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 1
+      }
+    ],
+    "bild": "02"
+  },
+  {
+    "id": 3,
+    "name": "Produkt 3",
+    "beschreibung": "Lorem ipsum 3",
+    "preis": {
+      "betrag": 39,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 10
+      }
+    ],
+    "bild": "03"
+  },
+  {
+    "id": 4,
+    "name": "Produkt 4",
+    "beschreibung": "Lorem ipsum 4",
+    "preis": {
+      "betrag": 49.9,
+      "steuer": "brutto",
+      "strichpreis": 59.9,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 6
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 9
+      }
+    ],
+    "bild": "04"
+  },
+  {
+    "id": 5,
+    "name": "Produkt 5",
+    "beschreibung": "Lorem ipsum 5",
+    "preis": {
+      "betrag": 12.5,
+      "steuer": "netto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 9
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 8
+      }
+    ],
+    "bild": "05"
+  },
+  {
+    "id": 6,
+    "name": "Produkt 6",
+    "beschreibung": "Lorem ipsum 6",
+    "preis": {
+      "betrag": 89,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 7
+      }
+    ],
+    "bild": "06"
+  },
+  {
+    "id": 7,
+    "name": "Produkt 7",
+    "beschreibung": "Lorem ipsum 7",
+    "preis": {
+      "betrag": 15.99,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 6
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 7
+      }
+    ],
+    "bild": "07"
+  },
+  {
+    "id": 8,
+    "name": "Produkt 8",
+    "beschreibung": "Lorem ipsum 8",
+    "preis": {
+      "betrag": 29.9,
+      "steuer": "brutto",
+      "strichpreis": 39.9,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 9
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 6
+      }
+    ],
+    "bild": "08"
+  },
+  {
+    "id": 9,
+    "name": "Produkt 9",
+    "beschreibung": "Lorem ipsum 9",
+    "preis": {
+      "betrag": 64,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 5
+      }
+    ],
+    "bild": "09"
+  },
+  {
+    "id": 10,
+    "name": "Produkt 10",
+    "beschreibung": "Lorem ipsum 10",
+    "preis": {
+      "betrag": 9.9,
+      "steuer": "netto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 4
+      }
+    ],
+    "bild": "10"
+  },
+  {
+    "id": 11,
+    "name": "Produkt 11",
+    "beschreibung": "Lorem ipsum 11",
+    "preis": {
+      "betrag": 34.5,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 3
+      }
+    ],
+    "bild": "11"
+  },
+  {
+    "id": 12,
+    "name": "Produkt 12",
+    "beschreibung": "Lorem ipsum 12",
+    "preis": {
+      "betrag": 79,
+      "steuer": "brutto",
+      "strichpreis": 99,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 2
+      }
+    ],
+    "bild": "12"
+  },
+  {
+    "id": 13,
+    "name": "Produkt 13",
+    "beschreibung": "Lorem ipsum 13",
+    "preis": {
+      "betrag": 21.9,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 1
+      }
+    ],
+    "bild": "13"
+  },
+  {
+    "id": 14,
+    "name": "Produkt 14",
+    "beschreibung": "Lorem ipsum 14",
+    "preis": {
+      "betrag": 45,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 9
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 1
+      }
+    ],
+    "bild": "14"
+  },
+  {
+    "id": 15,
+    "name": "Produkt 15",
+    "beschreibung": "Lorem ipsum 15",
+    "preis": {
+      "betrag": 119,
+      "steuer": "netto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 10
+      }
+    ],
+    "bild": "15"
+  },
+  {
+    "id": 16,
+    "name": "Produkt 16",
+    "beschreibung": "Lorem ipsum 16",
+    "preis": {
+      "betrag": 27.9,
+      "steuer": "brutto",
+      "strichpreis": 35.9,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 9
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 9
+      }
+    ],
+    "bild": "16"
+  },
+  {
+    "id": 17,
+    "name": "Produkt 17",
+    "beschreibung": "Lorem ipsum 17",
+    "preis": {
+      "betrag": 18.5,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 8
+      }
+    ],
+    "bild": "17"
+  },
+  {
+    "id": 18,
+    "name": "Produkt 18",
+    "beschreibung": "Lorem ipsum 18",
+    "preis": {
+      "betrag": 149,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 9
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 7
+      }
+    ],
+    "bild": "18"
+  },
+  {
+    "id": 19,
+    "name": "Produkt 19",
+    "beschreibung": "Lorem ipsum 19",
+    "preis": {
+      "betrag": 55.9,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 6
+      }
+    ],
+    "bild": "19"
+  },
+  {
+    "id": 20,
+    "name": "Produkt 20",
+    "beschreibung": "Lorem ipsum 20",
+    "preis": {
+      "betrag": 99.9,
+      "steuer": "netto",
+      "strichpreis": 129.9,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 6
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 9
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 5
+      }
+    ],
+    "bild": "20"
+  },
+  {
+    "id": 21,
+    "name": "Produkt 21",
+    "beschreibung": "Lorem ipsum 21",
+    "preis": {
+      "betrag": 13.9,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 5
+      }
+    ],
+    "bild": "21"
+  },
+  {
+    "id": 22,
+    "name": "Produkt 22",
+    "beschreibung": "Lorem ipsum 22",
+    "preis": {
+      "betrag": 38,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 4
+      }
+    ],
+    "bild": "22"
+  },
+  {
+    "id": 23,
+    "name": "Produkt 23",
+    "beschreibung": "Lorem ipsum 23",
+    "preis": {
+      "betrag": 72.5,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 6
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 3
+      }
+    ],
+    "bild": "23"
+  },
+  {
+    "id": 24,
+    "name": "Produkt 24",
+    "beschreibung": "Lorem ipsum 24",
+    "preis": {
+      "betrag": 59,
+      "steuer": "brutto",
+      "strichpreis": 79,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 9
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 2
+      }
+    ],
+    "bild": "24"
+  },
+  {
+    "id": 25,
+    "name": "Produkt 25",
+    "beschreibung": "Lorem ipsum 25",
+    "preis": {
+      "betrag": 16.9,
+      "steuer": "netto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 1
+      }
+    ],
+    "bild": "25"
+  },
+  {
+    "id": 26,
+    "name": "Produkt 26",
+    "beschreibung": "Lorem ipsum 26",
+    "preis": {
+      "betrag": 42,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 10
+      }
+    ],
+    "bild": "26"
+  },
+  {
+    "id": 27,
+    "name": "Produkt 27",
+    "beschreibung": "Lorem ipsum 27",
+    "preis": {
+      "betrag": 199,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 9
+      }
+    ],
+    "bild": "27"
+  },
+  {
+    "id": 28,
+    "name": "Produkt 28",
+    "beschreibung": "Lorem ipsum 28",
+    "preis": {
+      "betrag": 31.9,
+      "steuer": "brutto",
+      "strichpreis": 39.9,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 9
+      }
+    ],
+    "bild": "28"
+  },
+  {
+    "id": 29,
+    "name": "Produkt 29",
+    "beschreibung": "Lorem ipsum 29",
+    "preis": {
+      "betrag": 23.5,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 6
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 8
+      }
+    ],
+    "bild": "29"
+  },
+  {
+    "id": 30,
+    "name": "Produkt 30",
+    "beschreibung": "Lorem ipsum 30",
+    "preis": {
+      "betrag": 249,
+      "steuer": "netto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 7
+      }
+    ],
+    "bild": "30"
+  },
+  {
+    "id": 31,
+    "name": "Produkt 31",
+    "beschreibung": "Lorem ipsum 31",
+    "preis": {
+      "betrag": 8.99,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 6
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 6
+      }
+    ],
+    "bild": "31"
+  },
+  {
+    "id": 32,
+    "name": "Produkt 32",
+    "beschreibung": "Lorem ipsum 32",
+    "preis": {
+      "betrag": 68,
+      "steuer": "brutto",
+      "strichpreis": 85,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 5
+      }
+    ],
+    "bild": "32"
+  },
+  {
+    "id": 33,
+    "name": "Produkt 33",
+    "beschreibung": "Lorem ipsum 33",
+    "preis": {
+      "betrag": 129,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 6
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 4
+      }
+    ],
+    "bild": "33"
+  },
+  {
+    "id": 34,
+    "name": "Produkt 34",
+    "beschreibung": "Lorem ipsum 34",
+    "preis": {
+      "betrag": 26.9,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 3
+      }
+    ],
+    "bild": "34"
+  },
+  {
+    "id": 35,
+    "name": "Produkt 35",
+    "beschreibung": "Lorem ipsum 35",
+    "preis": {
+      "betrag": 54.9,
+      "steuer": "netto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 3
+      }
+    ],
+    "bild": "35"
+  },
+  {
+    "id": 36,
+    "name": "Produkt 36",
+    "beschreibung": "Lorem ipsum 36",
+    "preis": {
+      "betrag": 179,
+      "steuer": "brutto",
+      "strichpreis": 219,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 2
+      }
+    ],
+    "bild": "36"
+  },
+  {
+    "id": 37,
+    "name": "Produkt 37",
+    "beschreibung": "Lorem ipsum 37",
+    "preis": {
+      "betrag": 14.5,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 1
+      }
+    ],
+    "bild": "37"
+  },
+  {
+    "id": 38,
+    "name": "Produkt 38",
+    "beschreibung": "Lorem ipsum 38",
+    "preis": {
+      "betrag": 36,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 10
+      }
+    ],
+    "bild": "38"
+  },
+  {
+    "id": 39,
+    "name": "Produkt 39",
+    "beschreibung": "Lorem ipsum 39",
+    "preis": {
+      "betrag": 92.5,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 6
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 9
+      }
+    ],
+    "bild": "39"
+  },
+  {
+    "id": 40,
+    "name": "Produkt 40",
+    "beschreibung": "Lorem ipsum 40",
+    "preis": {
+      "betrag": 109,
+      "steuer": "netto",
+      "strichpreis": 139,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 9
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 8
+      }
+    ],
+    "bild": "40"
+  },
+  {
+    "id": 41,
+    "name": "Produkt 41",
+    "beschreibung": "Lorem ipsum 41",
+    "preis": {
+      "betrag": 19.5,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 7
+      }
+    ],
+    "bild": "41"
+  },
+  {
+    "id": 42,
+    "name": "Produkt 42",
+    "beschreibung": "Lorem ipsum 42",
+    "preis": {
+      "betrag": 299,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 6
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 7
+      }
+    ],
+    "bild": "42"
+  },
+  {
+    "id": 43,
+    "name": "Produkt 43",
+    "beschreibung": "Lorem ipsum 43",
+    "preis": {
+      "betrag": 47.9,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 9
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 6
+      }
+    ],
+    "bild": "43"
+  },
+  {
+    "id": 44,
+    "name": "Produkt 44",
+    "beschreibung": "Lorem ipsum 44",
+    "preis": {
+      "betrag": 84.9,
+      "steuer": "brutto",
+      "strichpreis": 109.9,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 5
+      }
+    ],
+    "bild": "44"
+  },
+  {
+    "id": 45,
+    "name": "Produkt 45",
+    "beschreibung": "Lorem ipsum 45",
+    "preis": {
+      "betrag": 33,
+      "steuer": "netto",
+      "strichpreis": null,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 4
+      }
+    ],
+    "bild": "45"
+  },
+  {
+    "id": 46,
+    "name": "Produkt 46",
+    "beschreibung": "Lorem ipsum 46",
+    "preis": {
+      "betrag": 61,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 3
+      }
+    ],
+    "bild": "46"
+  },
+  {
+    "id": 47,
+    "name": "Produkt 47",
+    "beschreibung": "Lorem ipsum 47",
+    "preis": {
+      "betrag": 25.9,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 5
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 2
+      }
+    ],
+    "bild": "47"
+  },
+  {
+    "id": 48,
+    "name": "Produkt 48",
+    "beschreibung": "Lorem ipsum 48",
+    "preis": {
+      "betrag": 159,
+      "steuer": "brutto",
+      "strichpreis": 199,
+      "ab": true
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 3
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 2
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 1
+      }
+    ],
+    "bild": "48"
+  },
+  {
+    "id": 49,
+    "name": "Produkt 49",
+    "beschreibung": "Lorem ipsum 49",
+    "preis": {
+      "betrag": 44.9,
+      "steuer": "brutto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 8
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 9
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 10
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 1
+      }
+    ],
+    "bild": "49"
+  },
+  {
+    "id": 50,
+    "name": "Produkt 50",
+    "beschreibung": "Lorem ipsum 50",
+    "preis": {
+      "betrag": 189,
+      "steuer": "netto",
+      "strichpreis": null,
+      "ab": false
+    },
+    "eigenschaften": [
+      {
+        "label": "Eigenschaft 1",
+        "wert": 1
+      },
+      {
+        "label": "Eigenschaft 2",
+        "wert": 4
+      },
+      {
+        "label": "Eigenschaft 3",
+        "wert": 7
+      },
+      {
+        "label": "Eigenschaft 4",
+        "wert": 10
+      }
+    ],
+    "bild": "50"
+  }
+]

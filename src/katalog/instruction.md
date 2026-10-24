@@ -8,9 +8,10 @@ Jede Komponente liegt in `components/<Ebene>/<Name>/<Name>.tsx` mit passender `<
 
 | Ebene                   | Inhalt                                                                                                                                                                                              |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `components/atoms/`     | Button (`VlButton`), Field (`VlInput`, `VlSelect`), Check, Radio, Switch, Slider, Link, Tag, Tooltip, Image, Progress, IconButton, SegToggle                                                        |
+| `components/atoms/`     | Button (`VlButton`), Field (`VlInput`, `VlSelect`), Check, Radio, Switch, Slider, Link, Tag, Tooltip, Image, Progress (optional `max`), Price, IconButton, SegToggle                                                        |
 | `components/molecules/` | Alert, Breadcrumb (`VlCrumbs`), Pagination, Tabs, Accordion, Popover, Card, Media                                                                                                                   |
 | `components/organism/`  | Hero, Carousel, Overlay (Modal/Drawer)                                                                                                                                                              |
+| `components/product/`   | `ProductList` (Cards aus `data.json`), `productImage` (nummerierte Platzhalterbilder 01-50)                                                                                                         |
 | `components/layout/`    | `ThemeProvider`, Grid (`GridContainer`, `GridRow`, `GridCol`, `GridCell`), Decor (Hintergrund-Dekor), Header (Marke, Nav, Einstellungs-Popover; nutzt zusätzlich `react-router` und `lucide-react`) |
 | `lib/`                  | `types` (Theme, Variant), `cx`, `ThemeClassContext`, `useFloat`, `focus`, `pad2`, `tones`                                                                                                           |
 | `styles/`               | `_mixins.scss` (Farben, Mixins), `base.scss` (Typografie, Schließen-Knopf, Float, Reduced Motion)                                                                                                   |

@@ -16,6 +16,7 @@ const THEMES: { id: Theme; label: string }[] = [
 
 const NAV_ITEMS = [
   { to: "/", label: "Start", end: true },
+  { to: "/Produkte", label: "Produkte", end: false },
   { to: "/Demo", label: "Demo", end: false },
 ];
 
