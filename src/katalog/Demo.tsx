@@ -19,6 +19,7 @@ import { SIMPLE_VARIANTS, VARIANTS } from "./lib/types";
 import type { Tone } from "./lib/tones";
 import { TONES } from "./lib/tones";
 import { cx } from "./lib/cx";
+import { reveal } from "./lib/reveal";
 import { ThemeClassContext } from "./lib/ThemeClassContext";
 import { useTheme } from "./lib/ThemeContext";
 import { VlButton } from "./components/atoms/Button/Button";
@@ -57,17 +58,6 @@ function variantLabel(variant: Variant, theme: Theme) {
 }
 
 /* ---------- Layout-Helfer ---------- */
-
-// Einblenden beim Scrollen in den Viewport; einmalig, ohne Animation bei reduzierter Bewegung
-function reveal(reduceMotion: boolean | null, delay = 0) {
-  if (reduceMotion) return {};
-  return {
-    initial: { opacity: 0, y: 24 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "0px 0px -10% 0px" },
-    transition: { duration: 0.45, ease: "easeOut" as const, delay },
-  };
-}
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   const reduceMotion = useReducedMotion();

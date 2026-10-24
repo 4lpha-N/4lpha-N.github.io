@@ -8,8 +8,13 @@
     gap: 1.5rem;
   }
 
+  .vl-products__item {
+    display: flex;
+  }
+
   .vl-card {
-    height: 100%;
+    flex: 1;
+    min-width: 0;
   }
 }
 
