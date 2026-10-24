@@ -128,6 +128,9 @@ export function ProductShop() {
           </div>
         </div>
       </div>
+      <p className="vl-shop__count vl-text-sm" aria-live="polite">
+        {items.length} {items.length === 1 ? "Produkt" : "Produkte"}
+      </p>
       <div ref={listRef} className="vl-shop__list">
         <ProductList products={visible} />
       </div>

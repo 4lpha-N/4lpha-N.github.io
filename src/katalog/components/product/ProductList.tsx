@@ -1,11 +1,13 @@
 import { Link } from "react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import { reveal } from "../../lib/reveal";
+import { cx } from "../../lib/cx";
 import { VlCard } from "../molecules/Card/Card";
 import { VlImage } from "../atoms/Image/Image";
 import { VlProgress } from "../atoms/Progress/Progress";
 import { Price } from "../atoms/Price/Price";
 import { ProductBadges } from "./ProductBadges";
+import { StockStatus } from "./StockStatus";
 import { VAT } from "./productData";
 import type { Product } from "./productData";
 import { productImage } from "./productImage";
@@ -21,7 +23,10 @@ export function ProductList({ products }: { products: Product[] }) {
       {products.map((p, i) => (
         <motion.div
           key={p.id}
-          className="vl-products__item"
+          className={cx(
+            "vl-products__item",
+            p.lager === "ausverkauft" && "is-soldout",
+          )}
           {...reveal(reduceMotion, (i % 4) * 0.06)}
         >
           <VlCard
@@ -40,6 +45,7 @@ export function ProductList({ products }: { products: Product[] }) {
             }
             footer={
               <div className="vl-product__foot">
+                <StockStatus stock={p.lager} />
                 <Price
                   value={p.preis.betrag}
                   tax={p.preis.steuer === "brutto" ? "gross" : "net"}

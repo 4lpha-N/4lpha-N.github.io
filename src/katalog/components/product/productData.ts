@@ -1,5 +1,7 @@
 import data from "./data.json";
 
+export type Stock = "auf-lager" | "wenige" | "ausverkauft";
+
 export type Product = {
   id: number;
   name: string;
@@ -13,6 +15,7 @@ export type Product = {
   eigenschaften: { label: string; wert: number }[];
   neu: boolean;
   bestseller: boolean;
+  lager: Stock;
   bild: string;
 };
 
@@ -39,6 +42,8 @@ export const DEFAULT_PAGE_SIZE = PAGE_SIZES[0];
 export type Range = [number, number];
 
 export type Filters = {
+  // blendet ausverkaufte Produkte aus
+  aufLager: boolean;
   neu: boolean;
   bestseller: boolean;
   preis: Range;
@@ -47,6 +52,7 @@ export type Filters = {
 };
 
 export const DEFAULT_FILTERS: Filters = {
+  aufLager: false,
   neu: false,
   bestseller: false,
   preis: [PRICE_MIN, PRICE_MAX],
@@ -58,6 +64,7 @@ export const isDefaultFilters = (f: Filters) =>
 
 export function filterProducts(list: Product[], f: Filters) {
   return list.filter((p) => {
+    if (f.aufLager && p.lager === "ausverkauft") return false;
     if (f.neu && !p.neu) return false;
     if (f.bestseller && !p.bestseller) return false;
     const price = grossPrice(p);

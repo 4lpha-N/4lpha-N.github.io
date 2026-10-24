@@ -32,6 +32,12 @@ export function ProductFilter({
         >
           <VlCheck
             variant="primary"
+            label="Auf Lager"
+            checked={filters.aufLager}
+            onChange={(aufLager) => onChange({ ...filters, aufLager })}
+          />
+          <VlCheck
+            variant="primary"
             label="Neu"
             checked={filters.neu}
             onChange={(neu) => onChange({ ...filters, neu })}

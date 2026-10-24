@@ -1,0 +1,27 @@
+.vl-stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  &--auf-lager {
+    color: var(--fg);
+  }
+  &--wenige {
+    color: var(--error);
+  }
+  &--ausverkauft {
+    color: var(--alt);
+  }
+}
+
+// Nicht lieferbare Produkte: Bild zurückgenommen
+.is-soldout .vl-card__media,
+.is-soldout.vl-product-detail__media {
+  opacity: 0.5;
+  filter: grayscale(1);
+}

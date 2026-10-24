@@ -29,6 +29,7 @@
     ],
     "neu": true,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "01"
   },
   {
@@ -61,6 +62,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "02"
   },
   {
@@ -93,6 +95,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "wenige",
     "bild": "03"
   },
   {
@@ -125,6 +128,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "04"
   },
   {
@@ -157,6 +161,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "05"
   },
   {
@@ -189,6 +194,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "06"
   },
   {
@@ -221,6 +227,7 @@
     ],
     "neu": true,
     "bestseller": true,
+    "lager": "ausverkauft",
     "bild": "07"
   },
   {
@@ -253,6 +260,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "wenige",
     "bild": "08"
   },
   {
@@ -285,6 +293,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "09"
   },
   {
@@ -317,6 +326,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "10"
   },
   {
@@ -349,6 +359,7 @@
     ],
     "neu": false,
     "bestseller": true,
+    "lager": "auf-lager",
     "bild": "11"
   },
   {
@@ -381,6 +392,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "12"
   },
   {
@@ -413,6 +425,7 @@
     ],
     "neu": true,
     "bestseller": false,
+    "lager": "wenige",
     "bild": "13"
   },
   {
@@ -445,6 +458,7 @@
     ],
     "neu": false,
     "bestseller": true,
+    "lager": "ausverkauft",
     "bild": "14"
   },
   {
@@ -477,6 +491,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "15"
   },
   {
@@ -509,6 +524,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "16"
   },
   {
@@ -541,6 +557,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "17"
   },
   {
@@ -573,6 +590,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "wenige",
     "bild": "18"
   },
   {
@@ -605,6 +623,7 @@
     ],
     "neu": true,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "19"
   },
   {
@@ -637,6 +656,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "20"
   },
   {
@@ -669,6 +689,7 @@
     ],
     "neu": false,
     "bestseller": true,
+    "lager": "ausverkauft",
     "bild": "21"
   },
   {
@@ -701,6 +722,7 @@
     ],
     "neu": false,
     "bestseller": true,
+    "lager": "auf-lager",
     "bild": "22"
   },
   {
@@ -733,6 +755,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "wenige",
     "bild": "23"
   },
   {
@@ -765,6 +788,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "24"
   },
   {
@@ -797,6 +821,7 @@
     ],
     "neu": true,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "25"
   },
   {
@@ -829,6 +854,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "26"
   },
   {
@@ -861,6 +887,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "27"
   },
   {
@@ -893,6 +920,7 @@
     ],
     "neu": false,
     "bestseller": true,
+    "lager": "ausverkauft",
     "bild": "28"
   },
   {
@@ -925,6 +953,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "29"
   },
   {
@@ -957,6 +986,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "30"
   },
   {
@@ -989,6 +1019,7 @@
     ],
     "neu": true,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "31"
   },
   {
@@ -1021,6 +1052,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "32"
   },
   {
@@ -1053,6 +1085,7 @@
     ],
     "neu": false,
     "bestseller": true,
+    "lager": "wenige",
     "bild": "33"
   },
   {
@@ -1085,6 +1118,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "34"
   },
   {
@@ -1117,6 +1151,7 @@
     ],
     "neu": false,
     "bestseller": true,
+    "lager": "ausverkauft",
     "bild": "35"
   },
   {
@@ -1149,6 +1184,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "36"
   },
   {
@@ -1181,6 +1217,7 @@
     ],
     "neu": true,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "37"
   },
   {
@@ -1213,6 +1250,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "wenige",
     "bild": "38"
   },
   {
@@ -1245,6 +1283,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "39"
   },
   {
@@ -1277,6 +1316,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "40"
   },
   {
@@ -1309,6 +1349,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "41"
   },
   {
@@ -1341,6 +1382,7 @@
     ],
     "neu": false,
     "bestseller": true,
+    "lager": "ausverkauft",
     "bild": "42"
   },
   {
@@ -1373,6 +1415,7 @@
     ],
     "neu": true,
     "bestseller": false,
+    "lager": "wenige",
     "bild": "43"
   },
   {
@@ -1405,6 +1448,7 @@
     ],
     "neu": false,
     "bestseller": true,
+    "lager": "auf-lager",
     "bild": "44"
   },
   {
@@ -1437,6 +1481,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "45"
   },
   {
@@ -1469,6 +1514,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "46"
   },
   {
@@ -1501,6 +1547,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "47"
   },
   {
@@ -1533,6 +1580,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "wenige",
     "bild": "48"
   },
   {
@@ -1565,6 +1613,7 @@
     ],
     "neu": true,
     "bestseller": true,
+    "lager": "ausverkauft",
     "bild": "49"
   },
   {
@@ -1597,6 +1646,7 @@
     ],
     "neu": false,
     "bestseller": false,
+    "lager": "auf-lager",
     "bild": "50"
   }
 ]

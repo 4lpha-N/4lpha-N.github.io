@@ -29,6 +29,7 @@ const range = (
 const differs = (a: Range, b: Range) => a[0] !== b[0] || a[1] !== b[1];
 
 export const filtersFromParams = (sp: URLSearchParams): Filters => ({
+  aufLager: sp.get("lager") === "1",
   neu: sp.get("neu") === "1",
   bestseller: sp.get("bestseller") === "1",
   preis: range(sp.get("preis"), PRICE_MIN, PRICE_MAX, DEFAULT_FILTERS.preis),
@@ -60,6 +61,7 @@ export function paramsFromState(
   if (sort !== "name") sp.set("sort", sort);
   if (size !== DEFAULT_PAGE_SIZE) sp.set("pro", String(size));
   if (page > 1) sp.set("seite", String(page));
+  if (filters.aufLager) sp.set("lager", "1");
   if (filters.neu) sp.set("neu", "1");
   if (filters.bestseller) sp.set("bestseller", "1");
   if (differs(filters.preis, DEFAULT_FILTERS.preis)) {
