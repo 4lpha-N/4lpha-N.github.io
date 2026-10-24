@@ -89,7 +89,7 @@ export function VlOverlay({
   const hidden = reduceMotion
     ? { opacity: 0 }
     : placement === "right"
-      ? { x: Math.min(400, window.innerWidth) + 24 }
+      ? { x: Math.min(400, window.innerWidth) + 96 }
       : placement === "bottom"
         ? { y: window.innerHeight }
         : { opacity: 0, y: 24, scale: 0.96 };

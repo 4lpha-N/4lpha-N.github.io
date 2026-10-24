@@ -8,7 +8,7 @@ Jede Komponente liegt in `components/<Ebene>/<Name>/<Name>.tsx` mit passender `<
 
 | Ebene                   | Inhalt                                                                                                                                                                                              |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `components/atoms/`     | Button (`VlButton`), Field (`VlInput`, `VlSelect`), Check, Radio, Switch, Slider, Link, Tag, Tooltip, Image, Progress (optional `max`), Price, IconButton, SegToggle                                                        |
+| `components/atoms/`     | Button (`VlButton`), Field (`VlInput`, `VlSelect`), Check, Radio, Switch, Slider, Link, Tag, Tooltip, Image, Progress (optional `max`), Price, IconButton, SegToggle                                |
 | `components/molecules/` | Alert, Breadcrumb (`VlCrumbs`), Pagination, Tabs, Accordion, Popover, Card, Media                                                                                                                   |
 | `components/organism/`  | Hero, Carousel, Overlay (Modal/Drawer)                                                                                                                                                              |
 | `components/product/`   | `ProductList` (Cards aus `data.json`), `productImage` (nummerierte Platzhalterbilder 01-50)                                                                                                         |
