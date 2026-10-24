@@ -1,0 +1,19 @@
+.vl-product-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  &__title,
+  &__text {
+    margin: 0;
+  }
+
+  &__attrs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 8px;
+  }
+}

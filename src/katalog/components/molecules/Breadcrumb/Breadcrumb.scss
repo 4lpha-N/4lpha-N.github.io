@@ -93,8 +93,17 @@
     --ring: var(--primary-hover);
   }
   &--secondary {
-    --l: var(--link-2);
+    --l: var(--fg);
     --lh: var(--primary);
     --ring: var(--primary);
+
+    // Link = Textfarbe wie die aktuelle Seite, daher dauerhaft unterstrichen
+    .vl-crumbs__link {
+      border-color: var(--muted);
+
+      &:hover {
+        border-color: currentColor;
+      }
+    }
   }
 }

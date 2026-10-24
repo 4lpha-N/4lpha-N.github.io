@@ -59,7 +59,16 @@ export function VlSelect({
   hint,
   error,
   disabled,
-}: FieldProps) {
+  options,
+  value,
+  onChange,
+}: FieldProps & {
+  // Ohne options: Beispiel-Auswahl der Demo
+  options?: { value: string; label: string }[];
+  // Gesteuerter Modus: Auswahl liegt beim Aufrufer
+  value?: string;
+  onChange?: (value: string) => void;
+}) {
   const id = useId();
   return (
     <div className={fieldClass(variant, error, disabled)}>
@@ -70,16 +79,28 @@ export function VlSelect({
         <select
           id={id}
           className="vl-field__control vl-field__control--select"
-          defaultValue=""
+          {...(value === undefined
+            ? { defaultValue: "" }
+            : { value, onChange: (e) => onChange?.(e.target.value) })}
           disabled={disabled}
           aria-invalid={error || undefined}
         >
-          <option value="" disabled>
-            Bitte wählen
-          </option>
-          <option value="1">Auswahl 1</option>
-          <option value="2">Auswahl 2</option>
-          <option value="3">Auswahl 3</option>
+          {options ? (
+            options.map((o) => (
+              <option key={o.value} value={o.value}>
+                {o.label}
+              </option>
+            ))
+          ) : (
+            <>
+              <option value="" disabled>
+                Bitte wählen
+              </option>
+              <option value="1">Auswahl 1</option>
+              <option value="2">Auswahl 2</option>
+              <option value="3">Auswahl 3</option>
+            </>
+          )}
         </select>
         <ChevronDown className="vl-field__caret" size={18} aria-hidden="true" />
       </div>

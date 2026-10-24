@@ -11,7 +11,10 @@ interface SliderProps {
   variant: SimpleVariant;
   label: string;
   // Zahl = ein Knopf, Tupel = Bereich mit zwei Knöpfen
-  defaultValue: number | [number, number];
+  defaultValue?: number | [number, number];
+  // Gesteuerter Modus: Wert liegt beim Aufrufer
+  value?: number | [number, number];
+  onChange?: (value: number | [number, number]) => void;
   min?: number;
   max?: number;
   step?: number;
@@ -26,6 +29,8 @@ export function VlSlider({
   variant,
   label,
   defaultValue,
+  value,
+  onChange,
   min = 0,
   max = 100,
   step = 1,
@@ -34,25 +39,28 @@ export function VlSlider({
   error,
   disabled,
 }: SliderProps) {
-  const range = Array.isArray(defaultValue);
-  const init: [number, number] = Array.isArray(defaultValue)
-    ? defaultValue
-    : [min, defaultValue];
-  const [lo, setLo] = useState(init[0]);
-  const [hi, setHi] = useState(init[1]);
+  const source = value ?? defaultValue ?? min;
+  const range = Array.isArray(source);
+  const [inner, setInner] = useState<[number, number]>(
+    Array.isArray(source) ? source : [min, source],
+  );
+  const [lo, hi]: [number, number] =
+    value === undefined ? inner : Array.isArray(value) ? value : [min, value];
 
   const frac = (v: number) => (v - min) / (max - min);
+  const commit = (nextLo: number, nextHi: number) => {
+    setInner([nextLo, nextHi]);
+    onChange?.(range ? [nextLo, nextHi] : nextHi);
+  };
   // Unterschreitet der Abstand minGap, wird der andere Knopf mitgeschoben (bis zum Rand)
   const changeLo = (v: number) => {
     const next = Math.min(v, max - minGap);
-    setLo(next);
-    if (hi - next < minGap) setHi(next + minGap);
+    commit(next, hi - next < minGap ? next + minGap : hi);
   };
   const changeHi = (v: number) => {
-    if (!range) return setHi(v);
+    if (!range) return commit(lo, v);
     const next = Math.max(v, min + minGap);
-    setHi(next);
-    if (next - lo < minGap) setLo(next - minGap);
+    commit(next - lo < minGap ? next - minGap : lo, next);
   };
 
   // Klick auf die Schiene (nicht auf einen Knopf) setzt den nächstliegenden Knopf

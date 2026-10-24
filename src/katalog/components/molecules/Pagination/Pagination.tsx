@@ -32,6 +32,7 @@ export function VlPagination({
   variant,
   total,
   defaultPage = 1,
+  page: controlledPage,
   disabled,
   edges,
   onChange,
@@ -39,12 +40,15 @@ export function VlPagination({
   variant: SimpleVariant;
   total: number;
   defaultPage?: number;
+  // gesteuerter Modus: aktuelle Seite von außen vorgeben (zusammen mit onChange)
+  page?: number;
   disabled?: boolean;
   // Buttons "zur ersten" und "zur letzten Seite"
   edges?: boolean;
   onChange?: (page: number) => void;
 }) {
-  const [page, setPageState] = useState(defaultPage);
+  const [pageState, setPageState] = useState(defaultPage);
+  const page = Math.max(1, Math.min(controlledPage ?? pageState, total));
   const setPage = (p: number) => {
     setPageState(p);
     onChange?.(p);

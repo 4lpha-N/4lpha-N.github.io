@@ -11,6 +11,8 @@ export function VlCard({
   media,
   footer,
   interactive,
+  href,
+  renderLink,
 }: {
   variant: Variant;
   eyebrow?: ReactNode;
@@ -20,6 +22,14 @@ export function VlCard({
   footer?: ReactNode;
   // ganze Karte als Link klickbar
   interactive?: boolean;
+  // Ziel der klickbaren Karte; ohne: Platzhalter-Link
+  href?: string;
+  // eigener Link (z. B. Router-Link); ohne: normales a-Tag
+  renderLink?: (props: {
+    className: string;
+    href: string;
+    children: ReactNode;
+  }) => ReactNode;
 }) {
   return (
     <article
@@ -34,13 +44,17 @@ export function VlCard({
         {eyebrow}
         <h3 className="vl-card__title">
           {interactive ? (
-            <a
-              className="vl-card__link"
-              href="#"
-              onClick={(e) => e.preventDefault()}
-            >
-              {title}
-            </a>
+            href && renderLink ? (
+              renderLink({ className: "vl-card__link", href, children: title })
+            ) : (
+              <a
+                className="vl-card__link"
+                href={href ?? "#"}
+                onClick={href ? undefined : (e) => e.preventDefault()}
+              >
+                {title}
+              </a>
+            )
           ) : (
             title
           )}

@@ -1,0 +1,133 @@
+@use "../../styles/mixins" as *;
+
+/* ---------- Produktübersicht: Werkzeugleiste, Filterleiste, Liste ---------- */
+
+.vl-shop__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 16px;
+  margin-bottom: 1rem;
+}
+
+.vl-shop__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.vl-shop__sort {
+  width: min(100%, 16rem);
+}
+
+// Filterleiste klappt über der Liste in der Höhe auf (0fr -> 1fr)
+.vl-shop__panel {
+  --shop-ease: cubic-bezier(0.32, 0.72, 0, 1);
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-bottom: 0;
+  visibility: hidden;
+  // Erst nach dem Zuklappen unsichtbar, damit der Inhalt nicht vorher verschwindet
+  transition:
+    grid-template-rows 0.4s var(--shop-ease),
+    margin-bottom 0.4s var(--shop-ease),
+    visibility 0s 0.4s;
+
+  &.is-open {
+    grid-template-rows: 1fr;
+    margin-bottom: 1rem;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+}
+
+.vl-shop__clip {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.vl-shop__filters {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  padding: 18px;
+  background: var(--edge);
+  --bw: 2px;
+  @include cut(12px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: var(--bw);
+    z-index: -1;
+    background: var(--surface);
+    @include cut-inner(12px);
+  }
+}
+
+// Links Kennzeichen und Preis, rechts die vier Eigenschaften (mobil untereinander)
+.vl-product-filter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px 48px;
+
+  @media (min-width: 720px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__attrs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+    gap: 24px 32px;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+// Schmal: Select über der Pagination; breit: Pagination mittig, Select rechts daneben
+// (die Pagination hat container-type und braucht daher eine feste Spaltenbreite)
+.vl-shop__foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 16px;
+  margin-top: 1.5rem;
+
+  .vl-pager {
+    width: 100%;
+  }
+  .vl-pager__list {
+    justify-content: center;
+  }
+
+  @media (min-width: 1100px) {
+    grid-template-columns: minmax(14rem, 1fr) minmax(0, 32rem) minmax(14rem, 1fr);
+    align-items: end;
+
+    .vl-pager {
+      grid-column: 2;
+    }
+  }
+}
+
+.vl-shop__size {
+  order: -1;
+  width: min(100%, 16rem);
+
+  @media (min-width: 1100px) {
+    grid-column: 3;
+    order: 0;
+    justify-self: end;
+  }
+}

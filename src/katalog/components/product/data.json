@@ -27,6 +27,8 @@
         "wert": 2
       }
     ],
+    "neu": true,
+    "bestseller": false,
     "bild": "01"
   },
   {
@@ -57,6 +59,8 @@
         "wert": 1
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "02"
   },
   {
@@ -87,6 +91,8 @@
         "wert": 10
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "03"
   },
   {
@@ -117,6 +123,8 @@
         "wert": 9
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "04"
   },
   {
@@ -147,6 +155,8 @@
         "wert": 8
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "05"
   },
   {
@@ -177,6 +187,8 @@
         "wert": 7
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "06"
   },
   {
@@ -207,6 +219,8 @@
         "wert": 7
       }
     ],
+    "neu": true,
+    "bestseller": true,
     "bild": "07"
   },
   {
@@ -237,6 +251,8 @@
         "wert": 6
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "08"
   },
   {
@@ -267,6 +283,8 @@
         "wert": 5
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "09"
   },
   {
@@ -297,6 +315,8 @@
         "wert": 4
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "10"
   },
   {
@@ -327,6 +347,8 @@
         "wert": 3
       }
     ],
+    "neu": false,
+    "bestseller": true,
     "bild": "11"
   },
   {
@@ -357,6 +379,8 @@
         "wert": 2
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "12"
   },
   {
@@ -387,6 +411,8 @@
         "wert": 1
       }
     ],
+    "neu": true,
+    "bestseller": false,
     "bild": "13"
   },
   {
@@ -417,6 +443,8 @@
         "wert": 1
       }
     ],
+    "neu": false,
+    "bestseller": true,
     "bild": "14"
   },
   {
@@ -447,6 +475,8 @@
         "wert": 10
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "15"
   },
   {
@@ -477,6 +507,8 @@
         "wert": 9
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "16"
   },
   {
@@ -507,6 +539,8 @@
         "wert": 8
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "17"
   },
   {
@@ -537,6 +571,8 @@
         "wert": 7
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "18"
   },
   {
@@ -567,6 +603,8 @@
         "wert": 6
       }
     ],
+    "neu": true,
+    "bestseller": false,
     "bild": "19"
   },
   {
@@ -597,6 +635,8 @@
         "wert": 5
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "20"
   },
   {
@@ -627,6 +667,8 @@
         "wert": 5
       }
     ],
+    "neu": false,
+    "bestseller": true,
     "bild": "21"
   },
   {
@@ -657,6 +699,8 @@
         "wert": 4
       }
     ],
+    "neu": false,
+    "bestseller": true,
     "bild": "22"
   },
   {
@@ -687,6 +731,8 @@
         "wert": 3
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "23"
   },
   {
@@ -717,6 +763,8 @@
         "wert": 2
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "24"
   },
   {
@@ -747,6 +795,8 @@
         "wert": 1
       }
     ],
+    "neu": true,
+    "bestseller": false,
     "bild": "25"
   },
   {
@@ -777,6 +827,8 @@
         "wert": 10
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "26"
   },
   {
@@ -807,6 +859,8 @@
         "wert": 9
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "27"
   },
   {
@@ -837,6 +891,8 @@
         "wert": 9
       }
     ],
+    "neu": false,
+    "bestseller": true,
     "bild": "28"
   },
   {
@@ -867,6 +923,8 @@
         "wert": 8
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "29"
   },
   {
@@ -897,6 +955,8 @@
         "wert": 7
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "30"
   },
   {
@@ -927,6 +987,8 @@
         "wert": 6
       }
     ],
+    "neu": true,
+    "bestseller": false,
     "bild": "31"
   },
   {
@@ -957,6 +1019,8 @@
         "wert": 5
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "32"
   },
   {
@@ -987,6 +1051,8 @@
         "wert": 4
       }
     ],
+    "neu": false,
+    "bestseller": true,
     "bild": "33"
   },
   {
@@ -1017,6 +1083,8 @@
         "wert": 3
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "34"
   },
   {
@@ -1047,6 +1115,8 @@
         "wert": 3
       }
     ],
+    "neu": false,
+    "bestseller": true,
     "bild": "35"
   },
   {
@@ -1077,6 +1147,8 @@
         "wert": 2
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "36"
   },
   {
@@ -1107,6 +1179,8 @@
         "wert": 1
       }
     ],
+    "neu": true,
+    "bestseller": false,
     "bild": "37"
   },
   {
@@ -1137,6 +1211,8 @@
         "wert": 10
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "38"
   },
   {
@@ -1167,6 +1243,8 @@
         "wert": 9
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "39"
   },
   {
@@ -1197,6 +1275,8 @@
         "wert": 8
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "40"
   },
   {
@@ -1227,6 +1307,8 @@
         "wert": 7
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "41"
   },
   {
@@ -1257,6 +1339,8 @@
         "wert": 7
       }
     ],
+    "neu": false,
+    "bestseller": true,
     "bild": "42"
   },
   {
@@ -1287,6 +1371,8 @@
         "wert": 6
       }
     ],
+    "neu": true,
+    "bestseller": false,
     "bild": "43"
   },
   {
@@ -1317,6 +1403,8 @@
         "wert": 5
       }
     ],
+    "neu": false,
+    "bestseller": true,
     "bild": "44"
   },
   {
@@ -1347,6 +1435,8 @@
         "wert": 4
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "45"
   },
   {
@@ -1377,6 +1467,8 @@
         "wert": 3
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "46"
   },
   {
@@ -1407,6 +1499,8 @@
         "wert": 2
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "47"
   },
   {
@@ -1437,6 +1531,8 @@
         "wert": 1
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "48"
   },
   {
@@ -1467,6 +1563,8 @@
         "wert": 1
       }
     ],
+    "neu": true,
+    "bestseller": true,
     "bild": "49"
   },
   {
@@ -1497,6 +1595,8 @@
         "wert": 10
       }
     ],
+    "neu": false,
+    "bestseller": false,
     "bild": "50"
   }
 ]

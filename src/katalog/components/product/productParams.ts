@@ -1,0 +1,74 @@
+import {
+  ATTR_MAX,
+  ATTR_MIN,
+  DEFAULT_FILTERS,
+  DEFAULT_PAGE_SIZE,
+  PAGE_SIZES,
+  PRICE_MAX,
+  PRICE_MIN,
+  SORT_OPTIONS,
+} from "./productData";
+import type { Filters, Range, Sort } from "./productData";
+
+// Filter und Sortierung als URL-Parameter, damit sie beim Zurücknavigieren erhalten bleiben.
+// Standardwerte werden weggelassen.
+
+const range = (
+  value: string | null,
+  min: number,
+  max: number,
+  fallback: Range,
+): Range => {
+  const m = value?.match(/^(\d+)-(\d+)$/);
+  if (!m) return fallback;
+  const lo = Math.max(min, Math.min(Number(m[1]), max));
+  const hi = Math.max(lo, Math.min(Number(m[2]), max));
+  return [lo, hi];
+};
+
+const differs = (a: Range, b: Range) => a[0] !== b[0] || a[1] !== b[1];
+
+export const filtersFromParams = (sp: URLSearchParams): Filters => ({
+  neu: sp.get("neu") === "1",
+  bestseller: sp.get("bestseller") === "1",
+  preis: range(sp.get("preis"), PRICE_MIN, PRICE_MAX, DEFAULT_FILTERS.preis),
+  eigenschaften: DEFAULT_FILTERS.eigenschaften.map((d, i) =>
+    range(sp.get(`e${i + 1}`), ATTR_MIN, ATTR_MAX, d),
+  ),
+});
+
+export const sortFromParams = (sp: URLSearchParams): Sort =>
+  SORT_OPTIONS.find((o) => o.value === sp.get("sort"))?.value ?? "name";
+
+export const openFromParams = (sp: URLSearchParams) => sp.get("filter") === "1";
+
+export const pageFromParams = (sp: URLSearchParams) =>
+  Math.max(1, Math.floor(Number(sp.get("seite"))) || 1);
+
+export const sizeFromParams = (sp: URLSearchParams) =>
+  PAGE_SIZES.find((n) => String(n) === sp.get("pro")) ?? DEFAULT_PAGE_SIZE;
+
+export function paramsFromState(
+  filters: Filters,
+  sort: Sort,
+  open: boolean,
+  page: number,
+  size: number,
+) {
+  const sp = new URLSearchParams();
+  if (open) sp.set("filter", "1");
+  if (sort !== "name") sp.set("sort", sort);
+  if (size !== DEFAULT_PAGE_SIZE) sp.set("pro", String(size));
+  if (page > 1) sp.set("seite", String(page));
+  if (filters.neu) sp.set("neu", "1");
+  if (filters.bestseller) sp.set("bestseller", "1");
+  if (differs(filters.preis, DEFAULT_FILTERS.preis)) {
+    sp.set("preis", `${filters.preis[0]}-${filters.preis[1]}`);
+  }
+  filters.eigenschaften.forEach((r, i) => {
+    if (differs(r, DEFAULT_FILTERS.eigenschaften[i])) {
+      sp.set(`e${i + 1}`, `${r[0]}-${r[1]}`);
+    }
+  });
+  return sp;
+}

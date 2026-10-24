@@ -7,6 +7,8 @@ export function VlCheck({
   variant,
   label,
   defaultChecked,
+  checked,
+  onChange,
   disabled,
   radio,
   name,
@@ -15,6 +17,9 @@ export function VlCheck({
   variant: SimpleVariant;
   label: string;
   defaultChecked?: boolean;
+  // Gesteuerter Modus: Zustand liegt beim Aufrufer
+  checked?: boolean;
+  onChange?: (checked: boolean) => void;
   disabled?: boolean;
   // Radio statt Checkbox: gleiche Komponente, Achteck mit Punkt
   radio?: boolean;
@@ -35,7 +40,9 @@ export function VlCheck({
         className="vl-check__input"
         name={name}
         value={value}
-        defaultChecked={defaultChecked}
+        {...(checked === undefined
+          ? { defaultChecked }
+          : { checked, onChange: (e) => onChange?.(e.target.checked) })}
         disabled={disabled}
       />
       <span className="vl-check__box" aria-hidden="true">

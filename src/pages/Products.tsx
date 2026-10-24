@@ -1,10 +1,10 @@
 import { GridContainer } from "../katalog/components/layout/Grid/Grid";
-import { ProductList } from "../katalog/components/product/ProductList";
+import { ProductShop } from "../katalog/components/product/ProductShop";
 
 const Products = () => {
   return (
     <GridContainer>
-      <ProductList />
+      <ProductShop />
     </GridContainer>
   );
 };
