@@ -10,7 +10,9 @@ export type CrumbRoute = {
   // undefined blendet die Seite aus (z. B. unbekannte ID)
   label:
     | string
-    | ((params: Readonly<Record<string, string | undefined>>) => string | undefined);
+    | ((
+        params: Readonly<Record<string, string | undefined>>,
+      ) => string | undefined);
 };
 
 // Breadcrumb für alle Seiten: leitet die Ebenen aus der URL ab, Beschriftungen kommen aus routes

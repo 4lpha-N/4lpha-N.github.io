@@ -40,7 +40,9 @@ export function ProductShop() {
   const [filters, setFiltersState] = useState<Filters>(() =>
     filtersFromParams(searchParams),
   );
-  const [sort, setSortState] = useState<Sort>(() => sortFromParams(searchParams));
+  const [sort, setSortState] = useState<Sort>(() =>
+    sortFromParams(searchParams),
+  );
   const [size, setSizeState] = useState(() => sizeFromParams(searchParams));
   const [page, setPage] = useState(() => pageFromParams(searchParams));
 
