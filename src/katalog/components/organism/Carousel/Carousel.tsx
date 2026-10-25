@@ -19,6 +19,7 @@ export function VlCarousel({
   slides,
   loop,
   thumbs,
+  ratio,
   loading,
   disabled,
 }: {
@@ -29,6 +30,8 @@ export function VlCarousel({
   loop?: boolean;
   // Vorschaubilder statt Punkte
   thumbs?: boolean;
+  // Seitenverhältnis der Bilder, z. B. "4 / 3"
+  ratio?: string;
   // erzwingt den Ladezustand der Bilder
   loading?: boolean;
   disabled?: boolean;
@@ -94,6 +97,7 @@ export function VlCarousel({
                 src={s.src}
                 alt={s.alt}
                 caption={s.caption}
+                ratio={ratio}
                 loading={loading}
               />
             </div>

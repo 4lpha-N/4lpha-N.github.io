@@ -4,16 +4,21 @@
   align-items: flex-start;
   gap: 16px;
 
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
   &__title,
   &__text {
     margin: 0;
   }
 
+  // Eigene Zeile unter Slider und Info, Balken nebeneinander
   &__attrs {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    margin-top: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: 16px 24px;
   }
 }

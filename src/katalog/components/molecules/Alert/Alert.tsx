@@ -10,6 +10,7 @@ export function VlAlert({
   children,
   onClose,
   live = true,
+  action,
   extra,
 }: {
   tone: Tone;
@@ -18,6 +19,7 @@ export function VlAlert({
   onClose?: () => void;
   // false, wenn ein umgebender Live-Bereich (Toast-Host) die Ansage übernimmt
   live?: boolean;
+  action?: { label: string; onClick: () => void };
   extra?: ReactNode;
 }) {
   const Icon = TONES.find((t) => t.id === tone)?.icon;
@@ -32,6 +34,15 @@ export function VlAlert({
       <div className="vl-alert__body">
         <strong className="vl-alert__title">{title}</strong>
         <p className="vl-alert__text">{children}</p>
+        {action && (
+          <button
+            type="button"
+            className="vl-alert__action"
+            onClick={action.onClick}
+          >
+            {action.label}
+          </button>
+        )}
       </div>
       {onClose && (
         <button

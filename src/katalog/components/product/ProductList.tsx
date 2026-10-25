@@ -1,11 +1,14 @@
 import { Link } from "react-router";
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { reveal } from "../../lib/reveal";
 import { cx } from "../../lib/cx";
 import { VlCard } from "../molecules/Card/Card";
+import { VlAccordion } from "../molecules/Accordion/Accordion";
 import { VlImage } from "../atoms/Image/Image";
 import { VlProgress } from "../atoms/Progress/Progress";
 import { Price } from "../atoms/Price/Price";
+import { AddToCart } from "./AddToCart";
 import { ProductBadges } from "./ProductBadges";
 import { StockStatus } from "./StockStatus";
 import { VAT } from "./productData";
@@ -15,6 +18,8 @@ import "./ProductList.scss";
 
 export function ProductList({ products }: { products: Product[] }) {
   const reduceMotion = useReducedMotion();
+  // Eigenschaften in allen Karten gemeinsam auf- und zuklappen, damit die Reihen gleich hoch bleiben
+  const [attrsOpen, setAttrsOpen] = useState(false);
   if (!products.length) {
     return <p className="vl-text-sm">Keine Produkte gefunden.</p>;
   }
@@ -53,16 +58,35 @@ export function ProductList({ products }: { products: Product[] }) {
                   strike={p.preis.strichpreis ?? undefined}
                   from={p.preis.ab}
                 />
-                {p.eigenschaften.map((e) => (
-                  <VlProgress
-                    key={e.label}
-                    variant="primary"
-                    label={e.label}
-                    value={e.wert}
-                    max={10}
-                    segmented
+                {/* über dem Karten-Link (z-index), damit Accordion und Button klickbar bleiben */}
+                <div className="vl-product__actions">
+                  <VlAccordion
+                    variant="secondary"
+                    open={attrsOpen ? ["attrs"] : []}
+                    onOpenChange={(ids) => setAttrsOpen(ids.length > 0)}
+                    items={[
+                      {
+                        id: "attrs",
+                        title: "Eigenschaften",
+                        content: (
+                          <div className="vl-product__attrs">
+                            {p.eigenschaften.map((e) => (
+                              <VlProgress
+                                key={e.label}
+                                variant="primary"
+                                label={e.label}
+                                value={e.wert}
+                                max={10}
+                                segmented
+                              />
+                            ))}
+                          </div>
+                        ),
+                      },
+                    ]}
                   />
-                ))}
+                  <AddToCart product={p} />
+                </div>
               </div>
             }
           >

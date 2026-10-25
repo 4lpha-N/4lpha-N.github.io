@@ -14,6 +14,15 @@
   text-rendering: optimizeLegibility;
 }
 
+/* Nur bis React gemountet ist (siehe index.html, AppShell); danach übernimmt ThemeProvider */
+:root[data-theme="accent"] {
+  --bg: #ff4655;
+}
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  color-scheme: light;
+}
+
 *,
 *::before,
 *::after {

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router";
+import type { ReactNode } from "react";
 import { Settings } from "lucide-react";
 import { GridCol, GridContainer, GridRow } from "../Grid/Grid";
 import { VlPopover } from "../../molecules/Popover/Popover";
@@ -25,11 +26,14 @@ export function Header({
   onTheme,
   decor,
   onDecor,
+  actions,
 }: {
   theme: Theme;
   onTheme: (theme: Theme) => void;
   decor: number;
   onDecor: (decor: number) => void;
+  // Buttons links neben den Einstellungen (z. B. Warenkorb)
+  actions?: ReactNode;
 }) {
   return (
     <header>
@@ -39,7 +43,7 @@ export function Header({
             <div className="vl-navbar__brand">4lpha</div>
           </GridCol>
           {/* Mobil Zeile 2 (order 3), ab md in der Mitte */}
-          <GridCol span={{ base: 12, md: 8 }} order={{ base: 3, md: 2 }}>
+          <GridCol span={{ base: 12, md: 7 }} order={{ base: 3, md: 2 }}>
             <nav className="vl-navbar__nav" aria-label="Hauptnavigation">
               <ul className="vl-navbar__list">
                 {NAV_ITEMS.map(({ to, label, end }) => (
@@ -58,8 +62,9 @@ export function Header({
               </ul>
             </nav>
           </GridCol>
-          <GridCol span={{ base: 6, md: 1 }} order={{ base: 2, md: 3 }}>
+          <GridCol span={{ base: 6, md: 2 }} order={{ base: 2, md: 3 }}>
             <div className="vl-navbar__settings">
+              {actions}
               <VlPopover
                 variant="secondary"
                 label={

@@ -17,21 +17,31 @@ export function VlAccordion({
   items,
   multiple,
   defaultOpen = [],
+  open: openProp,
+  onOpenChange,
 }: {
   variant: SimpleVariant;
   items: AccordionItem[];
   // mehrere Einträge gleichzeitig offen
   multiple?: boolean;
   defaultOpen?: string[];
+  // gesteuerter Modus: offene Einträge von außen vorgeben (zusammen mit onOpenChange)
+  open?: string[];
+  onOpenChange?: (open: string[]) => void;
 }) {
   const uid = useId();
-  const [open, setOpen] = useState(defaultOpen);
+  const [inner, setInner] = useState(defaultOpen);
+  const open = openProp ?? inner;
 
-  const toggle = (id: string) =>
-    setOpen((list) => {
-      if (list.includes(id)) return list.filter((x) => x !== id);
-      return multiple ? [...list, id] : [id];
-    });
+  const toggle = (id: string) => {
+    const next = open.includes(id)
+      ? open.filter((x) => x !== id)
+      : multiple
+        ? [...open, id]
+        : [id];
+    setInner(next);
+    onOpenChange?.(next);
+  };
 
   return (
     <div className={`vl-acc vl-acc--${variant}`}>

@@ -1,0 +1,148 @@
+@use "../../styles/mixins" as *;
+
+/* ---------- Warenkorb: Header-Button und Drawer ---------- */
+
+.vl-cart {
+  position: relative;
+  display: inline-flex;
+
+  &__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    z-index: 1;
+    box-sizing: border-box;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    background: var(--primary);
+    color: var(--on-primary);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    pointer-events: none;
+    @include cut(5px);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  &__name {
+    color: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+
+  &__unit {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  &__qty {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid var(--edge);
+
+    span {
+      min-width: 32px;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+
+  &__qty button,
+  &__remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover:not(:disabled) {
+      background: color-mix(in srgb, var(--fg) 14%, transparent);
+    }
+    &:focus-visible {
+      outline: 2px solid var(--primary-hover);
+      outline-offset: -2px;
+    }
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__line {
+    margin-left: auto;
+    font-size: 15px;
+  }
+
+  &__sum {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    strong {
+      font-size: 20px;
+    }
+  }
+}
