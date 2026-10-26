@@ -27,7 +27,7 @@
 
   // Bild folgt der inneren Schnittecke der Karte (oben rechts)
   &__media {
-    clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%);
+    @include cut-inner(12px, var(--bw), tr);
 
     .vl-img {
       clip-path: none;

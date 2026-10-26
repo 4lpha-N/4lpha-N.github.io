@@ -78,10 +78,10 @@
 
   // Radio: Achteck mit Punkt statt Quadrat mit Haken
   &--radio &__box {
-    @include cut-oct(8px);
+    @include cut(8px, both);
 
     &::before {
-      @include cut-oct(calc(8px - 0.586 * var(--bw)));
+      @include cut-inner(8px, var(--bw), both);
     }
   }
 

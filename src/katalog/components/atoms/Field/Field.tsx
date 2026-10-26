@@ -1,5 +1,5 @@
-import { useId } from "react";
-import { ChevronDown } from "lucide-react";
+import { useId, useRef } from "react";
+import { ChevronDown, Minus, Plus } from "lucide-react";
 import type { Variant } from "../../../lib/types";
 import "./Field.scss";
 
@@ -30,8 +30,32 @@ export function VlInput({
   disabled,
   placeholder,
   defaultValue,
-}: FieldProps & { placeholder?: string; defaultValue?: string }) {
+  type = "text",
+  min,
+  max,
+  step,
+}: FieldProps & {
+  placeholder?: string;
+  defaultValue?: string;
+  // Native Tastatur und Validierung; bei number mit eigenen +/- Schaltern
+  type?: "text" | "email" | "tel" | "number";
+  min?: number;
+  max?: number;
+  step?: number;
+}) {
   const id = useId();
+  const ref = useRef<HTMLInputElement>(null);
+  const isNumber = type === "number";
+
+  // stepUp/stepDown beachten min, max und step; input-Event hält Aufrufer-Listener aktuell
+  const stepBy = (dir: 1 | -1) => {
+    const el = ref.current;
+    if (!el) return;
+    if (dir > 0) el.stepUp();
+    else el.stepDown();
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+  };
+
   return (
     <div className={fieldClass(variant, error, disabled)}>
       <label className="vl-field__label" htmlFor={id}>
@@ -39,14 +63,42 @@ export function VlInput({
       </label>
       <div className="vl-field__box">
         <input
+          ref={ref}
           id={id}
-          type="text"
-          className="vl-field__control"
+          type={type}
+          className={`vl-field__control${isNumber ? " vl-field__control--number" : ""}`}
           placeholder={placeholder}
           defaultValue={defaultValue}
+          min={min}
+          max={max}
+          step={step}
           disabled={disabled}
           aria-invalid={error || undefined}
         />
+        {isNumber && (
+          <div className="vl-field__steps">
+            <button
+              type="button"
+              className="vl-field__step"
+              aria-label="Verringern"
+              tabIndex={-1}
+              disabled={disabled}
+              onClick={() => stepBy(-1)}
+            >
+              <Minus size={16} aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              className="vl-field__step"
+              aria-label="Erhöhen"
+              tabIndex={-1}
+              disabled={disabled}
+              onClick={() => stepBy(1)}
+            >
+              <Plus size={16} aria-hidden="true" />
+            </button>
+          </div>
+        )}
       </div>
       {hint && <span className="vl-field__hint">{hint}</span>}
     </div>

@@ -1,31 +1,56 @@
-@mixin cut($c: var(--cut)) {
-  clip-path: polygon(
-    0 0,
-    calc(100% - #{$c}) 0,
-    100% #{$c},
-    100% 100%,
-    #{$c} 100%,
-    0 calc(100% - #{$c})
-  );
+@use "sass:list";
+
+// Ecken: tl, tr, br, bl (oben links, oben rechts, unten rechts, unten links)
+// normal = tr + bl (Standard), invert = tl + br, both = alle vier; auch eine eigene Liste, z. B. tr
+@function cut-corners($dir) {
+  @if $dir == normal {
+    @return tr bl;
+  }
+  @if $dir == invert {
+    @return tl br;
+  }
+  @if $dir == both {
+    @return tl tr br bl;
+  }
+  @return $dir;
 }
 
-// Innenfläche, um --bw (bzw. $o) eingerückt, mit passend verkleinerter Ecke
-@mixin cut-inner($c: var(--cut), $o: var(--bw)) {
-  @include cut(calc(#{$c} - 0.586 * #{$o}));
+// Polygon im Uhrzeigersinn ab oben links; geschnittene Ecken haben zwei Punkte, die anderen einen
+@mixin cut($c: var(--cut), $dir: normal) {
+  $k: cut-corners($dir);
+  $p: ();
+
+  @if list.index($k, tl) {
+    $p: list.append($p, 0 #{$c}, comma);
+    $p: list.append($p, #{$c} 0, comma);
+  } @else {
+    $p: list.append($p, 0 0, comma);
+  }
+  @if list.index($k, tr) {
+    $p: list.append($p, calc(100% - #{$c}) 0, comma);
+    $p: list.append($p, 100% #{$c}, comma);
+  } @else {
+    $p: list.append($p, 100% 0, comma);
+  }
+  @if list.index($k, br) {
+    $p: list.append($p, 100% calc(100% - #{$c}), comma);
+    $p: list.append($p, calc(100% - #{$c}) 100%, comma);
+  } @else {
+    $p: list.append($p, 100% 100%, comma);
+  }
+  @if list.index($k, bl) {
+    $p: list.append($p, #{$c} 100%, comma);
+    $p: list.append($p, 0 calc(100% - #{$c}), comma);
+  } @else {
+    $p: list.append($p, 0 100%, comma);
+  }
+
+  clip-path: polygon(#{$p});
 }
 
-// Achteck (alle vier Ecken geschnitten), z. B. für Radio
-@mixin cut-oct($c) {
-  clip-path: polygon(
-    #{$c} 0,
-    calc(100% - #{$c}) 0,
-    100% #{$c},
-    100% calc(100% - #{$c}),
-    calc(100% - #{$c}) 100%,
-    #{$c} 100%,
-    0 calc(100% - #{$c}),
-    0 #{$c}
-  );
+// Innenfläche, um --bw (bzw. $o) eingerückt, mit passend verkleinerter Ecke; $dir wie bei cut
+@mixin cut-inner($c: var(--cut), $o: var(--bw), $dir: normal) {
+  @include cut(calc(#{$c} - 0.586 * #{$o}), $dir);
 }
 
 // ---------- Farbpalette: einzige Stelle für Farbwerte ----------

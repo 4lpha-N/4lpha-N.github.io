@@ -471,6 +471,31 @@ export default function Demo() {
             </>
           )}
         />
+        <VariantGrid
+          theme={theme}
+          render={(variant) => (
+            <>
+              <VlInput
+                variant={variant}
+                type="email"
+                label="E-Mail"
+                placeholder="name@beispiel.de"
+              />
+              <VlInput
+                variant={variant}
+                type="tel"
+                label="Telefon"
+                placeholder="+49 170 1234567"
+              />
+              <VlInput
+                variant={variant}
+                type="number"
+                label="Zahl"
+                placeholder="0"
+              />
+            </>
+          )}
+        />
       </Section>
 
       <Section title="Select">

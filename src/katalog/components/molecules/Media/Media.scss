@@ -32,7 +32,7 @@
     grid-area: media;
     min-width: 0;
     min-height: 260px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 11px 100%, 0 calc(100% - 11px));
+    @include cut-inner(12px, var(--bw), bl);
 
     .vl-img {
       flex: 1;
@@ -45,7 +45,7 @@
     }
   }
   &--right &__media {
-    clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%);
+    @include cut-inner(12px, var(--bw), tr);
   }
 
   &__body {
@@ -106,7 +106,7 @@
   .vl-media--right .vl-media__media {
     min-height: 0;
     aspect-ratio: 16 / 9;
-    clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%);
+    @include cut-inner(12px, var(--bw), tr);
   }
   .vl-media__body {
     padding: 20px 20px 24px;
