@@ -28,9 +28,9 @@ function storedDecor() {
   return typeof d === "number" && DECOR_OPTIONS.some((o) => o.id === d) ? d : 1;
 }
 
-// Standardmäßig an
+// Standardmäßig aus, bis es in den Einstellungen aktiviert wird
 function storedDoor() {
-  return readStored().door !== false;
+  return readStored().door === true;
 }
 
 function storedDoorVariant() {
