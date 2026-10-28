@@ -19,11 +19,15 @@ export type CrumbRoute = {
 export function PageCrumbs({
   routes,
   home = "Start",
+  pathname: pathnameProp,
 }: {
   routes: CrumbRoute[];
   home?: string;
+  // Statt der aktuellen URL, z. B. solange eine Seitenwechsel-Animation die alte Seite zeigt
+  pathname?: string;
 }) {
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const pathname = pathnameProp ?? location.pathname;
   const parts = pathname.split("/").filter(Boolean);
   const items: CrumbItem[] = [{ label: home, href: "/" }];
 

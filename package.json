@@ -23,6 +23,8 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.88.0",
+    "postcss": "^8.5.32",
+    "postcss-hover-media-feature": "^1.0.2",
     "sass": "^1.106.1",
     "typescript": "~6.0.3",
     "vite": "^8.3.4",

@@ -5,7 +5,9 @@ import { GridCol, GridContainer, GridRow } from "../Grid/Grid";
 import { VlPopover } from "../../molecules/Popover/Popover";
 import { SegToggle } from "../../atoms/SegToggle/SegToggle";
 import { DECOR_OPTIONS } from "../../../lib/decor";
+import { DOOR_VARIANT_OPTIONS } from "../../../lib/doorVariant";
 import { cx } from "../../../lib/cx";
+import { NAV_ITEMS } from "../../../lib/nav";
 import type { Theme } from "../../../lib/types";
 import "./Header.scss";
 
@@ -15,10 +17,9 @@ const THEMES: { id: Theme; label: string }[] = [
   { id: "light", label: "Hell" },
 ];
 
-const NAV_ITEMS = [
-  { to: "/", label: "Start", end: true },
-  { to: "/Produkte", label: "Produkte", end: false },
-  { to: "/Demo", label: "Demo", end: false },
+const ANIM_OPTIONS = [
+  { id: "on", label: "An" },
+  { id: "off", label: "Aus" },
 ];
 
 export function Header({
@@ -26,12 +27,20 @@ export function Header({
   onTheme,
   decor,
   onDecor,
+  door,
+  onDoor,
+  doorVariant,
+  onDoorVariant,
   actions,
 }: {
   theme: Theme;
   onTheme: (theme: Theme) => void;
   decor: number;
   onDecor: (decor: number) => void;
+  door: boolean;
+  onDoor: (door: boolean) => void;
+  doorVariant: number;
+  onDoorVariant: (variant: number) => void;
   // Buttons links neben den Einstellungen (z. B. Warenkorb)
   actions?: ReactNode;
 }) {
@@ -97,6 +106,29 @@ export function Header({
                         compact
                       />
                     </div>
+                    <div className="vl-settings__row">
+                      <span className="vl-settings__label">Animation</span>
+                      <SegToggle
+                        options={ANIM_OPTIONS}
+                        value={door ? "on" : "off"}
+                        onChange={(v) => onDoor(v === "on")}
+                        label="Animation wählen"
+                      />
+                    </div>
+                    {door && (
+                      <div className="vl-settings__row">
+                        <span className="vl-settings__label">
+                          Animationsstil
+                        </span>
+                        <SegToggle
+                          options={DOOR_VARIANT_OPTIONS}
+                          value={doorVariant}
+                          onChange={onDoorVariant}
+                          label="Animationsstil wählen"
+                          compact
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
               </VlPopover>

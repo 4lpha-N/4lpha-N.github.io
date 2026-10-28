@@ -10,9 +10,7 @@ import AppShell from "./AppShell.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <AppShell>
-        <App />
-      </AppShell>
+      <AppShell>{(location) => <App location={location} />}</AppShell>
     </BrowserRouter>
   </StrictMode>,
 );

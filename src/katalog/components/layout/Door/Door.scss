@@ -1,0 +1,662 @@
+// Zeiten müssen zu DOOR_CLOSE_MS und DOOR_BOOT_MS in lib/useDoor.ts passen.
+// Varianten (Anzahl muss zu lib/doorVariant.ts und Door.tsx passen):
+// 1 Pfeil, 2 Diagonal-Wipe, 3 Slash, 4 Fly, 5 Streifen,
+// 6 Quadranten, 7 Schrägbänder, 8 Scan, 9 Glitch
+// Laufrichtung: right, left, down, up (siehe lib/nav.ts); die Basisrichtung steht in $bases
+@use "sass:map";
+@use "sass:meta";
+
+$stripes: repeating-linear-gradient(
+  -45deg,
+  var(--deco-b) 0 3px,
+  transparent 3px 9px
+);
+
+// Diagonale Blende (Kante x + y = t): Dreieck mit einer Ecke weit außerhalb, t läuft von 0 bis Breite + Höhe
+$diag-in-from: polygon(-10vmax -10vmax, 10vmax -10vmax, -10vmax 10vmax);
+$diag-in-to: polygon(
+  -10vmax -10vmax,
+  calc(100vw + 100vh + 10vmax) -10vmax,
+  -10vmax calc(100vw + 100vh + 10vmax)
+);
+$diag-out-from: polygon(110vmax 110vmax, -110vmax 110vmax, 110vmax -110vmax);
+$diag-out-to: polygon(
+  110vmax 110vmax,
+  calc(100vw + 100vh - 110vmax) 110vmax,
+  110vmax calc(100vw + 100vh - 110vmax)
+);
+
+// Pfeil-Blende: Spitze (25vmax) zeigt nach rechts; ein = Fläche wächst von links, aus = Loch wandert nach rechts
+$arrow-in-from: polygon(
+  -60vmax 0,
+  -25vmax 0,
+  0 50%,
+  -25vmax 100%,
+  -60vmax 100%
+);
+$arrow-in-to: polygon(
+  -60vmax 0,
+  100% 0,
+  calc(100% + 25vmax) 50%,
+  100% 100%,
+  -60vmax 100%
+);
+$arrow-out-from: polygon(
+  -25vmax 0,
+  calc(100% + 60vmax) 0,
+  calc(100% + 60vmax) 100%,
+  -25vmax 100%,
+  0 50%
+);
+$arrow-out-to: polygon(
+  100% 0,
+  calc(100% + 60vmax) 0,
+  calc(100% + 60vmax) 100%,
+  100% 100%,
+  calc(100% + 25vmax) 50%
+);
+
+// Leuchtende Kanten links und rechts
+@mixin edge-lines {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 18px var(--primary);
+  }
+  &::before {
+    left: 0;
+  }
+  &::after {
+    right: 0;
+  }
+}
+
+// Warnstreifen und leuchtende Kante an einer waagerechten Seite ($side: top | bottom)
+@mixin edge-h($side) {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+  }
+  &::before {
+    #{$side}: 2px;
+    height: var(--door-stripe);
+    background: $stripes;
+  }
+  &::after {
+    #{$side}: 0;
+    height: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 18px var(--primary);
+  }
+}
+
+.vl-door {
+  --door-close: 450ms;
+  --door-open: 700ms;
+  --door-boot: 1200ms;
+  --door-stripe: 2.5rem;
+  --door-ease: cubic-bezier(0.76, 0, 0.24, 1);
+
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  // Für cqw/cqh beim Drehen der Flächen
+  container-type: size;
+  pointer-events: none;
+  visibility: hidden;
+  // Erst nach dem Öffnen ausblenden
+  transition: visibility 0s linear var(--door-open);
+
+  &.is-closed {
+    pointer-events: auto;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  // Die Flächen liegen in einem Container, der je nach Richtung gespiegelt oder gedreht wird; das Logo bleibt unberührt
+  &__panels {
+    position: absolute;
+    inset: 0;
+  }
+
+  // Gemeinsame Basis: --i und --step staffeln, --max-delay hält die Gesamtdauer ein
+  &__panel {
+    position: absolute;
+    display: none;
+    background-color: var(--surface);
+    background-image:
+      linear-gradient(var(--deco-a) 1px, transparent 1px),
+      linear-gradient(90deg, var(--deco-a) 1px, transparent 1px);
+    background-size: 48px 48px;
+    transition-property: transform, opacity;
+    transition-duration: calc(var(--door-open) - var(--max-delay, 0ms));
+    transition-timing-function: var(--door-ease);
+    transition-delay: calc(var(--i, 0) * var(--step, 0ms));
+  }
+
+  &.is-closed &__panel {
+    transform: none;
+    opacity: 1;
+    transition-duration: calc(var(--door-close) - var(--max-delay, 0ms));
+  }
+
+  // Beim Start steht die Tür schon, ohne Einfahren (Varianten mit Keyframes)
+  &.is-closed.has-logo &__panel {
+    animation: none;
+  }
+
+  // ---------- 3 Slash: schräges Band wischt von links nach rechts ----------
+  &--3 &__panel--1 {
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: -30vmax;
+    right: -30vmax;
+    transform: translateX(-110%) skewX(-25deg);
+    animation: vl-door-slash-out var(--door-open) var(--door-ease) both;
+    @include edge-lines;
+  }
+  &--3.is-closed &__panel--1 {
+    transform: translateX(0) skewX(-25deg);
+    animation: vl-door-slash-in var(--door-close) var(--door-ease) both;
+  }
+
+  // ---------- 4 Fly: fährt von unten ein und nach oben aus ----------
+  &--4 &__panel--1 {
+    display: block;
+    inset: 0;
+    transform: translateY(-100%);
+    animation: vl-door-fly-out var(--door-open) var(--door-ease) both;
+    @include edge-h(top);
+  }
+  &--4.is-closed &__panel--1 {
+    animation: vl-door-fly-in var(--door-close) var(--door-ease) both;
+  }
+
+  // ---------- 5 Streifen: vier Bänder fahren abwechselnd von links und rechts ----------
+  &--5 {
+    --step: 60ms;
+    --max-delay: 180ms;
+  }
+  @for $n from 1 through 4 {
+    &--5 &__panel--#{$n} {
+      display: block;
+      top: #{($n - 1) * 25%};
+      right: 0;
+      left: 0;
+      height: calc(25% + 1px);
+      box-shadow: inset 0 -2px 0 var(--deco-b);
+      transform: scaleX(0);
+      --i: #{$n - 1};
+    }
+  }
+  &--5 &__panel--1,
+  &--5 &__panel--3 {
+    transform-origin: left;
+  }
+  &--5 &__panel--2,
+  &--5 &__panel--4 {
+    transform-origin: right;
+  }
+
+  // ---------- 6 Quadranten: vier Teile fliegen in die Ecken ----------
+  @for $n from 1 through 4 {
+    &--6 &__panel--#{$n} {
+      display: block;
+      width: 50%;
+      height: 50%;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 0 solid var(--primary);
+      }
+    }
+  }
+  &--6 &__panel--1 {
+    top: 0;
+    left: 0;
+    transform: translate(-100%, -100%);
+    &::after {
+      border-width: 0 2px 2px 0;
+    }
+  }
+  &--6 &__panel--2 {
+    top: 0;
+    right: 0;
+    transform: translate(100%, -100%);
+    &::after {
+      border-width: 0 0 2px 2px;
+    }
+  }
+  &--6 &__panel--3 {
+    bottom: 0;
+    left: 0;
+    transform: translate(-100%, 100%);
+    &::after {
+      border-width: 2px 2px 0 0;
+    }
+  }
+  &--6 &__panel--4 {
+    right: 0;
+    bottom: 0;
+    transform: translate(100%, 100%);
+    &::after {
+      border-width: 2px 0 0 2px;
+    }
+  }
+
+  // ---------- 7 Schrägbänder: vier schräge Bänder fahren abwechselnd von oben und unten ----------
+  &--7 {
+    --step: 50ms;
+    --max-delay: 150ms;
+  }
+  @for $n from 1 through 4 {
+    &--7 &__panel--#{$n} {
+      display: block;
+      top: 0;
+      bottom: 0;
+      left: calc(-30vmax + #{$n - 1} * (100% + 60vmax) / 4);
+      width: calc((100% + 60vmax) / 4 + 1px);
+      box-shadow: inset 2px 0 0 var(--deco-b);
+      --i: #{$n - 1};
+
+      @if $n % 2 == 1 {
+        transform: translateY(-110%) skewX(-25deg);
+      } @else {
+        transform: translateY(110%) skewX(-25deg);
+      }
+    }
+  }
+  &--7.is-closed &__panel {
+    transform: translateY(0) skewX(-25deg);
+  }
+
+  // ---------- 2 Diagonal-Wipe: Blende von links oben nach rechts unten mit Farbkante ----------
+  &--2 {
+    --lag: 60ms;
+  }
+  &--2 &__panel--1,
+  &--2 &__panel--2 {
+    display: block;
+    inset: 0;
+    clip-path: $diag-out-to;
+  }
+  // Fläche liegt über der Farbkante; beim Schließen folgt sie, beim Öffnen geht sie voran
+  &--2 &__panel--1 {
+    z-index: 2;
+    animation: vl-door-diag-out calc(var(--door-open) - var(--lag))
+      var(--door-ease) both;
+  }
+  &--2 &__panel--2 {
+    z-index: 1;
+    background: color-mix(in srgb, var(--primary) 40%, var(--surface));
+    animation: vl-door-diag-out calc(var(--door-open) - var(--lag))
+      var(--door-ease) var(--lag) both;
+  }
+  &--2.is-closed &__panel {
+    clip-path: $diag-in-to;
+  }
+  &--2.is-closed &__panel--1 {
+    animation: vl-door-diag-in calc(var(--door-close) - var(--lag))
+      var(--door-ease) var(--lag) both;
+  }
+  &--2.is-closed &__panel--2 {
+    animation: vl-door-diag-in calc(var(--door-close) - var(--lag))
+      var(--door-ease) both;
+  }
+
+  // ---------- 8 Scan: Scanlinie läuft von oben nach unten, deckt zu bzw. gibt frei ----------
+  &--8 &__panel--1 {
+    display: block;
+    inset: 0;
+    clip-path: inset(100% 0 0 0);
+    animation: vl-door-scan-out var(--door-open) var(--door-ease) both;
+  }
+  &--8 &__panel--2 {
+    display: block;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 24px 4px var(--primary);
+    opacity: 0;
+    animation: vl-door-scanline var(--door-open) var(--door-ease) both;
+  }
+  &--8.is-closed &__panel--1 {
+    clip-path: inset(0);
+    animation: vl-door-scan-in var(--door-close) var(--door-ease) both;
+  }
+  &--8.is-closed &__panel--2 {
+    opacity: 0;
+    animation: vl-door-scanline var(--door-close) var(--door-ease) both;
+  }
+
+  // ---------- 1 Pfeil: Spitze nach rechts, mit Farbkante ----------
+  &--1 {
+    --lag: 40ms;
+  }
+  &--1 &__panel--1,
+  &--1 &__panel--2 {
+    display: block;
+    inset: 0;
+    clip-path: $arrow-out-to;
+    transition: none;
+  }
+  &--1 &__panel--1 {
+    z-index: 2;
+    animation: vl-door-arrow-out calc(var(--door-open) - var(--lag))
+      var(--door-ease) both;
+  }
+  &--1 &__panel--2 {
+    z-index: 1;
+    background: color-mix(in srgb, var(--primary) 40%, var(--surface));
+    animation: vl-door-arrow-out calc(var(--door-open) - var(--lag))
+      var(--door-ease) var(--lag) both;
+  }
+  &--1.is-closed &__panel {
+    clip-path: $arrow-in-to;
+  }
+  &--1.is-closed &__panel--1 {
+    animation: vl-door-arrow-in calc(var(--door-close) - var(--lag))
+      var(--door-ease) var(--lag) both;
+  }
+  &--1.is-closed &__panel--2 {
+    animation: vl-door-arrow-in calc(var(--door-close) - var(--lag))
+      var(--door-ease) both;
+  }
+
+  // ---------- 9 Glitch: unterschiedlich hohe Streifen springen ruckartig ein und aus ----------
+  &--9 {
+    --step: 40ms;
+    --max-delay: 120ms;
+  }
+  &--9 &__panel {
+    display: block;
+    right: 0;
+    left: 0;
+    box-shadow: inset 0 -2px 0 var(--primary);
+    transform: translateX(var(--gx));
+    opacity: 0;
+    animation: vl-door-glitch-out calc(var(--door-open) - var(--max-delay))
+      steps(7, end) calc(var(--i) * var(--step)) both;
+  }
+  &--9.is-closed &__panel {
+    animation-name: vl-door-glitch-in;
+    animation-duration: calc(var(--door-close) - var(--max-delay));
+    animation-timing-function: steps(6, end);
+  }
+  &--9 &__panel--1 {
+    --i: 0;
+    --gx: -100%;
+    top: 0;
+    height: 22%;
+  }
+  &--9 &__panel--2 {
+    --i: 1;
+    --gx: 100%;
+    top: 22%;
+    height: 28%;
+  }
+  &--9 &__panel--3 {
+    --i: 2;
+    --gx: -60%;
+    top: 50%;
+    height: 18%;
+  }
+  &--9 &__panel--4 {
+    --i: 3;
+    --gx: 100%;
+    top: 68%;
+    height: 32%;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 0 1.5rem 0 calc(1.5rem + 0.24em);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  &.has-logo &__logo {
+    opacity: 1;
+    animation: vl-door-logo-in 0.5s ease both;
+  }
+
+  &__bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--deco-b);
+
+    &::after {
+      content: "";
+      display: block;
+      height: 100%;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+  }
+  &.has-logo &__bar::after {
+    animation: vl-door-load var(--door-boot) cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+}
+
+@keyframes vl-door-fly-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes vl-door-fly-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+// Gleiche Funktionsliste in from und to, sonst springt die Interpolation
+@keyframes vl-door-slash-in {
+  from {
+    transform: translateX(-110%) skewX(-25deg);
+  }
+  to {
+    transform: translateX(0) skewX(-25deg);
+  }
+}
+
+@keyframes vl-door-slash-out {
+  from {
+    transform: translateX(0) skewX(-25deg);
+  }
+  to {
+    transform: translateX(110%) skewX(-25deg);
+  }
+}
+
+@keyframes vl-door-diag-in {
+  from {
+    clip-path: $diag-in-from;
+  }
+  to {
+    clip-path: $diag-in-to;
+  }
+}
+
+@keyframes vl-door-diag-out {
+  from {
+    clip-path: $diag-out-from;
+  }
+  to {
+    clip-path: $diag-out-to;
+  }
+}
+
+@keyframes vl-door-arrow-in {
+  from {
+    clip-path: $arrow-in-from;
+  }
+  to {
+    clip-path: $arrow-in-to;
+  }
+}
+
+@keyframes vl-door-arrow-out {
+  from {
+    clip-path: $arrow-out-from;
+  }
+  to {
+    clip-path: $arrow-out-to;
+  }
+}
+
+@keyframes vl-door-scan-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes vl-door-scan-out {
+  from {
+    clip-path: inset(0);
+  }
+  to {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+// Linie läuft mit der Kante der Fläche mit und blendet am Ende aus
+@keyframes vl-door-scanline {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 2px);
+    opacity: 0;
+  }
+}
+
+@keyframes vl-door-glitch-in {
+  from {
+    transform: translateX(var(--gx));
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes vl-door-glitch-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(calc(var(--gx) * -1));
+    opacity: 0;
+  }
+}
+
+@keyframes vl-door-logo-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.5em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.24em;
+  }
+}
+
+@keyframes vl-door-load {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+// Zielrichtung -> Winkel (drehen, braucht vertauschte Seiten) oder Spiegelung, bezogen auf die Basisrichtung
+$orient: (
+  right: (
+    left: scaleX(-1),
+    down: 90deg,
+    up: -90deg,
+  ),
+  up: (
+    down: scaleY(-1),
+    right: 90deg,
+    left: -90deg,
+  ),
+  down: (
+    up: scaleY(-1),
+    right: -90deg,
+    left: 90deg,
+  ),
+);
+
+// Richtung, in die jede Variante ohne Drehung l\u00e4uft
+$bases: (
+  1: right,
+  2: right,
+  3: right,
+  4: up,
+  5: right,
+  6: right,
+  7: right,
+  8: down,
+  9: right,
+);
+
+@each $n, $base in $bases {
+  @each $dir, $v in map.get($orient, $base) {
+    .vl-door--#{$n}.is-#{$dir} .vl-door__panels {
+      @if meta.type-of($v) == number {
+        inset: auto;
+        top: 50%;
+        left: 50%;
+        width: 100cqh;
+        height: 100cqw;
+        transform: translate(-50%, -50%) rotate($v);
+      } @else {
+        transform: $v;
+      }
+    }
+  }
+}

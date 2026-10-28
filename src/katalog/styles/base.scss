@@ -49,6 +49,22 @@
   color: var(--muted);
 }
 
+// Kein Double-Tap-Zoom-Warten auf Touch; :where() hält die Spezifität bei 0, eigene touch-action-Regeln (Slider, Carousel) gewinnen
+:where(
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  summary,
+  [role="button"],
+  [role="tab"],
+  [role="switch"]
+) {
+  touch-action: manipulation;
+}
+
 // Schließen-Knopf (Alert, Toast, Modal, Drawer)
 .vl-x {
   display: inline-flex;

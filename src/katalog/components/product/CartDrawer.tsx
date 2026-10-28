@@ -15,9 +15,11 @@ const euro = new Intl.NumberFormat("de-DE", {
 export function CartDrawer({
   open,
   onClose,
+  fullscreen,
 }: {
   open: boolean;
   onClose: () => void;
+  fullscreen?: boolean;
 }) {
   const { items, total, setQty, remove } = useCart();
 
@@ -26,6 +28,7 @@ export function CartDrawer({
       open={open}
       onClose={onClose}
       placement="right"
+      fullscreen={fullscreen}
       title="Warenkorb"
       footer={
         items.length > 0 && (

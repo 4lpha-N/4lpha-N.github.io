@@ -21,6 +21,19 @@
   }
 }
 
+/* Header liegt über der Tür (z-index 100), beim Start-Intro (has-logo) darunter und
+   rückt erst nach dem Öffnen nach vorn, damit die Tür ihn freigibt (0.7s = --door-open in Door.scss) */
+.content > header {
+  position: relative;
+  z-index: 101;
+  transition: z-index 0s linear 0.7s;
+}
+
+.content > .vl-door.has-logo ~ header {
+  z-index: 1;
+  transition: none;
+}
+
 /* 404 Page Not Found styles */
 .notfound {
   display: flex;

@@ -205,24 +205,39 @@ type OverlayKind = "modal" | "right" | "bottom";
 
 function OverlayDemo() {
   const [open, setOpen] = useState<OverlayKind | null>(null);
+  // Bleibt beim Schließen stehen, damit die Ausblend-Animation dieselbe Form behält
+  const [full, setFull] = useState(false);
   const close = () => setOpen(null);
+  const show = (kind: OverlayKind, fullscreen: boolean) => {
+    setFull(fullscreen);
+    setOpen(kind);
+  };
+  const buttons = (fullscreen: boolean) => (
+    <div className="vl-row">
+      <VlButton variant="primary" onClick={() => show("modal", fullscreen)}>
+        Modal öffnen
+      </VlButton>
+      <VlButton variant="outline" onClick={() => show("right", fullscreen)}>
+        Drawer rechts
+      </VlButton>
+      <VlButton variant="alt" onClick={() => show("bottom", fullscreen)}>
+        Drawer unten
+      </VlButton>
+    </div>
+  );
   return (
     <>
-      <div className="vl-row">
-        <VlButton variant="primary" onClick={() => setOpen("modal")}>
-          Modal öffnen
-        </VlButton>
-        <VlButton variant="outline" onClick={() => setOpen("right")}>
-          Drawer rechts
-        </VlButton>
-        <VlButton variant="alt" onClick={() => setOpen("bottom")}>
-          Drawer unten
-        </VlButton>
-      </div>
+      <ColGrid
+        cols={[
+          { title: "Default", node: buttons(false) },
+          { title: "Fullscreen", node: buttons(true) },
+        ]}
+      />
 
       <VlOverlay
         open={open === "modal"}
         onClose={close}
+        fullscreen={full}
         title="Aktion bestätigen"
         footer={
           <>
@@ -245,6 +260,7 @@ function OverlayDemo() {
         open={open === "right"}
         onClose={close}
         placement="right"
+        fullscreen={full}
         title="Einstellungen"
         footer={
           <VlButton variant="primary" onClick={close}>
@@ -261,6 +277,7 @@ function OverlayDemo() {
         open={open === "bottom"}
         onClose={close}
         placement="bottom"
+        fullscreen={full}
         title="Filter"
         footer={
           <>

@@ -12,8 +12,8 @@ Jede Komponente liegt in `components/<Ebene>/<Name>/<Name>.tsx` mit passender `<
 | `components/molecules/` | Alert, Breadcrumb (`VlCrumbs`; `items` als Strings oder `{ label, href? }`, optional `renderLink` für Router-Links), Pagination (`page` für gesteuerten Modus), Tabs, Accordion (`open` + `onOpenChange` für gesteuerten Modus), Popover, Card (`interactive` mit `href` und optional `renderLink`), Media                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `components/organism/`  | Hero, Carousel (optional `ratio`, z. B. `"4 / 3"`), Overlay (Modal/Drawer), Toast (`ToastProvider` im ThemeProvider, Meldung per `useToast()` aus `lib/ToastContext`, optional mit `action: { label, onClick }` (Button im Toast, schließt ihn))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `components/product/`   | `ProductShop` (Werkzeugleiste, aufklappbarer Filter, Sortierung, Seitenaufteilung mit Pagination und "Produkte pro Seite"; Zustand in URL-Parametern via `productParams`), `ProductList` (klickbare Cards zu `/Produkte/:id`), `ProductDetail` (Detailansicht: Image Slider mit drei Bildern `productImages`, Eigenschaften in eigener Zeile darunter), `AddToCart`, `CartProvider` + `useCart` (`cartContext`; Warenkorb mit Mengen, in localStorage), `CartButton` (Header-Slot `actions`) + `CartDrawer`, `ProductBadges`, `StockStatus` (Lagerstatus: Auf Lager, Nur noch wenige, Ausverkauft), `ProductFilter`, `productData` (Typen, Filter, Sortierung), `data.json`, `productImage` (Platzhalterbilder 01-50). Slider, Select und Check haben dafür einen gesteuerten Modus (`value`/`checked` + `onChange`) |
-| `components/layout/`    | `ThemeProvider`, Grid (`GridContainer`, `GridRow`, `GridCol`, `GridCell`), Decor (Hintergrund-Dekor), Header (Marke, Nav, Einstellungs-Popover, Slot `actions`; nutzt zusätzlich `react-router` und `lucide-react`), PageCrumbs (Breadcrumb für alle Seiten, leitet die Ebenen aus der URL ab; Beschriftungen kommen aus einer `routes`-Liste, in der App `src/routes.ts`; unbekannte Adressen und die Startseite bekommen keine)                                                                                                                                                                                                                                                                                                                                                                                    |
-| `lib/`                  | `types` (Theme, Variant), `cx`, `ThemeClassContext`, `useFloat`, `focus`, `pad2`, `tones`, `storage` (ein localStorage-Eintrag `4lpha` mit `theme`, `decor`, `cart`; `readStored`/`writeStored`), `ToastContext`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `components/layout/`    | `ThemeProvider`, Grid (`GridContainer`, `GridRow`, `GridCol`, `GridCell`), Decor (Hintergrund-Dekor), Door (Wechsel-Animation für Start und Seitenwechsel mit 9 Varianten: Pfeil, Diagonal-Wipe, Slash, Fly, Streifen, Quadranten, Schrägbänder, Scan, Glitch; gesteuert über `lib/useDoor`, Zeiten in `Door.scss` und `useDoor.ts` synchron halten), Header (Marke, Nav, Einstellungs-Popover, Slot `actions`; nutzt zusätzlich `react-router` und `lucide-react`), PageCrumbs (Breadcrumb für alle Seiten, leitet die Ebenen aus der URL ab; Beschriftungen kommen aus einer `routes`-Liste, in der App `src/routes.ts`; unbekannte Adressen und die Startseite bekommen keine)                                                                                                                                    |
+| `lib/`                  | `types` (Theme, Variant), `cx`, `ThemeClassContext`, `useFloat`, `focus`, `pad2`, `tones`, `storage` (ein localStorage-Eintrag `4lpha` mit `theme`, `decor`, `door`, `doorVariant`, `cart`; `readStored`/`writeStored`; Start-Intro einmal pro Sitzung per sessionStorage), `useDoor`, `ToastContext`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `styles/`               | `_mixins.scss` (Farben, Mixins), `base.scss` (Typografie, Schließen-Knopf, Float, Reduced Motion)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 Nur für die Demo (kann im neuen Projekt weg): `Demo.tsx` (die komplette Demo-Seite, zugleich Vorlage für Beispielaufrufe aller Komponenten), `lib/demo.ts`, `lib/decor.ts`, `styles/demo.scss`. `Demo.tsx` hat keine App-Abhängigkeiten, sie wird mit `<Demo />` gerendert.
@@ -382,31 +382,46 @@ function PagerDemo({
 
 ### Overlay-Demo
 
-`VlOverlay` ist gesteuert (`open`, `onClose`) und hat die Platzierungen Modal (Standard), `placement="right"` und `placement="bottom"`. Pro Variante gibt es `title` und `footer`. Ein Zustand hält, welche Variante offen ist:
+`VlOverlay` ist gesteuert (`open`, `onClose`) und hat die Platzierungen Modal (Standard), `placement="right"` und `placement="bottom"`. Mit `fullscreen` zieht das Panel auf volle Breite und Höhe. Pro Variante gibt es `title` und `footer`. Ein Zustand hält, welche Variante offen ist:
 
 ```tsx
 type OverlayKind = "modal" | "right" | "bottom";
 
 function OverlayDemo() {
   const [open, setOpen] = useState<OverlayKind | null>(null);
+  // Bleibt beim Schließen stehen, damit die Ausblend-Animation dieselbe Form behält
+  const [full, setFull] = useState(false);
   const close = () => setOpen(null);
+  const show = (kind: OverlayKind, fullscreen: boolean) => {
+    setFull(fullscreen);
+    setOpen(kind);
+  };
+  const buttons = (fullscreen: boolean) => (
+    <div className="vl-row">
+      <VlButton variant="primary" onClick={() => show("modal", fullscreen)}>
+        Modal öffnen
+      </VlButton>
+      <VlButton variant="outline" onClick={() => show("right", fullscreen)}>
+        Drawer rechts
+      </VlButton>
+      <VlButton variant="alt" onClick={() => show("bottom", fullscreen)}>
+        Drawer unten
+      </VlButton>
+    </div>
+  );
   return (
     <>
-      <div className="vl-row">
-        <VlButton variant="primary" onClick={() => setOpen("modal")}>
-          Modal öffnen
-        </VlButton>
-        <VlButton variant="outline" onClick={() => setOpen("right")}>
-          Drawer rechts
-        </VlButton>
-        <VlButton variant="alt" onClick={() => setOpen("bottom")}>
-          Drawer unten
-        </VlButton>
-      </div>
+      <ColGrid
+        cols={[
+          { title: "Default", node: buttons(false) },
+          { title: "Fullscreen", node: buttons(true) },
+        ]}
+      />
 
       <VlOverlay
         open={open === "modal"}
         onClose={close}
+        fullscreen={full}
         title="Aktion bestätigen"
         footer={
           <>
@@ -429,6 +444,7 @@ function OverlayDemo() {
         open={open === "right"}
         onClose={close}
         placement="right"
+        fullscreen={full}
         title="Einstellungen"
         footer={
           <VlButton variant="primary" onClick={close}>
@@ -445,6 +461,7 @@ function OverlayDemo() {
         open={open === "bottom"}
         onClose={close}
         placement="bottom"
+        fullscreen={full}
         title="Filter"
         footer={
           <>

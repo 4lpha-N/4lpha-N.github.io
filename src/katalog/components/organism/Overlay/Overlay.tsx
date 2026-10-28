@@ -23,6 +23,7 @@ export function VlOverlay({
   open,
   onClose,
   placement = "center",
+  fullscreen = false,
   title,
   children,
   footer,
@@ -30,6 +31,8 @@ export function VlOverlay({
   open: boolean;
   onClose: () => void;
   placement?: Placement;
+  // Zieht das Panel auf volle Breite und Höhe, die Einflugrichtung bleibt
+  fullscreen?: boolean;
   title: string;
   children: ReactNode;
   footer?: ReactNode;
@@ -89,7 +92,11 @@ export function VlOverlay({
   const hidden = reduceMotion
     ? { opacity: 0 }
     : placement === "right"
-      ? { x: Math.min(400, window.innerWidth) + 96 }
+      ? {
+          x: fullscreen
+            ? window.innerWidth
+            : Math.min(400, window.innerWidth) + 96,
+        }
       : placement === "bottom"
         ? { y: window.innerHeight }
         : { opacity: 0, y: 24, scale: 0.96 };
@@ -109,6 +116,7 @@ export function VlOverlay({
             themeClass,
             "vl-overlay",
             `vl-overlay--${placement}`,
+            fullscreen && "vl-overlay--full",
           )}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: leave.duration } }}
@@ -124,7 +132,11 @@ export function VlOverlay({
             aria-modal="true"
             aria-labelledby={`${uid}-title`}
             tabIndex={-1}
-            className={`vl-sheet vl-sheet--${placement}`}
+            className={cx(
+              "vl-sheet",
+              `vl-sheet--${placement}`,
+              fullscreen && "vl-sheet--full",
+            )}
             initial={hidden}
             animate={{
               opacity: 1,
