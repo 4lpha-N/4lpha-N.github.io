@@ -1,17 +1,21 @@
 import { useId, useRef } from "react";
 import { ChevronDown, Minus, Plus } from "lucide-react";
-import type { Variant } from "../../../lib/types";
+import type { PlainVariant } from "../../../lib/types";
 import "./Field.scss";
 
 interface FieldProps {
-  variant: Variant;
+  variant: PlainVariant;
   label: string;
   hint?: string;
   error?: boolean;
   disabled?: boolean;
 }
 
-function fieldClass(variant: Variant, error?: boolean, disabled?: boolean) {
+function fieldClass(
+  variant: PlainVariant,
+  error?: boolean,
+  disabled?: boolean,
+) {
   return [
     "vl-field",
     `vl-field--${variant}`,

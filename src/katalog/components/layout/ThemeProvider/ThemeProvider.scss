@@ -184,3 +184,18 @@ $theme-ease: 0.45s ease;
     color-scheme: light;
   }
 }
+
+// View-Transition-Wechsel: Tokens springen sofort, die Überblendung übernimmt der Browser
+:root.is-theme-vt {
+  transition: none;
+
+  .design-wrapper,
+  .design-wrapper * {
+    transition: none !important;
+  }
+}
+:root.is-theme-vt::view-transition-old(root),
+:root.is-theme-vt::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: ease;
+}

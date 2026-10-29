@@ -14,8 +14,19 @@ import {
   HERO_VIDEO,
   demoImage,
 } from "./lib/demo";
-import type { SimpleVariant, Theme, Variant } from "./lib/types";
-import { SIMPLE_VARIANTS, VARIANTS } from "./lib/types";
+import type {
+  PlainSimpleVariant,
+  PlainVariant,
+  SimpleVariant,
+  Theme,
+  Variant,
+} from "./lib/types";
+import {
+  PLAIN_SIMPLE_VARIANTS,
+  PLAIN_VARIANTS,
+  SIMPLE_VARIANTS,
+  VARIANTS,
+} from "./lib/types";
 import type { Tone } from "./lib/tones";
 import { TONES } from "./lib/tones";
 import { cx } from "./lib/cx";
@@ -51,9 +62,10 @@ import {
 import { VlTooltip } from "./components/atoms/Tooltip/Tooltip";
 import { VlPopover } from "./components/molecules/Popover/Popover";
 
-function variantLabel(variant: Variant, theme: Theme) {
+function variantLabel(variant: PlainVariant, theme: Theme) {
   if (variant === "primary") return "Primary";
   if (variant === "outline") return "Outline";
+  if (variant === "plain") return "Plain";
   return theme === "accent" ? "Outline Dark" : "Outline Red";
 }
 
@@ -69,17 +81,19 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
   );
 }
 
-function VariantGrid({
+function VariantGrid<V extends PlainVariant = Variant>({
   theme,
+  variants = VARIANTS as V[],
   render,
 }: {
   theme: Theme;
-  render: (variant: Variant) => ReactNode;
+  variants?: V[];
+  render: (variant: V) => ReactNode;
 }) {
   const reduceMotion = useReducedMotion();
   return (
     <div className="vl-grid">
-      {VARIANTS.map((variant, i) => (
+      {variants.map((variant, i) => (
         <motion.div
           className="vl-col"
           key={variant}
@@ -93,22 +107,28 @@ function VariantGrid({
   );
 }
 
-function SimpleGrid({
+function SimpleGrid<S extends PlainSimpleVariant = SimpleVariant>({
+  variants = SIMPLE_VARIANTS as S[],
   render,
 }: {
-  render: (variant: SimpleVariant) => ReactNode;
+  variants?: S[];
+  render: (variant: S) => ReactNode;
 }) {
   const reduceMotion = useReducedMotion();
   return (
     <div className="vl-grid">
-      {SIMPLE_VARIANTS.map((variant, i) => (
+      {variants.map((variant, i) => (
         <motion.div
           className="vl-col"
           key={variant}
           {...reveal(reduceMotion, 0.1 + i * 0.08)}
         >
           <span className="vl-col__title">
-            {variant === "primary" ? "Primary" : "Secondary"}
+            {variant === "primary"
+              ? "Primary"
+              : variant === "plain"
+                ? "Plain"
+                : "Secondary"}
           </span>
           {render(variant)}
         </motion.div>
@@ -424,6 +444,7 @@ export default function Demo() {
 
       <Section title="Buttons & Links">
         <VariantGrid
+          variants={PLAIN_VARIANTS}
           theme={theme}
           render={(variant) => (
             <>
@@ -447,6 +468,7 @@ export default function Demo() {
           )}
         />
         <VariantGrid
+          variants={PLAIN_VARIANTS}
           theme={theme}
           render={(variant) => (
             <>
@@ -463,6 +485,7 @@ export default function Demo() {
 
       <Section title="Inputs">
         <VariantGrid
+          variants={PLAIN_VARIANTS}
           theme={theme}
           render={(variant) => (
             <>
@@ -489,6 +512,7 @@ export default function Demo() {
           )}
         />
         <VariantGrid
+          variants={PLAIN_VARIANTS}
           theme={theme}
           render={(variant) => (
             <>
@@ -517,6 +541,7 @@ export default function Demo() {
 
       <Section title="Select">
         <VariantGrid
+          variants={PLAIN_VARIANTS}
           theme={theme}
           render={(variant) => (
             <>
@@ -774,6 +799,7 @@ export default function Demo() {
 
       <Section title="Accordion">
         <SimpleGrid
+          variants={PLAIN_SIMPLE_VARIANTS}
           render={(variant) => (
             <VlAccordion
               variant={variant}
@@ -1054,6 +1080,24 @@ export default function Demo() {
             >
               Fehlt die Bildquelle, zeigt die Komponente den Platzhalter und
               behält ihr Layout.
+            </VlMedia>
+          </div>
+          <div className="vl-col">
+            <span className="vl-col__title">Plain · Bild links</span>
+            <VlMedia
+              variant="plain"
+              side="left"
+              title="Ohne Rahmen"
+              media={
+                <VlImage
+                  src={demoImage(2)}
+                  alt="Platzhalterbild"
+                  ratio="4 / 3"
+                />
+              }
+              actions={<VlButton variant="plain">Mehr</VlButton>}
+            >
+              Weder Rahmen noch Fläche, nur Bild und Text.
             </VlMedia>
           </div>
         </div>

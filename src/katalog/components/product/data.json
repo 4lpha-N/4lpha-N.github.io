@@ -30,7 +30,17 @@
     "neu": true,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "01"
+    "bild": "01",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "In dolor commodo dolor aliquip veniam adipiscing ut veniam magna exercitation enim fugiat consectetur commodo sed fugiat laboris tempor consequat ut nostrud incididunt aliquip ea lorem nulla tempor enim 1"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Veniam tempor nulla dolor laboris pariatur ea in ipsum cillum ex minim aliqua ea irure amet nisi ut lorem amet labore ut 1"
+      }
+    ]
   },
   {
     "id": 2,
@@ -63,7 +73,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "02"
+    "bild": "02",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Minim consectetur exercitation velit aliqua sed velit reprehenderit amet pariatur aliquip lorem adipiscing dolore in amet ad magna fugiat veniam enim eiusmod laboris quis et aliquip amet et commodo exercitation 2"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Labore tempor irure aliqua nulla voluptate ex nulla pariatur adipiscing enim cillum ullamco fugiat eiusmod ut in amet esse quis sed velit labore 2"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Magna consectetur laboris consequat dolore consectetur exercitation laboris do sit ullamco ad sed consequat adipiscing nostrud aute dolor adipiscing laboris ea veniam ad veniam in in dolore commodo fugiat esse esse voluptate ex amet 2"
+      }
+    ]
   },
   {
     "id": 3,
@@ -96,7 +120,13 @@
     "neu": false,
     "bestseller": false,
     "lager": "wenige",
-    "bild": "03"
+    "bild": "03",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Esse sit tempor elit sed sit nulla consectetur quis ea exercitation tempor 3"
+      }
+    ]
   },
   {
     "id": 4,
@@ -129,7 +159,13 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "04"
+    "bild": "04",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Duis ipsum nulla incididunt veniam sed ad dolore adipiscing aliquip consequat incididunt consectetur amet laboris quis 4"
+      }
+    ]
   },
   {
     "id": 5,
@@ -162,7 +198,17 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "05"
+    "bild": "05",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Nostrud dolor cillum duis ex nisi voluptate esse reprehenderit ad commodo aliquip reprehenderit reprehenderit ea 5"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Magna irure ex dolor reprehenderit in lorem dolor laboris nisi sed adipiscing voluptate quis aliqua dolore fugiat reprehenderit ipsum dolor 5"
+      }
+    ]
   },
   {
     "id": 6,
@@ -195,7 +241,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "06"
+    "bild": "06",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "In exercitation consequat duis ullamco pariatur exercitation ullamco minim exercitation nisi 6"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Lorem laboris lorem dolore quis elit sed ullamco ad nostrud dolor magna voluptate ipsum nisi ut incididunt aliquip exercitation quis pariatur veniam sed labore consequat magna magna sed et esse eiusmod aliqua lorem nisi do enim nulla 6"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Irure cillum dolor laboris minim do aute sed voluptate nulla eiusmod irure exercitation incididunt veniam ex incididunt ea amet tempor reprehenderit tempor nulla et aute commodo elit et et eiusmod 6"
+      }
+    ]
   },
   {
     "id": 7,
@@ -228,7 +288,13 @@
     "neu": true,
     "bestseller": true,
     "lager": "ausverkauft",
-    "bild": "07"
+    "bild": "07",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Commodo cillum ut fugiat minim aliquip ipsum nisi do labore dolore magna enim quis do velit aliqua voluptate ut lorem incididunt nostrud eiusmod esse 7"
+      }
+    ]
   },
   {
     "id": 8,
@@ -261,7 +327,13 @@
     "neu": false,
     "bestseller": false,
     "lager": "wenige",
-    "bild": "08"
+    "bild": "08",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Aliquip magna quis veniam enim nisi quis ad in do do esse veniam nisi 8"
+      }
+    ]
   },
   {
     "id": 9,
@@ -294,7 +366,17 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "09"
+    "bild": "09",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Commodo lorem esse fugiat amet velit incididunt magna aute ut velit enim consectetur laboris incididunt aliquip magna magna voluptate irure lorem exercitation sit exercitation dolore aliquip do nulla exercitation tempor tempor ea dolor ad minim aute 9"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Incididunt sed aliqua minim laboris et do nostrud ad voluptate esse ut esse nisi et labore ullamco enim dolore ex veniam reprehenderit laboris laboris incididunt ex incididunt eiusmod reprehenderit dolor veniam enim tempor tempor enim 9"
+      }
+    ]
   },
   {
     "id": 10,
@@ -327,7 +409,13 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "10"
+    "bild": "10",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Enim incididunt voluptate minim quis quis aliqua magna quis duis aliquip quis laboris fugiat incididunt consequat reprehenderit minim labore aliquip 10"
+      }
+    ]
   },
   {
     "id": 11,
@@ -360,7 +448,17 @@
     "neu": false,
     "bestseller": true,
     "lager": "auf-lager",
-    "bild": "11"
+    "bild": "11",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Ea et consectetur voluptate pariatur eiusmod pariatur aute cillum ullamco ad aliqua eiusmod consequat aute pariatur fugiat 11"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Ad consequat aliquip esse enim minim labore velit enim amet pariatur adipiscing eiusmod voluptate dolor ullamco tempor tempor exercitation do aute nulla duis 11"
+      }
+    ]
   },
   {
     "id": 12,
@@ -393,7 +491,13 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "12"
+    "bild": "12",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Minim ut sit in fugiat elit fugiat ex esse lorem amet reprehenderit tempor amet nostrud nostrud et voluptate velit in velit tempor dolore minim sit veniam exercitation sit ex cillum aute exercitation 12"
+      }
+    ]
   },
   {
     "id": 13,
@@ -426,7 +530,13 @@
     "neu": true,
     "bestseller": false,
     "lager": "wenige",
-    "bild": "13"
+    "bild": "13",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Enim et consequat aliquip ea adipiscing veniam velit tempor enim velit dolor consequat quis nulla ea ullamco aute dolor nostrud et dolore eiusmod eiusmod exercitation labore ex fugiat magna esse reprehenderit ea reprehenderit fugiat ad enim ex 13"
+      }
+    ]
   },
   {
     "id": 14,
@@ -459,7 +569,17 @@
     "neu": false,
     "bestseller": true,
     "lager": "ausverkauft",
-    "bild": "14"
+    "bild": "14",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Dolore aliqua et elit sit duis ex magna minim tempor voluptate amet pariatur consectetur cillum incididunt lorem lorem elit velit ullamco voluptate ut elit laboris lorem reprehenderit 14"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Fugiat dolore dolor et aliquip cillum nisi incididunt esse consectetur aute 14"
+      }
+    ]
   },
   {
     "id": 15,
@@ -492,7 +612,13 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "15"
+    "bild": "15",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Ullamco laboris nisi adipiscing enim exercitation nisi irure in fugiat exercitation veniam esse aliqua ea et commodo cillum voluptate quis cillum fugiat 15"
+      }
+    ]
   },
   {
     "id": 16,
@@ -525,7 +651,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "16"
+    "bild": "16",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Do ex sit nostrud consectetur dolor nisi irure fugiat veniam labore lorem tempor ipsum in veniam aliquip amet duis nisi adipiscing cillum cillum ex commodo minim aliqua voluptate dolor laboris enim ullamco ex irure sit 16"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Lorem commodo labore enim irure et magna veniam labore pariatur reprehenderit reprehenderit pariatur cillum aliquip exercitation exercitation veniam aliquip pariatur sed velit consequat 16"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Do magna et aliquip et laboris cillum sed duis minim pariatur nulla do irure do nisi consectetur velit elit et aliquip voluptate incididunt ut velit cillum ipsum ea ut labore aute aliqua in quis reprehenderit aute ipsum ullamco exercitation 16"
+      }
+    ]
   },
   {
     "id": 17,
@@ -558,7 +698,17 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "17"
+    "bild": "17",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Aliqua nulla incididunt aliqua minim sit consequat enim laboris adipiscing cillum ad velit esse labore 17"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Incididunt irure sit ipsum ipsum esse laboris tempor nisi exercitation eiusmod sit irure et nisi enim velit sit lorem eiusmod et tempor cillum exercitation aliqua magna aliquip irure sed in nulla in labore exercitation pariatur 17"
+      }
+    ]
   },
   {
     "id": 18,
@@ -591,7 +741,17 @@
     "neu": false,
     "bestseller": false,
     "lager": "wenige",
-    "bild": "18"
+    "bild": "18",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Et ad incididunt exercitation elit dolore elit incididunt ex exercitation 18"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Esse nulla consequat nostrud tempor esse dolor dolor sit velit incididunt tempor labore ea incididunt amet aute adipiscing velit cillum elit sed aliqua dolore enim ipsum aliquip irure sed veniam irure ea amet aliqua incididunt nulla in sit veniam ex 18"
+      }
+    ]
   },
   {
     "id": 19,
@@ -624,7 +784,21 @@
     "neu": true,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "19"
+    "bild": "19",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Reprehenderit minim aute cillum laboris aliquip tempor duis irure magna elit aute et aute voluptate fugiat eiusmod nulla nostrud nisi commodo ut ullamco adipiscing enim laboris nisi lorem ea 19"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Ut ipsum quis et ut adipiscing cillum duis ipsum incididunt sed ut in exercitation et nisi aliquip ea nostrud labore duis ex esse ad ea duis ipsum incididunt voluptate ullamco fugiat enim ad ad consequat sed veniam do esse duis 19"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Ut nisi consequat elit ut dolore ex laboris nostrud et 19"
+      }
+    ]
   },
   {
     "id": 20,
@@ -657,7 +831,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "20"
+    "bild": "20",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Consequat consequat et lorem ut irure aute veniam exercitation labore esse pariatur ad pariatur veniam eiusmod commodo exercitation sed magna sed sit cillum 20"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Dolor dolor commodo do et labore enim labore enim sed nulla sed in duis incididunt duis consequat ex enim nostrud dolor minim 20"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Enim aliqua nostrud in velit incididunt enim consequat sit ullamco enim cillum voluptate consectetur minim fugiat tempor adipiscing enim elit pariatur 20"
+      }
+    ]
   },
   {
     "id": 21,
@@ -690,7 +878,13 @@
     "neu": false,
     "bestseller": true,
     "lager": "ausverkauft",
-    "bild": "21"
+    "bild": "21",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Consectetur nulla veniam incididunt minim ipsum dolore duis nulla ullamco exercitation ipsum dolor irure velit consequat ullamco dolore aliquip tempor veniam nisi nulla et 21"
+      }
+    ]
   },
   {
     "id": 22,
@@ -723,7 +917,13 @@
     "neu": false,
     "bestseller": true,
     "lager": "auf-lager",
-    "bild": "22"
+    "bild": "22",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Exercitation aute ex cillum nostrud sit sed aute minim tempor aliqua commodo aute sed dolore labore adipiscing lorem nulla ad enim enim consectetur minim tempor et ex 22"
+      }
+    ]
   },
   {
     "id": 23,
@@ -756,7 +956,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "wenige",
-    "bild": "23"
+    "bild": "23",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Esse duis cillum sit nostrud nostrud duis elit duis dolore ex nisi fugiat minim nisi aliqua veniam magna aliqua dolor ad esse sed sed cillum fugiat duis adipiscing dolore reprehenderit reprehenderit et minim voluptate 23"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Ad do eiusmod minim pariatur veniam ipsum dolore magna sit labore eiusmod nostrud ex magna irure laboris ut ullamco do aute aute 23"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Enim commodo incididunt reprehenderit dolore dolor enim commodo consectetur reprehenderit reprehenderit in esse enim quis veniam eiusmod aliquip ea enim nostrud tempor consectetur 23"
+      }
+    ]
   },
   {
     "id": 24,
@@ -789,7 +1003,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "24"
+    "bild": "24",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Magna eiusmod adipiscing aliquip dolore ea cillum quis labore reprehenderit in in aliqua reprehenderit labore exercitation pariatur lorem sit commodo amet enim elit quis minim exercitation cillum ipsum lorem 24"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Adipiscing sed ullamco esse nostrud exercitation incididunt elit in dolore minim nisi lorem fugiat lorem commodo tempor 24"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Velit exercitation consequat esse cillum sed dolore esse ex fugiat voluptate veniam aliquip irure ut ut 24"
+      }
+    ]
   },
   {
     "id": 25,
@@ -822,7 +1050,21 @@
     "neu": true,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "25"
+    "bild": "25",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Laboris enim consequat nostrud in incididunt aliqua cillum nisi do nisi veniam enim commodo dolor elit quis 25"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Fugiat laboris laboris fugiat ut eiusmod dolor ad aliquip et ea tempor ut sed velit labore pariatur incididunt eiusmod tempor sit consectetur veniam ea voluptate elit ullamco laboris elit aliquip cillum laboris ut ex 25"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Fugiat consequat nostrud nostrud eiusmod nisi irure tempor velit tempor ad magna voluptate nisi sit nostrud dolor lorem ut quis veniam sit cillum fugiat sed nulla velit in amet sit enim voluptate 25"
+      }
+    ]
   },
   {
     "id": 26,
@@ -855,7 +1097,13 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "26"
+    "bild": "26",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Sed irure commodo dolore aute elit nostrud in aliqua labore ut irure 26"
+      }
+    ]
   },
   {
     "id": 27,
@@ -888,7 +1136,13 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "27"
+    "bild": "27",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Sed dolor incididunt lorem labore tempor pariatur adipiscing quis irure aliqua sit ut aute reprehenderit exercitation nostrud nulla voluptate esse cillum et fugiat aute irure et amet consequat labore lorem nisi nulla elit laboris sit enim exercitation ullamco et magna 27"
+      }
+    ]
   },
   {
     "id": 28,
@@ -921,7 +1175,13 @@
     "neu": false,
     "bestseller": true,
     "lager": "ausverkauft",
-    "bild": "28"
+    "bild": "28",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Do magna fugiat fugiat consequat velit exercitation irure commodo do irure veniam aute irure aliqua ut 28"
+      }
+    ]
   },
   {
     "id": 29,
@@ -954,7 +1214,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "29"
+    "bild": "29",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Sed sit ea magna pariatur reprehenderit exercitation ullamco duis esse consequat commodo velit incididunt nostrud tempor labore consequat velit ullamco ex dolore lorem consectetur pariatur quis ut ea quis magna fugiat velit 29"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Esse ullamco incididunt velit aliquip sit ullamco tempor labore adipiscing dolore ipsum dolor ad et esse et magna reprehenderit incididunt consectetur incididunt dolor tempor pariatur veniam aliquip laboris velit in esse enim elit quis enim dolore aliquip exercitation 29"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Consectetur dolore tempor voluptate nostrud elit ex reprehenderit consequat veniam aliquip consectetur ex labore nisi veniam esse 29"
+      }
+    ]
   },
   {
     "id": 30,
@@ -987,7 +1261,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "30"
+    "bild": "30",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Fugiat consectetur nulla aute exercitation ex voluptate lorem velit ullamco tempor incididunt laboris ad ea ad aute exercitation labore minim laboris lorem duis irure lorem enim enim pariatur ullamco lorem reprehenderit 30"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Aute ea labore tempor quis duis do commodo in exercitation aliquip enim 30"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Et cillum labore voluptate exercitation consectetur nisi duis ipsum sit fugiat exercitation voluptate 30"
+      }
+    ]
   },
   {
     "id": 31,
@@ -1020,7 +1308,17 @@
     "neu": true,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "31"
+    "bild": "31",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Do tempor pariatur aute veniam consequat aute aute lorem nisi tempor velit ad voluptate ad in irure duis dolore ea cillum aute minim nostrud sed esse aliquip commodo duis ex incididunt nulla ut 31"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Minim aute labore ut voluptate consequat ut nulla do aliqua aute veniam ipsum tempor fugiat do commodo ea ad labore aute in in pariatur exercitation esse exercitation voluptate tempor aliqua nostrud tempor nulla 31"
+      }
+    ]
   },
   {
     "id": 32,
@@ -1053,7 +1351,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "32"
+    "bild": "32",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Nostrud minim tempor ex nostrud tempor reprehenderit nostrud amet aute consectetur sed tempor tempor nostrud laboris quis dolor consectetur cillum amet in irure velit et consectetur enim dolor eiusmod laboris eiusmod ex amet ipsum labore consectetur lorem magna cillum reprehenderit 32"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Consectetur commodo nostrud ad ullamco ut labore dolore sit nulla elit nisi ex nulla in enim duis in incididunt enim nisi labore cillum sit 32"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Aliqua nulla quis sed incididunt velit enim nostrud duis nulla ut duis duis minim nulla ad adipiscing dolore veniam quis sit fugiat duis commodo do consequat ad ut minim esse consectetur consectetur do exercitation 32"
+      }
+    ]
   },
   {
     "id": 33,
@@ -1086,7 +1398,21 @@
     "neu": false,
     "bestseller": true,
     "lager": "wenige",
-    "bild": "33"
+    "bild": "33",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Et magna amet consequat commodo consequat tempor nisi elit elit lorem exercitation dolore consequat exercitation voluptate et ex reprehenderit labore minim ad 33"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Dolor velit sed ipsum esse velit incididunt lorem dolor dolor ipsum 33"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Et magna irure amet nostrud magna quis ex irure irure laboris commodo ea ullamco ex enim amet quis adipiscing duis ea consectetur quis eiusmod elit ullamco sed enim fugiat nostrud magna ullamco nulla 33"
+      }
+    ]
   },
   {
     "id": 34,
@@ -1119,7 +1445,13 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "34"
+    "bild": "34",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Duis cillum commodo ex elit eiusmod ex consectetur lorem labore velit esse adipiscing enim nulla ipsum quis quis nisi sit esse ipsum pariatur sit sit laboris adipiscing fugiat irure aliquip duis velit nisi et quis 34"
+      }
+    ]
   },
   {
     "id": 35,
@@ -1152,7 +1484,17 @@
     "neu": false,
     "bestseller": true,
     "lager": "ausverkauft",
-    "bild": "35"
+    "bild": "35",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Aute amet tempor velit voluptate ullamco irure et cillum fugiat fugiat aute ad exercitation do pariatur duis duis 35"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Commodo dolor dolor magna pariatur ad commodo irure minim ad duis aliqua pariatur veniam velit ipsum duis 35"
+      }
+    ]
   },
   {
     "id": 36,
@@ -1185,7 +1527,17 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "36"
+    "bild": "36",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Ullamco exercitation in minim laboris et amet ut quis sed lorem laboris irure consectetur lorem eiusmod irure in quis laboris eiusmod 36"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Eiusmod ipsum lorem et exercitation magna reprehenderit minim elit in tempor consectetur irure duis nostrud ullamco eiusmod velit ad ea consectetur tempor do velit enim incididunt nisi ullamco 36"
+      }
+    ]
   },
   {
     "id": 37,
@@ -1218,7 +1570,13 @@
     "neu": true,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "37"
+    "bild": "37",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Voluptate cillum pariatur consequat ex dolore in sit lorem commodo lorem dolore et 37"
+      }
+    ]
   },
   {
     "id": 38,
@@ -1251,7 +1609,17 @@
     "neu": false,
     "bestseller": false,
     "lager": "wenige",
-    "bild": "38"
+    "bild": "38",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Ad ea in tempor dolor ex commodo voluptate reprehenderit laboris voluptate ullamco dolor sed ex sed commodo ad et eiusmod cillum pariatur labore dolor irure do ex consectetur aute sit amet sed 38"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Dolore dolor in exercitation et irure pariatur irure irure amet aliquip dolore lorem fugiat lorem labore aute cillum laboris ad aliquip cillum commodo irure ullamco lorem do 38"
+      }
+    ]
   },
   {
     "id": 39,
@@ -1284,7 +1652,13 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "39"
+    "bild": "39",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Nostrud minim exercitation pariatur lorem adipiscing duis elit ipsum ad quis ea lorem nostrud ad lorem fugiat reprehenderit irure do sed commodo do ad quis dolor ullamco ullamco veniam adipiscing sed sit elit tempor cillum incididunt 39"
+      }
+    ]
   },
   {
     "id": 40,
@@ -1317,7 +1691,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "40"
+    "bild": "40",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Ea aliquip eiusmod ut esse esse ad voluptate in minim magna incididunt in elit laboris magna 40"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Veniam ea veniam ex tempor labore do adipiscing cillum enim labore velit 40"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Nulla in esse aliqua tempor nulla ad esse nisi quis ad voluptate tempor magna consectetur fugiat adipiscing aute irure sit quis 40"
+      }
+    ]
   },
   {
     "id": 41,
@@ -1350,7 +1738,17 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "41"
+    "bild": "41",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Voluptate consectetur veniam cillum quis in ex labore aute consectetur ipsum ullamco irure elit dolore tempor ad velit aliqua amet magna sit ea magna exercitation veniam veniam quis in elit aliquip irure aliqua irure ex ex fugiat consectetur 41"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Ut esse duis minim aliquip aliquip do in ea do consectetur duis et aliquip duis labore elit commodo nisi ipsum nisi et 41"
+      }
+    ]
   },
   {
     "id": 42,
@@ -1383,7 +1781,21 @@
     "neu": false,
     "bestseller": true,
     "lager": "ausverkauft",
-    "bild": "42"
+    "bild": "42",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Voluptate amet labore labore in cillum nisi ullamco adipiscing laboris irure cillum pariatur dolore consectetur cillum irure do irure adipiscing tempor ut fugiat sit magna veniam ipsum ullamco magna et nulla et esse duis ea esse 42"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Sed ullamco aliquip reprehenderit nulla consectetur dolor irure magna et minim aute minim ex magna veniam 42"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Sit voluptate ea irure voluptate in tempor et veniam magna ea ad labore duis irure veniam dolore pariatur ut esse reprehenderit duis elit dolore 42"
+      }
+    ]
   },
   {
     "id": 43,
@@ -1416,7 +1828,21 @@
     "neu": true,
     "bestseller": false,
     "lager": "wenige",
-    "bild": "43"
+    "bild": "43",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Voluptate fugiat minim aliquip laboris ex duis magna dolor consequat adipiscing ea incididunt quis in pariatur 43"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Consectetur velit sit enim ipsum lorem ea veniam aliquip ipsum irure nisi consectetur ad sit tempor in ea sed exercitation aliquip pariatur lorem cillum duis do ex esse adipiscing elit irure labore reprehenderit adipiscing reprehenderit consectetur 43"
+      },
+      {
+        "titel": "Text 3",
+        "text": "In labore et consequat adipiscing veniam aliqua quis enim elit dolore duis pariatur 43"
+      }
+    ]
   },
   {
     "id": 44,
@@ -1449,7 +1875,21 @@
     "neu": false,
     "bestseller": true,
     "lager": "auf-lager",
-    "bild": "44"
+    "bild": "44",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "In cillum irure minim duis voluptate exercitation reprehenderit aliquip enim tempor reprehenderit lorem commodo dolore labore commodo ut labore ipsum quis magna aliqua dolor veniam sit consectetur incididunt cillum sit amet voluptate magna minim velit aute sit 44"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Veniam commodo consectetur aute magna ea velit consequat tempor incididunt ullamco do exercitation ut nostrud in amet consequat aliqua nulla duis fugiat amet incididunt ex enim exercitation incididunt 44"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Magna enim exercitation do ea et sit ullamco dolor cillum nisi enim 44"
+      }
+    ]
   },
   {
     "id": 45,
@@ -1482,7 +1922,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "45"
+    "bild": "45",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Ea do lorem ea velit enim quis pariatur exercitation in consequat elit minim voluptate aliquip fugiat ex eiusmod pariatur minim veniam tempor dolor tempor quis duis cillum 45"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Enim dolor dolore aliqua lorem nisi do laboris aliquip aliquip aliqua sit veniam voluptate aute et veniam enim reprehenderit esse adipiscing fugiat adipiscing esse consequat voluptate in 45"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Do elit quis labore enim ipsum nisi et ea voluptate cillum eiusmod reprehenderit consectetur et in consequat 45"
+      }
+    ]
   },
   {
     "id": 46,
@@ -1515,7 +1969,17 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "46"
+    "bild": "46",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Esse consequat do labore magna exercitation cillum eiusmod esse elit elit tempor sed fugiat elit ex exercitation velit laboris ad voluptate minim ad ex ex 46"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Aute dolor pariatur veniam sit labore dolor cillum aliqua ipsum ut fugiat sed aliquip lorem ut eiusmod lorem commodo veniam irure esse duis enim ex ex pariatur pariatur ut magna commodo do sed quis consectetur in 46"
+      }
+    ]
   },
   {
     "id": 47,
@@ -1548,7 +2012,21 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "47"
+    "bild": "47",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Esse elit esse exercitation magna cillum irure do consectetur dolore tempor ut consectetur consectetur ea et ipsum enim eiusmod lorem aliquip ex aliquip nostrud laboris ex 47"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Veniam tempor cillum laboris laboris enim ipsum dolore reprehenderit dolore lorem duis quis magna in ut lorem dolor eiusmod laboris aute reprehenderit nostrud exercitation exercitation amet sed 47"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Aute elit incididunt veniam tempor duis pariatur voluptate quis laboris irure magna dolore exercitation esse et enim aliqua veniam tempor sed labore nisi amet dolore 47"
+      }
+    ]
   },
   {
     "id": 48,
@@ -1581,7 +2059,17 @@
     "neu": false,
     "bestseller": false,
     "lager": "wenige",
-    "bild": "48"
+    "bild": "48",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Et aliquip velit commodo nostrud sit elit aliquip pariatur tempor et nisi ex sed consequat 48"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Tempor adipiscing labore exercitation nostrud aute sed fugiat ex dolore aliquip ea minim commodo 48"
+      }
+    ]
   },
   {
     "id": 49,
@@ -1614,7 +2102,21 @@
     "neu": true,
     "bestseller": true,
     "lager": "ausverkauft",
-    "bild": "49"
+    "bild": "49",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Commodo veniam aute fugiat aute cillum laboris aute quis voluptate adipiscing do irure ea ad pariatur enim 49"
+      },
+      {
+        "titel": "Text 2",
+        "text": "Nostrud incididunt do ut velit dolor tempor lorem nulla esse minim aliquip exercitation enim ipsum lorem et incididunt tempor 49"
+      },
+      {
+        "titel": "Text 3",
+        "text": "Duis aute minim ad in exercitation consequat amet commodo et eiusmod nulla enim nostrud esse ipsum aliqua cillum minim pariatur pariatur enim ipsum 49"
+      }
+    ]
   },
   {
     "id": 50,
@@ -1647,6 +2149,12 @@
     "neu": false,
     "bestseller": false,
     "lager": "auf-lager",
-    "bild": "50"
+    "bild": "50",
+    "texte": [
+      {
+        "titel": "Text 1",
+        "text": "Ullamco ut cillum incididunt irure amet consequat in enim sit tempor labore minim elit tempor pariatur tempor 50"
+      }
+    ]
   }
 ]

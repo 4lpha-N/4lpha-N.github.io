@@ -3,9 +3,9 @@
 .vl-media {
   position: relative;
   isolation: isolate;
-  display: grid;
-  grid-template-areas: "media body";
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   box-sizing: border-box;
   min-width: 0;
   padding: 2px;
@@ -22,17 +22,23 @@
     @include cut-inner(12px);
   }
 
-  &--right {
-    grid-template-areas: "body media";
+  // Mehrere Zeilen teilen sich den Rahmen, getrennt durch Abstand
+  &__row {
+    display: grid;
+    grid-template-areas: "media body";
+    grid-template-columns: 1fr 1fr;
+    min-width: 0;
+
+    &--right {
+      grid-template-areas: "body media";
+    }
   }
 
-  // Bild folgt der inneren Schnittecke des Rahmens (unten links bzw. oben rechts)
   &__media {
     display: flex;
     grid-area: media;
     min-width: 0;
     min-height: 260px;
-    @include cut-inner(12px, var(--bw), bl);
 
     .vl-img {
       flex: 1;
@@ -44,7 +50,11 @@
       inset: 0;
     }
   }
-  &--right &__media {
+  // Bild folgt der inneren Schnittecke des Rahmens (unten links bzw. oben rechts), nur an der Rahmenecke
+  &__row--left.is-last &__media {
+    @include cut-inner(12px, var(--bw), bl);
+  }
+  &__row--right.is-first &__media {
     @include cut-inner(12px, var(--bw), tr);
   }
 
@@ -94,18 +104,30 @@
     --b: var(--alt);
     --f: var(--surface);
   }
+  // Ohne Rahmen und Fläche
+  &--plain {
+    --b: transparent;
+    --f: transparent;
+    --bw: 0px;
+    padding: 0;
+  }
 }
 
 @media (max-width: 720px) {
-  .vl-media,
-  .vl-media--right {
+  .vl-media__row,
+  .vl-media__row--right {
     grid-template-areas: "media" "body";
     grid-template-columns: 1fr;
   }
-  .vl-media__media,
-  .vl-media--right .vl-media__media {
+  .vl-media__row .vl-media__media,
+  .vl-media__row--left.is-last .vl-media__media,
+  .vl-media__row--right.is-first .vl-media__media {
     min-height: 0;
     aspect-ratio: 16 / 9;
+    clip-path: none;
+  }
+  // Mobil steht das Bild oben: nur in der ersten Zeile liegt es an der Rahmenecke
+  .vl-media__row.is-first .vl-media__media {
     @include cut-inner(12px, var(--bw), tr);
   }
   .vl-media__body {

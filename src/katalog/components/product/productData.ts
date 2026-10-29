@@ -17,6 +17,8 @@ export type Product = {
   bestseller: boolean;
   lager: Stock;
   bild: string;
+  // 1 bis 3 Textabschnitte mit Überschrift für die Detailseite
+  texte: { titel: string; text: string }[];
 };
 
 export const products = data as Product[];

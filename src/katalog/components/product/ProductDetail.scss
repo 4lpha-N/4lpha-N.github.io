@@ -20,5 +20,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
     gap: 16px 24px;
+
+    + div:has(.vl-media) {
+      margin-top: 64px;
+    }
   }
 }

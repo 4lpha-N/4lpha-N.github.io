@@ -3,11 +3,34 @@
 /* ---------- Accordion ---------- */
 
 .vl-acc {
-  border-top: 2px solid var(--b);
-
   &__item {
     position: relative;
     border-bottom: 1px solid var(--line);
+    // Hover, Leiste und Fokus folgen der Schnittecke des Eintrags
+    @include cut(12px);
+
+    // Obere Linie liegt am ersten Eintrag, damit sie der Schnittecke folgt
+    &:first-child {
+      border-top: 2px solid var(--b);
+
+      // Diagonale der Ecke in Linienstärke, schließt an die obere Linie an
+      &::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        right: 0;
+        width: 12px;
+        height: 12px;
+        background: linear-gradient(
+          to top right,
+          transparent 6.4px,
+          var(--b) 6.4px,
+          var(--b) 8.5px,
+          transparent 8.5px
+        );
+        pointer-events: none;
+      }
+    }
 
     // Leiste links wächst beim Öffnen
     &::before {
@@ -32,6 +55,7 @@
   }
 
   &__btn {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,7 +81,25 @@
     }
     &:focus-visible {
       outline: none;
-      box-shadow: inset 0 0 0 2px var(--ring);
+      isolation: isolate;
+
+      // Fokusrahmen als Rahmen mit Schnittecke, ein Inset-Schatten folgt der Diagonale nicht
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+      }
+      &::before {
+        inset: 0;
+        background: var(--ring);
+        @include cut(12px);
+      }
+      &::after {
+        inset: 2px;
+        background: var(--surface);
+        @include cut-inner(12px, 2px);
+      }
     }
     &:disabled {
       opacity: 0.4;
@@ -109,5 +151,25 @@
   &--secondary {
     --b: var(--link-2);
     --ring: var(--primary);
+  }
+  // Ohne Linien und Leiste; --b färbt nur noch den Hover
+  &--plain {
+    --b: var(--fg);
+    --ring: var(--primary);
+
+    .vl-acc__item {
+      border-bottom: 0;
+
+      &::before {
+        display: none;
+      }
+      &:first-child {
+        border-top: 0;
+
+        &::after {
+          display: none;
+        }
+      }
+    }
   }
 }

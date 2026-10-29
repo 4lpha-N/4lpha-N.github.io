@@ -142,22 +142,17 @@
 }
 
 .vl-compare__name {
-  color: inherit;
+  display: block;
+  margin-bottom: 8px;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.06em;
   overflow-wrap: anywhere;
-  text-decoration: none;
   text-transform: uppercase;
 
   @media (max-width: 719px) {
     font-size: 12px;
     letter-spacing: 0.03em;
-  }
-
-  &:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
   }
 }
 
@@ -165,19 +160,8 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border: 0;
-  background: var(--surface);
-  color: inherit;
-  cursor: pointer;
-
-  &:hover {
-    color: var(--primary);
-  }
+  width: 36px;
+  height: 36px;
 }
 
 .vl-compare__value {

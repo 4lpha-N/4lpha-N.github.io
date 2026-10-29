@@ -1,9 +1,9 @@
 import type { ButtonHTMLAttributes } from "react";
-import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play, X } from "lucide-react";
 import { cx } from "../../../lib/cx";
 import "./IconButton.scss";
 
-type IconKind = "prev" | "next" | "play" | "pause";
+type IconKind = "prev" | "next" | "play" | "pause" | "close";
 
 export function IconButton({
   icon,
@@ -29,6 +29,7 @@ export function IconButton({
       {icon === "pause" && (
         <Pause size={18} fill="currentColor" aria-hidden="true" />
       )}
+      {icon === "close" && <X size={18} aria-hidden="true" />}
     </button>
   );
 }

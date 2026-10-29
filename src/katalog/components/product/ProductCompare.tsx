@@ -3,9 +3,11 @@ import type { CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { GitCompareArrows, X } from "lucide-react";
+import { GitCompareArrows } from "lucide-react";
 import { VlButton } from "../atoms/Button/Button";
+import { IconButton } from "../atoms/IconButton/IconButton";
 import { VlImage } from "../atoms/Image/Image";
+import { VlLink } from "../atoms/Link/Link";
 import { Price } from "../atoms/Price/Price";
 import { VlOverlay } from "../organism/Overlay/Overlay";
 import { ProductBadges } from "./ProductBadges";
@@ -109,21 +111,25 @@ export function ProductCompare({
                         ratio="4 / 3"
                       />
                     </div>
-                    <Link
-                      className="vl-compare__name"
-                      to={`/Produkte/${p.id}`}
+                    <span className="vl-compare__name">{p.name}</span>
+                    <VlLink
+                      variant="secondary"
+                      href={`/Produkte/${p.id}`}
                       onClick={() => setOpen(false)}
+                      renderLink={({ className, href, children, onClick }) => (
+                        <Link className={className} to={href} onClick={onClick}>
+                          {children}
+                        </Link>
+                      )}
                     >
-                      {p.name}
-                    </Link>
-                    <button
-                      type="button"
+                      Zum Produkt
+                    </VlLink>
+                    <IconButton
+                      icon="close"
                       className="vl-compare__remove"
-                      aria-label={`${p.name} aus dem Vergleich entfernen`}
+                      label={`${p.name} aus dem Vergleich entfernen`}
                       onClick={() => remove(p.id)}
-                    >
-                      <X size={16} aria-hidden="true" />
-                    </button>
+                    />
                   </th>
                 ))}
               </tr>

@@ -7,10 +7,23 @@ export function VlLink({
   variant,
   children,
   disabled,
+  href,
+  renderLink,
+  onClick,
 }: {
   variant: SimpleVariant;
   children: ReactNode;
   disabled?: boolean;
+  // Ziel des Links; ohne: Platzhalter-Link
+  href?: string;
+  // eigener Link (z. B. Router-Link); ohne: normales a-Tag
+  renderLink?: (props: {
+    className: string;
+    href: string;
+    children: ReactNode;
+    onClick?: () => void;
+  }) => ReactNode;
+  onClick?: () => void;
 }) {
   const className = `vl-link vl-link--${variant}${disabled ? " is-disabled" : ""}`;
   const content = (
@@ -26,8 +39,18 @@ export function VlLink({
       </a>
     );
   }
+  if (href && renderLink) {
+    return <>{renderLink({ className, href, children: content, onClick })}</>;
+  }
   return (
-    <a className={className} href="#" onClick={(e) => e.preventDefault()}>
+    <a
+      className={className}
+      href={href ?? "#"}
+      onClick={(e) => {
+        if (!href) e.preventDefault();
+        onClick?.();
+      }}
+    >
       {content}
     </a>
   );

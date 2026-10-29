@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { VlCarousel } from "../organism/Carousel/Carousel";
 import { VlProgress } from "../atoms/Progress/Progress";
+import { VlImage } from "../atoms/Image/Image";
+import { VlMedia } from "../molecules/Media/Media";
 import { Price } from "../atoms/Price/Price";
 import { GridCol, GridRow } from "../layout/Grid/Grid";
 import { AddToCart } from "./AddToCart";
@@ -74,6 +76,22 @@ export function ProductDetail({ product: p }: { product: Product }) {
           </motion.div>
         ))}
       </div>
+      <motion.div {...reveal(reduceMotion)}>
+        <VlMedia
+          variant="plain"
+          items={p.texte.map(({ titel, text }, i) => ({
+            title: titel,
+            text,
+            media: (
+              <VlImage
+                src={productImage(productImages(p.bild)[i % 3])}
+                alt={`${p.name}, Bild ${(i % 3) + 1}`}
+                ratio="4 / 3"
+              />
+            ),
+          }))}
+        />
+      </motion.div>
     </div>
   );
 }

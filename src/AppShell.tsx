@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 import { useNavigationType } from "react-router";
 import type { Location } from "react-router";
 import { ThemeProvider } from "./katalog/components/layout/ThemeProvider/ThemeProvider";
@@ -17,6 +18,9 @@ import { useDoor } from "./katalog/lib/useDoor";
 import type { Theme } from "./katalog/lib/types";
 import { CRUMB_ROUTES } from "./routes";
 import "./App.css";
+
+// Zum Vergleichen: false nutzt die Token-Animation des ThemeProviders
+const USE_VIEW_TRANSITION = true;
 
 function storedTheme(): Theme {
   const t = readStored().theme;
@@ -60,6 +64,23 @@ export default function AppShell({
     writeStored({ theme, decor, door, doorVariant });
   }, [theme, decor, door, doorVariant]);
 
+  // Überblendung per View Transition (läuft auf dem Compositor); sonst Token-Animation des ThemeProviders
+  const changeTheme = (next: Theme) => {
+    const root = document.documentElement;
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (!USE_VIEW_TRANSITION || !document.startViewTransition || reduce) {
+      setTheme(next);
+      return;
+    }
+    // Ohne Klasse würden die Tokens im neuen Schnappschuss noch auf dem alten Wert stehen
+    root.classList.add("is-theme-vt");
+    document
+      .startViewTransition(() => flushSync(() => setTheme(next)))
+      .finished.finally(() => root.classList.remove("is-theme-vt"));
+  };
+
   // Vorab-Theme aus index.html entfernen, ab jetzt gilt der ThemeProvider
   useEffect(() => {
     delete document.documentElement.dataset.theme;
@@ -79,7 +100,7 @@ export default function AppShell({
             <Door variant={doorVariant} closed={closed} logo={logo} dir={dir} />
             <Header
               theme={theme}
-              onTheme={setTheme}
+              onTheme={changeTheme}
               decor={decor}
               onDecor={setDecor}
               door={door}

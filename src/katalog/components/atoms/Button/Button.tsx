@@ -1,9 +1,9 @@
 import type { ButtonHTMLAttributes } from "react";
-import type { Variant } from "../../../lib/types";
+import type { PlainVariant } from "../../../lib/types";
 import "./Button.scss";
 
 interface VlButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: Variant;
+  variant: PlainVariant;
   // Navigation statt Aktion: wird als a-Tag ausgegeben
   href?: string;
 }

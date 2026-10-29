@@ -102,4 +102,13 @@
     --ht: var(--on-alt);
     --ring: var(--fg);
   }
+  // Ohne Rahmen und Fläche, nur Text; Hover als leichte Tönung
+  &--plain {
+    --b: transparent;
+    --f: transparent;
+    --t: var(--fg);
+    --hf: color-mix(in srgb, var(--fg) 12%, transparent);
+    --ht: var(--fg);
+    --ring: var(--primary);
+  }
 }

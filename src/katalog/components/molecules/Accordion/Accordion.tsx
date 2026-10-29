@@ -1,7 +1,7 @@
 import { useId, useState } from "react";
 import type { ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
-import type { SimpleVariant } from "../../../lib/types";
+import type { PlainSimpleVariant } from "../../../lib/types";
 import { cx } from "../../../lib/cx";
 import "./Accordion.scss";
 
@@ -20,7 +20,7 @@ export function VlAccordion({
   open: openProp,
   onOpenChange,
 }: {
-  variant: SimpleVariant;
+  variant: PlainSimpleVariant;
   items: AccordionItem[];
   // mehrere Einträge gleichzeitig offen
   multiple?: boolean;
