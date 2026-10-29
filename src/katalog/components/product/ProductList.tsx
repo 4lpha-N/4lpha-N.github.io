@@ -7,6 +7,7 @@ import { VlCard } from "../molecules/Card/Card";
 import { VlAccordion } from "../molecules/Accordion/Accordion";
 import { VlImage } from "../atoms/Image/Image";
 import { VlProgress } from "../atoms/Progress/Progress";
+import { VlCheck } from "../atoms/Check/Check";
 import { Price } from "../atoms/Price/Price";
 import { AddToCart } from "./AddToCart";
 import { ProductBadges } from "./ProductBadges";
@@ -16,7 +17,18 @@ import type { Product } from "./productData";
 import { productImage } from "./productImage";
 import "./ProductList.scss";
 
-export function ProductList({ products }: { products: Product[] }) {
+export function ProductList({
+  products,
+  compare,
+  onCompare,
+  compareFull,
+}: {
+  products: Product[];
+  // IDs der zum Vergleich gewählten Produkte
+  compare: number[];
+  onCompare: (id: number) => void;
+  compareFull: boolean;
+}) {
   const reduceMotion = useReducedMotion();
   // Eigenschaften in allen Karten gemeinsam auf- und zuklappen, damit die Reihen gleich hoch bleiben
   const [attrsOpen, setAttrsOpen] = useState(false);
@@ -85,7 +97,17 @@ export function ProductList({ products }: { products: Product[] }) {
                       },
                     ]}
                   />
-                  <AddToCart product={p} />
+                  <div className="vl-product__buy">
+                    <VlCheck
+                      variant="primary"
+                      label="Vergleichen"
+                      hideLabel
+                      checked={compare.includes(p.id)}
+                      disabled={compareFull && !compare.includes(p.id)}
+                      onChange={() => onCompare(p.id)}
+                    />
+                    <AddToCart product={p} />
+                  </div>
                 </div>
               </div>
             }

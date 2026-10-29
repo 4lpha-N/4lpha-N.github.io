@@ -1,0 +1,200 @@
+@use "../../styles/mixins" as *;
+
+/* ---------- Produktvergleich: Leiste unter der Liste und Tabelle im Overlay ---------- */
+
+// Per Portal an document.body, damit position: fixed nicht von transformierten Vorfahren abhängt
+.design-wrapper.vl-compare__dock {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1200;
+  overflow: visible;
+  width: auto;
+  min-height: 0;
+  padding: 0 12px max(12px, env(safe-area-inset-bottom));
+  background: none;
+  pointer-events: none;
+}
+
+.vl-compare__bar {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  background: var(--edge);
+  color: var(--fg);
+  pointer-events: auto;
+  --bw: 2px;
+  @include cut(12px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: var(--bw);
+    z-index: -1;
+    background: var(--surface);
+    @include cut-inner(12px);
+  }
+}
+
+.vl-compare__count {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vl-compare__bar-actions {
+  display: flex;
+  gap: 12px;
+
+  @media (max-width: 719px) {
+    width: 100%;
+
+    .vl-btn {
+      flex: 1;
+    }
+  }
+}
+
+.vl-compare__scroll {
+  --label: 8rem;
+  overflow-x: auto;
+  container-type: inline-size;
+
+  // Mobil: schmale Beschriftungsspalte, genau zwei Produkte sichtbar, Spalten rasten ein
+  @media (max-width: 719px) {
+    --label: 6rem;
+    scroll-snap-type: x proximity;
+    scroll-padding-left: var(--label);
+  }
+}
+
+// Spaltenbreite ist die eines 4er-Rasters (mind. 11rem), egal wie viele Produkte gewählt sind
+.vl-compare {
+  --col: max(11rem, calc((100cqw - var(--label)) / var(--max)));
+  width: calc(var(--label) + var(--n) * var(--col));
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  @media (max-width: 719px) {
+    --col: calc((100cqw - var(--label)) / 2);
+  }
+
+  th,
+  td {
+    box-sizing: border-box;
+    padding: 12px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+
+    @media (max-width: 719px) {
+      padding: 8px 6px;
+    }
+  }
+
+  thead th {
+    width: var(--col);
+    scroll-snap-align: start;
+  }
+
+  // Erste Spalte bleibt beim seitlichen Scrollen stehen
+  th[scope="row"],
+  thead td {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    width: var(--label);
+    background: var(--surface);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    @media (max-width: 719px) {
+      font-size: 10px;
+      letter-spacing: 0.02em;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .is-best {
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    font-weight: 700;
+  }
+}
+
+.vl-compare__head {
+  position: relative;
+}
+
+.vl-compare__thumb {
+  margin-bottom: 8px;
+}
+
+.vl-compare__name {
+  color: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  @media (max-width: 719px) {
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+.vl-compare__remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: var(--surface);
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+.vl-compare__value {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.vl-compare__bar-fill {
+  display: block;
+  height: 4px;
+  background: var(--line);
+
+  &::after {
+    content: "";
+    display: block;
+    width: calc(var(--v) * 100%);
+    height: 100%;
+    background: var(--primary);
+  }
+}

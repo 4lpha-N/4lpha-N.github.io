@@ -22,6 +22,8 @@ export function VlCarousel({
   ratio,
   loading,
   disabled,
+  index: indexProp,
+  onChange,
 }: {
   variant: SimpleVariant;
   label: string;
@@ -35,13 +37,22 @@ export function VlCarousel({
   // erzwingt den Ladezustand der Bilder
   loading?: boolean;
   disabled?: boolean;
+  // Gesteuerter Modus: aktuelle Folie liegt beim Aufrufer
+  index?: number;
+  onChange?: (index: number) => void;
 }) {
   const total = slides.length;
-  const [index, setIndex] = useState(0);
+  const [inner, setInner] = useState(0);
+  const index = indexProp ?? inner;
   const startX = useRef<number | null>(null);
 
-  const go = (i: number) =>
-    setIndex(loop ? (i + total) % total : Math.min(Math.max(i, 0), total - 1));
+  const go = (i: number) => {
+    const next = loop
+      ? (i + total) % total
+      : Math.min(Math.max(i, 0), total - 1);
+    setInner(next);
+    onChange?.(next);
+  };
   const atStart = !loop && index === 0;
   const atEnd = !loop && index === total - 1;
 

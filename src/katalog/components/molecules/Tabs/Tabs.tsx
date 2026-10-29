@@ -15,14 +15,26 @@ export interface TabItem {
 export function VlTabs({
   variant,
   tabs,
+  defaultValue,
+  value,
+  onChange,
 }: {
   variant: SimpleVariant;
   tabs: TabItem[];
+  defaultValue?: string;
+  // Gesteuerter Modus: aktiver Tab liegt beim Aufrufer
+  value?: string;
+  onChange?: (id: string) => void;
 }) {
   const uid = useId();
   const reduceMotion = useReducedMotion();
   const enabled = tabs.filter((t) => !t.disabled);
-  const [active, setActive] = useState(enabled[0]?.id ?? "");
+  const [inner, setInner] = useState(defaultValue ?? enabled[0]?.id ?? "");
+  const active = value ?? inner;
+  const setActive = (id: string) => {
+    setInner(id);
+    onChange?.(id);
+  };
   const refs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   const onKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {

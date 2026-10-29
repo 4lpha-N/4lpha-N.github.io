@@ -30,6 +30,8 @@ export function VlInput({
   disabled,
   placeholder,
   defaultValue,
+  value,
+  onChange,
   type = "text",
   min,
   max,
@@ -37,8 +39,11 @@ export function VlInput({
 }: FieldProps & {
   placeholder?: string;
   defaultValue?: string;
+  // Gesteuerter Modus: Wert liegt beim Aufrufer
+  value?: string;
+  onChange?: (value: string) => void;
   // Native Tastatur und Validierung; bei number mit eigenen +/- Schaltern
-  type?: "text" | "email" | "tel" | "number";
+  type?: "text" | "email" | "tel" | "number" | "search";
   min?: number;
   max?: number;
   step?: number;
@@ -68,7 +73,9 @@ export function VlInput({
           type={type}
           className={`vl-field__control${isNumber ? " vl-field__control--number" : ""}`}
           placeholder={placeholder}
-          defaultValue={defaultValue}
+          {...(value === undefined
+            ? { defaultValue }
+            : { value, onChange: (e) => onChange?.(e.target.value) })}
           min={min}
           max={max}
           step={step}

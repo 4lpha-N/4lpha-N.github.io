@@ -8,12 +8,17 @@ export function VlRadioGroup({
   label,
   options,
   defaultValue,
+  value,
+  onChange,
   disabled,
 }: {
   variant: SimpleVariant;
   label: string;
   options: { value: string; label: string; disabled?: boolean }[];
   defaultValue?: string;
+  // Gesteuerter Modus: Auswahl liegt beim Aufrufer
+  value?: string;
+  onChange?: (value: string) => void;
   disabled?: boolean;
 }) {
   const name = useId();
@@ -30,7 +35,12 @@ export function VlRadioGroup({
           name={name}
           value={o.value}
           label={o.label}
-          defaultChecked={o.value === defaultValue}
+          {...(value === undefined
+            ? { defaultChecked: o.value === defaultValue }
+            : {
+                checked: o.value === value,
+                onChange: (c: boolean) => c && onChange?.(o.value),
+              })}
           disabled={disabled || o.disabled}
         />
       ))}

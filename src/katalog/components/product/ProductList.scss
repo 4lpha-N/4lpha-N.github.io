@@ -43,6 +43,21 @@
   }
 }
 
+// Vergleichs-Checkbox links, Warenkorb-Button füllt den Rest
+.vl-product__actions .vl-product__buy {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .vl-btn {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+    padding: 0 8px;
+    white-space: nowrap;
+  }
+}
+
 .vl-product__attrs {
   display: flex;
   flex-direction: column;

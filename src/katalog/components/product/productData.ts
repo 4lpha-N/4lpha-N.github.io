@@ -38,6 +38,7 @@ export const ATTR_MAX = 10;
 
 export const PAGE_SIZES = [12, 24, 48];
 export const DEFAULT_PAGE_SIZE = PAGE_SIZES[0];
+export const MAX_COMPARE = 4;
 
 export type Range = [number, number];
 
@@ -73,6 +74,16 @@ export function filterProducts(list: Product[], f: Filters) {
       (e, i) =>
         e.wert >= f.eigenschaften[i][0] && e.wert <= f.eigenschaften[i][1],
     );
+  });
+}
+
+// Alle Suchbegriffe müssen in Name oder Beschreibung vorkommen
+export function searchProducts(list: Product[], query: string) {
+  const terms = query.toLocaleLowerCase("de").split(/\s+/).filter(Boolean);
+  if (terms.length === 0) return list;
+  return list.filter((p) => {
+    const text = `${p.name} ${p.beschreibung}`.toLocaleLowerCase("de");
+    return terms.every((t) => text.includes(t));
   });
 }
 

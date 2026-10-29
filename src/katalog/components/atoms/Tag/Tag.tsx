@@ -12,14 +12,20 @@ export function VlTag({
   children,
   disabled,
   defaultSelected,
+  selected: selectedProp,
+  onChange,
 }: {
   variant: Variant;
   kind: TagKind;
   children: ReactNode;
   disabled?: boolean;
   defaultSelected?: boolean;
+  // Gesteuerter Modus (nur chip): Auswahl liegt beim Aufrufer
+  selected?: boolean;
+  onChange?: (selected: boolean) => void;
 }) {
-  const [selected, setSelected] = useState(!!defaultSelected);
+  const [inner, setInner] = useState(!!defaultSelected);
+  const selected = selectedProp ?? inner;
   const className = cx(
     "vl-tag",
     `vl-tag--${kind}`,
@@ -35,7 +41,10 @@ export function VlTag({
         className={className}
         aria-pressed={selected}
         disabled={disabled}
-        onClick={() => setSelected((s) => !s)}
+        onClick={() => {
+          setInner(!selected);
+          onChange?.(!selected);
+        }}
       >
         <span className="vl-tag__dot" aria-hidden="true" />
         {children}

@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from "framer-motion";
 import { VlCarousel } from "../organism/Carousel/Carousel";
 import { VlProgress } from "../atoms/Progress/Progress";
 import { Price } from "../atoms/Price/Price";
@@ -9,18 +10,21 @@ import { VAT } from "./productData";
 import type { Product } from "./productData";
 import { productImage, productImages } from "./productImage";
 import { cx } from "../../lib/cx";
+import { reveal } from "../../lib/reveal";
 import "./ProductDetail.scss";
 
 export function ProductDetail({ product: p }: { product: Product }) {
+  const reduceMotion = useReducedMotion();
   return (
     <div className="vl-product-detail__wrap">
       <GridRow>
         <GridCol span={{ base: 12, md: 6 }}>
-          <div
+          <motion.div
             className={cx(
               "vl-product-detail__media",
               p.lager === "ausverkauft" && "is-soldout",
             )}
+            {...reveal(reduceMotion)}
           >
             <VlCarousel
               key={p.id}
@@ -33,10 +37,13 @@ export function ProductDetail({ product: p }: { product: Product }) {
                 alt: `${p.name}, Bild ${i + 1}`,
               }))}
             />
-          </div>
+          </motion.div>
         </GridCol>
         <GridCol span={{ base: 12, md: 6 }}>
-          <div className="vl-product-detail">
+          <motion.div
+            className="vl-product-detail"
+            {...reveal(reduceMotion, 0.1)}
+          >
             <ProductBadges product={p} />
             <h1 className="vl-h2 vl-product-detail__title">{p.name}</h1>
             <p className="vl-text-lg vl-product-detail__text">
@@ -51,19 +58,20 @@ export function ProductDetail({ product: p }: { product: Product }) {
               from={p.preis.ab}
             />
             <AddToCart product={p} />
-          </div>
+          </motion.div>
         </GridCol>
       </GridRow>
       <div className="vl-product-detail__attrs">
-        {p.eigenschaften.map((e) => (
-          <VlProgress
-            key={e.label}
-            variant="primary"
-            label={e.label}
-            value={e.wert}
-            max={10}
-            segmented
-          />
+        {p.eigenschaften.map((e, i) => (
+          <motion.div key={e.label} {...reveal(reduceMotion, i * 0.08)}>
+            <VlProgress
+              variant="primary"
+              label={e.label}
+              value={e.wert}
+              max={10}
+              segmented
+            />
+          </motion.div>
         ))}
       </div>
     </div>

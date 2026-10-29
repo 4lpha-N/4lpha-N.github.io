@@ -5,11 +5,16 @@ export function VlSwitch({
   variant,
   label,
   defaultChecked,
+  checked,
+  onChange,
   disabled,
 }: {
   variant: SimpleVariant;
   label: string;
   defaultChecked?: boolean;
+  // Gesteuerter Modus: Zustand liegt beim Aufrufer
+  checked?: boolean;
+  onChange?: (checked: boolean) => void;
   disabled?: boolean;
 }) {
   return (
@@ -20,7 +25,9 @@ export function VlSwitch({
         type="checkbox"
         role="switch"
         className="vl-switch__input"
-        defaultChecked={defaultChecked}
+        {...(checked === undefined
+          ? { defaultChecked }
+          : { checked, onChange: (e) => onChange?.(e.target.checked) })}
         disabled={disabled}
       />
       <span className="vl-switch__track" aria-hidden="true" />

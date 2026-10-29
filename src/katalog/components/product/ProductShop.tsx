@@ -2,25 +2,30 @@ import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
 import { RotateCcw, SlidersHorizontal } from "lucide-react";
 import { VlButton } from "../atoms/Button/Button";
-import { VlSelect } from "../atoms/Field/Field";
+import { VlInput, VlSelect } from "../atoms/Field/Field";
 import { VlPagination } from "../molecules/Pagination/Pagination";
 import { ProductFilter } from "./ProductFilter";
+import { ProductCompare } from "./ProductCompare";
 import { ProductList } from "./ProductList";
 import {
   DEFAULT_FILTERS,
+  MAX_COMPARE,
   PAGE_SIZES,
   SORT_OPTIONS,
   filterProducts,
   isDefaultFilters,
   products,
+  searchProducts,
   sortProducts,
 } from "./productData";
 import type { Filters, Sort } from "./productData";
 import {
+  compareFromParams,
   filtersFromParams,
   openFromParams,
   pageFromParams,
   paramsFromState,
+  queryFromParams,
   sizeFromParams,
   sortFromParams,
 } from "./productParams";
@@ -44,7 +49,18 @@ export function ProductShop() {
     sortFromParams(searchParams),
   );
   const [size, setSizeState] = useState(() => sizeFromParams(searchParams));
+  const [query, setQueryState] = useState(() => queryFromParams(searchParams));
   const [page, setPage] = useState(() => pageFromParams(searchParams));
+  const [compare, setCompare] = useState(() => compareFromParams(searchParams));
+
+  const toggleCompare = (id: number) =>
+    setCompare((c) =>
+      c.includes(id)
+        ? c.filter((x) => x !== id)
+        : c.length < MAX_COMPARE
+          ? [...c, id]
+          : c,
+    );
 
   // Änderungen an Filter, Sortierung oder Seitengröße beginnen wieder auf Seite 1
   const setFilters = (f: Filters) => {
@@ -59,10 +75,18 @@ export function ProductShop() {
     setSizeState(n);
     setPage(1);
   };
+  const setQuery = (q: string) => {
+    setQueryState(q);
+    setPage(1);
+  };
 
   const items = useMemo(
-    () => sortProducts(filterProducts(products, filters), sort),
-    [filters, sort],
+    () =>
+      sortProducts(
+        filterProducts(searchProducts(products, query), filters),
+        sort,
+      ),
+    [query, filters, sort],
   );
   const pages = Math.max(1, Math.ceil(items.length / size));
   const current = Math.min(page, pages);
@@ -77,16 +101,28 @@ export function ProductShop() {
         open,
         current,
         size,
+        query,
+        compare,
       ).toString();
       if (next !== window.location.search.slice(1)) {
         setSearchParams(new URLSearchParams(next), { replace: true });
       }
     }, 300);
     return () => clearTimeout(t);
-  }, [filters, sort, open, current, size, setSearchParams]);
+  }, [query, filters, sort, open, current, size, compare, setSearchParams]);
 
   return (
     <>
+      <div className="vl-shop__search">
+        <VlInput
+          variant="outline"
+          type="search"
+          label="Produkte suchen"
+          placeholder="Name oder Beschreibung"
+          value={query}
+          onChange={setQuery}
+        />
+      </div>
       <div className="vl-shop__toolbar">
         <div className="vl-shop__actions">
           <VlButton
@@ -97,14 +133,6 @@ export function ProductShop() {
           >
             <SlidersHorizontal size={18} aria-hidden="true" />
             {open ? "Filter ausblenden" : "Filter anzeigen"}
-          </VlButton>
-          <VlButton
-            variant="outline"
-            disabled={isDefaultFilters(filters)}
-            onClick={() => setFilters(DEFAULT_FILTERS)}
-          >
-            <RotateCcw size={18} aria-hidden="true" />
-            Filter zurücksetzen
           </VlButton>
         </div>
         <div className="vl-shop__sort">
@@ -125,6 +153,16 @@ export function ProductShop() {
         <div className="vl-shop__clip">
           <div className="vl-shop__filters">
             <ProductFilter filters={filters} onChange={setFilters} />
+            <div className="vl-shop__reset">
+              <VlButton
+                variant="outline"
+                disabled={isDefaultFilters(filters)}
+                onClick={() => setFilters(DEFAULT_FILTERS)}
+              >
+                <RotateCcw size={18} aria-hidden="true" />
+                Filter zurücksetzen
+              </VlButton>
+            </div>
           </div>
         </div>
       </div>
@@ -132,7 +170,12 @@ export function ProductShop() {
         {items.length} {items.length === 1 ? "Produkt" : "Produkte"}
       </p>
       <div ref={listRef} className="vl-shop__list">
-        <ProductList products={visible} />
+        <ProductList
+          products={visible}
+          compare={compare}
+          onCompare={toggleCompare}
+          compareFull={compare.length >= MAX_COMPARE}
+        />
       </div>
       {items.length > 0 && (
         <div className="vl-shop__foot">
@@ -159,6 +202,12 @@ export function ProductShop() {
           </div>
         </div>
       )}
+      {compare.length > 0 && <div className="vl-shop__dockspace" />}
+      <ProductCompare
+        ids={compare}
+        onRemove={toggleCompare}
+        onClear={() => setCompare([])}
+      />
     </>
   );
 }

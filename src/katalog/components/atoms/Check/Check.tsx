@@ -13,6 +13,7 @@ export function VlCheck({
   radio,
   name,
   value,
+  hideLabel,
 }: {
   variant: SimpleVariant;
   label: string;
@@ -25,9 +26,12 @@ export function VlCheck({
   radio?: boolean;
   name?: string;
   value?: string;
+  // Beschriftung nur für Screenreader und als Tooltip
+  hideLabel?: boolean;
 }) {
   return (
     <label
+      title={hideLabel ? label : undefined}
       className={cx(
         "vl-check",
         `vl-check--${variant}`,
@@ -52,7 +56,11 @@ export function VlCheck({
           <Check className="vl-check__tick" size={16} strokeWidth={3} />
         )}
       </span>
-      <span className="vl-check__label">{label}</span>
+      <span
+        className={cx("vl-check__label", hideLabel && "vl-check__label--sr")}
+      >
+        {label}
+      </span>
     </label>
   );
 }

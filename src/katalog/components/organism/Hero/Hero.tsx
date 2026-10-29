@@ -25,15 +25,21 @@ export function VlHero({
   label,
   slides,
   interval = 6000,
+  index: indexProp,
+  onChange,
 }: {
   variant: SimpleVariant;
   label: string;
   slides: HeroSlide[];
   interval?: number;
+  // Gesteuerter Modus: aktuelle Folie liegt beim Aufrufer
+  index?: number;
+  onChange?: (index: number) => void;
 }) {
   const reduceMotion = useReducedMotion();
   const total = slides.length;
-  const [index, setIndex] = useState(0);
+  const [inner, setInner] = useState(0);
+  const index = indexProp ?? inner;
   const hasVideo = slides.some((s) => s.kind === "video");
   // Bei reduzierter Bewegung und mit Video startet nichts von selbst
   const [playing, setPlaying] = useState(!reduceMotion && !hasVideo);
@@ -41,7 +47,11 @@ export function VlHero({
   const video = useRef<HTMLVideoElement>(null);
   const controls = total > 1 || hasVideo;
 
-  const go = (i: number) => setIndex((i + total) % total);
+  const go = (i: number) => {
+    const next = (i + total) % total;
+    setInner(next);
+    onChange?.(next);
+  };
 
   useEffect(() => {
     const el = video.current;

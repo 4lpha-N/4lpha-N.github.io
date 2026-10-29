@@ -3,10 +3,12 @@ import {
   ATTR_MIN,
   DEFAULT_FILTERS,
   DEFAULT_PAGE_SIZE,
+  MAX_COMPARE,
   PAGE_SIZES,
   PRICE_MAX,
   PRICE_MIN,
   SORT_OPTIONS,
+  products,
 } from "./productData";
 import type { Filters, Range, Sort } from "./productData";
 
@@ -41,6 +43,17 @@ export const filtersFromParams = (sp: URLSearchParams): Filters => ({
 export const sortFromParams = (sp: URLSearchParams): Sort =>
   SORT_OPTIONS.find((o) => o.value === sp.get("sort"))?.value ?? "name";
 
+export const queryFromParams = (sp: URLSearchParams) => sp.get("q") ?? "";
+
+export const compareFromParams = (sp: URLSearchParams) => {
+  const ids = (sp.get("vergleich") ?? "").split(",").map(Number);
+  return ids
+    .filter(
+      (id, i) => ids.indexOf(id) === i && products.some((p) => p.id === id),
+    )
+    .slice(0, MAX_COMPARE);
+};
+
 export const openFromParams = (sp: URLSearchParams) => sp.get("filter") === "1";
 
 export const pageFromParams = (sp: URLSearchParams) =>
@@ -55,8 +68,12 @@ export function paramsFromState(
   open: boolean,
   page: number,
   size: number,
+  query: string,
+  compare: number[],
 ) {
   const sp = new URLSearchParams();
+  if (query.trim()) sp.set("q", query);
+  if (compare.length) sp.set("vergleich", compare.join(","));
   if (open) sp.set("filter", "1");
   if (sort !== "name") sp.set("sort", sort);
   if (size !== DEFAULT_PAGE_SIZE) sp.set("pro", String(size));
