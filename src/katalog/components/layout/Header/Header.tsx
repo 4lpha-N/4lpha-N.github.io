@@ -4,11 +4,12 @@ import { Settings } from "lucide-react";
 import { GridCol, GridContainer, GridRow } from "../Grid/Grid";
 import { VlPopover } from "../../molecules/Popover/Popover";
 import { SegToggle } from "../../atoms/SegToggle/SegToggle";
+import { ACCENT_OPTIONS } from "../../../lib/accent";
 import { DECOR_OPTIONS } from "../../../lib/decor";
 import { DOOR_VARIANT_OPTIONS } from "../../../lib/doorVariant";
 import { cx } from "../../../lib/cx";
 import { NAV_ITEMS } from "../../../lib/nav";
-import type { Theme } from "../../../lib/types";
+import type { Accent, Theme } from "../../../lib/types";
 import "./Header.scss";
 
 const THEMES: { id: Theme; label: string }[] = [
@@ -25,6 +26,8 @@ const ANIM_OPTIONS = [
 export function Header({
   theme,
   onTheme,
+  accent,
+  onAccent,
   decor,
   onDecor,
   door,
@@ -35,6 +38,8 @@ export function Header({
 }: {
   theme: Theme;
   onTheme: (theme: Theme) => void;
+  accent: Accent;
+  onAccent: (accent: Accent) => void;
   decor: number;
   onDecor: (decor: number) => void;
   door: boolean;
@@ -94,6 +99,16 @@ export function Header({
                         value={theme}
                         onChange={onTheme}
                         label="Theme wählen"
+                      />
+                    </div>
+                    <div className="vl-settings__row">
+                      <span className="vl-settings__label">Akzentfarbe</span>
+                      <SegToggle
+                        options={ACCENT_OPTIONS}
+                        value={accent}
+                        onChange={onAccent}
+                        label="Akzentfarbe wählen"
+                        compact
                       />
                     </div>
                     <div className="vl-settings__row">

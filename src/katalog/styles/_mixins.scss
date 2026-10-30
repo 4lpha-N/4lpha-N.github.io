@@ -65,3 +65,70 @@ $c-warn-dark: #ffb547; // Fehler auf dunklem Grund
 $c-warn-red: #fff2a0; // Fehler auf rotem Grund
 $c-paper: #f5f6f7; // Fläche auf weißem Grund
 $c-warn-light: #a85600; // Fehler auf weißem Grund
+
+// ---------- Akzentfarben: je Farbe ein Satz, Rot entspricht der bisherigen Palette ----------
+// main: Akzent auf dunklem Grund und Deko; bg/deep: Grund und Fläche im Akzent-Theme; text: Akzent auf Weiß
+// on/on-inv: Schrift auf dem Akzent-Grund und die Gegenfarbe; on-fg: Schrift auf einer fg-Fläche dort
+// warn-*: Fehlerfarbe je Theme, bewusst abgesetzt von der Akzentfarbe
+$accents: (
+  "red": (
+    main: $c-red,
+    bg: $c-red,
+    deep: $c-red-deep,
+    text: $c-red-text,
+    on: $c-white,
+    on-inv: $c-ink,
+    on-fg: $c-red-deep,
+    warn-dark: $c-warn-dark,
+    warn-accent: $c-warn-red,
+    warn-light: $c-warn-light,
+  ),
+  "orange": (
+    main: #ff6a00,
+    bg: #ff6a00,
+    deep: #e04e00,
+    text: #d14200,
+    on: $c-ink,
+    on-inv: $c-white,
+    on-fg: $c-white,
+    warn-dark: #ff5d73,
+    warn-accent: #3d000b,
+    warn-light: #b3261e,
+  ),
+  "pink": (
+    main: #ff1f8e,
+    bg: #f0006e,
+    deep: #c40058,
+    text: #d6005f,
+    on: $c-white,
+    on-inv: $c-ink,
+    on-fg: #c40058,
+    warn-dark: #ffd166,
+    warn-accent: #fff2a0,
+    warn-light: #8a5a00,
+  ),
+  "purple": (
+    main: #9f55ff,
+    bg: #6200ff,
+    deep: #4a00e0,
+    text: #6200ff,
+    on: $c-white,
+    on-inv: $c-ink,
+    on-fg: #4a00e0,
+    warn-dark: #ffb547,
+    warn-accent: #fff2a0,
+    warn-light: #a85600,
+  ),
+  "sky": (
+    main: #5ec4ff,
+    bg: #5ec4ff,
+    deep: #2fa0e8,
+    text: #0a6ebd,
+    on: $c-ink,
+    on-inv: $c-white,
+    on-fg: $c-white,
+    warn-dark: #ff8a65,
+    warn-accent: #5c0012,
+    warn-light: #b3261e,
+  ),
+);

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { ThemeClassContext } from "../../../lib/ThemeClassContext";
 import { ThemeContext } from "../../../lib/ThemeContext";
-import type { Theme } from "../../../lib/types";
+import type { Accent, Theme } from "../../../lib/types";
 import "../../../styles/base.scss";
 import "./ThemeProvider.scss";
 
@@ -12,19 +12,22 @@ const THEME_TRANSITION_MS = 450;
 // Wrapper mit Theme-Tokens; Portal-Komponenten lesen die Klassen über ThemeClassContext
 export function ThemeProvider({
   theme,
+  accent = "red",
   className,
   children,
 }: {
   theme: Theme;
+  accent?: Accent;
   className?: string;
   children: ReactNode;
 }) {
-  const [prevTheme, setPrevTheme] = useState(theme);
+  const mode = `${theme}/${accent}`;
+  const [prevMode, setPrevMode] = useState(mode);
   const [switching, setSwitching] = useState(false);
 
   // Im selben Render wie der Wechsel setzen, damit kein Frame ohne is-switching entsteht
-  if (theme !== prevTheme) {
-    setPrevTheme(theme);
+  if (mode !== prevMode) {
+    setPrevMode(mode);
     setSwitching(true);
   }
 
@@ -35,9 +38,9 @@ export function ThemeProvider({
       THEME_TRANSITION_MS + 50,
     );
     return () => window.clearTimeout(id);
-  }, [switching, theme]);
+  }, [switching, mode]);
 
-  const themeClass = `design-wrapper--${theme}${switching ? " is-switching" : ""}`;
+  const themeClass = `design-wrapper--${theme} design-wrapper--hue-${accent}${switching ? " is-switching" : ""}`;
 
   return (
     <ThemeContext.Provider value={theme}>

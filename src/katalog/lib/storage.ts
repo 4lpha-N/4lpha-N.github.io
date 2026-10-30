@@ -1,11 +1,12 @@
-import type { Theme } from "./types";
+import type { Accent, Theme } from "./types";
 
-// Ein gemeinsamer Eintrag im localStorage für Theme, Decor, Türanimation und Warenkorb
+// Ein gemeinsamer Eintrag im localStorage für Theme, Akzent, Decor, Türanimation und Warenkorb
 const KEY = "4lpha";
 
 export type CartLine = { id: number; qty: number };
 export type Stored = {
   theme: Theme;
+  accent: Accent;
   decor: number;
   door: boolean;
   doorVariant: number;

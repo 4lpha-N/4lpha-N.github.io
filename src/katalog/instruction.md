@@ -71,6 +71,7 @@ export function App() {
 Hinweise:
 
 - `theme` ist gesteuert (`"dark" | "accent" | "light"`). Der Wechsel animiert die Farben; die Dauer (`THEME_TRANSITION_MS` in `ThemeProvider.tsx`) muss zu `$theme-ease` in `ThemeProvider.scss` passen.
+- `accent` (`"red" | "orange" | "pink" | "purple" | "sky"`, Standard `"red"`) wählt die Akzentfarbe in allen drei Themes. Die Werte je Farbe stehen in `$accents` in `styles/_mixins.scss`; eine neue Farbe braucht dort einen Satz und einen Eintrag in `lib/accent.ts` und `Accent` (`lib/types.ts`).
 - Tooltip, Popover und Overlay rendern per Portal in `document.body` und lesen die Theme-Klassen über `ThemeClassContext`. Sie müssen daher innerhalb des `ThemeProvider` stehen.
 - CSS-Reihenfolge: `ThemeProvider` (bzw. `base.scss`) vor den Komponenten importieren, wie in `Demo.tsx`.
 

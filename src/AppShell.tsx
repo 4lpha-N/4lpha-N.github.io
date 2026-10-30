@@ -11,11 +11,12 @@ import { PageCrumbs } from "./katalog/components/layout/PageCrumbs/PageCrumbs";
 import { ToastProvider } from "./katalog/components/organism/Toast/Toast";
 import { CartProvider } from "./katalog/components/product/CartProvider";
 import { CartButton } from "./katalog/components/product/CartButton";
+import { ACCENT_OPTIONS } from "./katalog/lib/accent";
 import { DECOR_OPTIONS } from "./katalog/lib/decor";
 import { DOOR_VARIANT_OPTIONS } from "./katalog/lib/doorVariant";
 import { readStored, writeStored } from "./katalog/lib/storage";
 import { useDoor } from "./katalog/lib/useDoor";
-import type { Theme } from "./katalog/lib/types";
+import type { Accent, Theme } from "./katalog/lib/types";
 import { CRUMB_ROUTES } from "./routes";
 import "./App.css";
 
@@ -25,6 +26,11 @@ const USE_VIEW_TRANSITION = true;
 function storedTheme(): Theme {
   const t = readStored().theme;
   return t === "dark" || t === "accent" || t === "light" ? t : "dark";
+}
+
+function storedAccent(): Accent {
+  const a = readStored().accent;
+  return ACCENT_OPTIONS.find((o) => o.id === a)?.id ?? "red";
 }
 
 function storedDecor() {
@@ -54,6 +60,7 @@ export default function AppShell({
   intro?: boolean;
 }) {
   const [theme, setTheme] = useState<Theme>(storedTheme);
+  const [accent, setAccent] = useState<Accent>(storedAccent);
   const [decor, setDecor] = useState(storedDecor);
   const [door, setDoor] = useState(storedDoor);
   const [doorVariant, setDoorVariant] = useState(storedDoorVariant);
@@ -61,29 +68,30 @@ export default function AppShell({
   const navType = useNavigationType();
 
   useEffect(() => {
-    writeStored({ theme, decor, door, doorVariant });
-  }, [theme, decor, door, doorVariant]);
+    writeStored({ theme, accent, decor, door, doorVariant });
+  }, [theme, accent, decor, door, doorVariant]);
 
   // Überblendung per View Transition (läuft auf dem Compositor); sonst Token-Animation des ThemeProviders
-  const changeTheme = (next: Theme) => {
+  const withTransition = (change: () => void) => {
     const root = document.documentElement;
     const reduce = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
     if (!USE_VIEW_TRANSITION || !document.startViewTransition || reduce) {
-      setTheme(next);
+      change();
       return;
     }
     // Ohne Klasse würden die Tokens im neuen Schnappschuss noch auf dem alten Wert stehen
     root.classList.add("is-theme-vt");
     document
-      .startViewTransition(() => flushSync(() => setTheme(next)))
+      .startViewTransition(() => flushSync(change))
       .finished.finally(() => root.classList.remove("is-theme-vt"));
   };
 
   // Vorab-Theme aus index.html entfernen, ab jetzt gilt der ThemeProvider
   useEffect(() => {
     delete document.documentElement.dataset.theme;
+    delete document.documentElement.dataset.accent;
   }, []);
 
   // Neue Seite startet oben; beim Zurücknavigieren stellt der Browser die Position wieder her
@@ -92,7 +100,7 @@ export default function AppShell({
   }, [shown.pathname, navType]);
 
   return (
-    <ThemeProvider theme={theme} className="app">
+    <ThemeProvider theme={theme} accent={accent} className="app">
       <ToastProvider>
         <CartProvider>
           <Decor variant={decor} />
@@ -100,7 +108,9 @@ export default function AppShell({
             <Door variant={doorVariant} closed={closed} logo={logo} dir={dir} />
             <Header
               theme={theme}
-              onTheme={changeTheme}
+              onTheme={(next) => withTransition(() => setTheme(next))}
+              accent={accent}
+              onAccent={(next) => withTransition(() => setAccent(next))}
               decor={decor}
               onDecor={setDecor}
               door={door}

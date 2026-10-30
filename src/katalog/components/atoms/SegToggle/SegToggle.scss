@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../../../styles/mixins" as *;
 
 .vl-toggle {
@@ -40,5 +41,35 @@
   &--compact &__btn {
     min-width: 36px;
     padding: 0 8px;
+  }
+
+  // Farbpunkt: aktiv nur getönt, da --primary die gewählte Farbe selbst ist
+  &__btn--swatch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    padding: 0 8px;
+
+    &.is-active {
+      background: color-mix(in srgb, var(--fg) 18%, transparent);
+      color: var(--fg);
+    }
+  }
+  &__dot {
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    @include cut(5px);
+  }
+  &__btn:hover &__dot,
+  &__btn.is-active &__dot {
+    opacity: 1;
+  }
+  @each $name, $h in $accents {
+    &__dot--#{$name} {
+      background: map.get($h, main);
+    }
   }
 }

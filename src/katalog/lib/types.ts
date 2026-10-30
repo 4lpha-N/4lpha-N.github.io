@@ -1,4 +1,6 @@
 export type Theme = "dark" | "accent" | "light";
+// Muss zu den Schlüsseln von $accents in styles/_mixins.scss passen
+export type Accent = "red" | "orange" | "pink" | "purple" | "sky";
 export type Variant = "primary" | "outline" | "alt";
 
 export const VARIANTS: Variant[] = ["primary", "outline", "alt"];

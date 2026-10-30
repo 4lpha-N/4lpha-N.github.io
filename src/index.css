@@ -18,6 +18,19 @@
 :root[data-theme="accent"] {
   --bg: #ff4655;
 }
+/* Grundfarben des Akzent-Themes je Akzent (Gegenstück: $accents in _mixins.scss) */
+:root[data-theme="accent"][data-accent="orange"] {
+  --bg: #ff6a00;
+}
+:root[data-theme="accent"][data-accent="pink"] {
+  --bg: #f0006e;
+}
+:root[data-theme="accent"][data-accent="purple"] {
+  --bg: #6200ff;
+}
+:root[data-theme="accent"][data-accent="sky"] {
+  --bg: #5ec4ff;
+}
 :root[data-theme="light"] {
   --bg: #ffffff;
   color-scheme: light;

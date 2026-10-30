@@ -14,9 +14,12 @@
     <script>
       // Gespeichertes Theme vor dem ersten Paint setzen (Gegenstück: index.css, AppShell)
       try {
-        var t = JSON.parse(localStorage.getItem("4lpha")).theme;
+        var s = JSON.parse(localStorage.getItem("4lpha"));
+        var t = s.theme;
         if (t === "accent" || t === "light")
           document.documentElement.dataset.theme = t;
+        if (t === "accent" && /^(orange|pink|purple|sky)$/.test(s.accent))
+          document.documentElement.dataset.accent = s.accent;
       } catch (e) {}
     </script>
   </head>

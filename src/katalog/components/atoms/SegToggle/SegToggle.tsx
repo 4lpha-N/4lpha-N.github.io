@@ -7,7 +7,8 @@ export function SegToggle<T extends string | number>({
   label,
   compact,
 }: {
-  options: { id: T; label: string }[];
+  // swatch: Farbpunkt statt Text (Modifier von .vl-toggle__dot), label dient dann als Name
+  options: { id: T; label: string; swatch?: string }[];
   value: T;
   onChange: (value: T) => void;
   label: string;
@@ -23,11 +24,20 @@ export function SegToggle<T extends string | number>({
         <button
           key={o.id}
           type="button"
-          className={`vl-toggle__btn${value === o.id ? " is-active" : ""}`}
+          className={`vl-toggle__btn${o.swatch ? " vl-toggle__btn--swatch" : ""}${value === o.id ? " is-active" : ""}`}
           aria-pressed={value === o.id}
+          aria-label={o.swatch ? o.label : undefined}
+          title={o.swatch ? o.label : undefined}
           onClick={() => onChange(o.id)}
         >
-          {o.label}
+          {o.swatch ? (
+            <span
+              className={`vl-toggle__dot vl-toggle__dot--${o.swatch}`}
+              aria-hidden="true"
+            />
+          ) : (
+            o.label
+          )}
         </button>
       ))}
     </div>

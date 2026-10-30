@@ -93,7 +93,7 @@
     font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: $c-red;
+    color: var(--hue-main);
 
     &::before {
       content: "";

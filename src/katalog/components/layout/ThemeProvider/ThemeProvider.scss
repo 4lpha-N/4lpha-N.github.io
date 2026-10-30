@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../../../styles/mixins" as *;
 
 // Registrierte Farb-Tokens: nur so lassen sich Custom Properties animieren,
@@ -109,32 +110,32 @@ $theme-ease: 0.45s ease;
     --surface: #{$c-ink-soft};
     --fg: #{$c-bone};
     --on-fg: #{$c-ink};
-    --primary: #{$c-red};
+    --primary: var(--hue-main);
     --on-primary: #{$c-ink};
     --primary-hover: #{$c-bone};
     --on-primary-hover: #{$c-ink};
-    --alt: #{$c-red};
+    --alt: var(--hue-main);
     --on-alt: #{$c-ink};
-    --error: #{$c-warn-dark};
-    --deco: #{$c-red};
+    --error: var(--hue-warn-dark);
+    --deco: var(--hue-main);
     --link-2: #{$c-bone};
     --muted-pct: 68%;
     --edge-pct: 45%;
   }
 
-  // Theme 2: dunkel/weiß auf rot
+  // Theme 2: dunkel/weiß auf Akzent
   &--accent {
-    --bg: #{$c-red};
-    --surface: #{$c-red-deep};
-    --fg: #{$c-white};
-    --on-fg: #{$c-red-deep};
-    --primary: #{$c-white};
-    --on-primary: #{$c-ink};
-    --primary-hover: #{$c-ink};
-    --on-primary-hover: #{$c-white};
+    --bg: var(--hue-bg);
+    --surface: color-mix(in srgb, var(--hue-bg) 50%, var(--hue-deep));
+    --fg: var(--hue-on);
+    --on-fg: var(--hue-on-fg);
+    --primary: var(--hue-on);
+    --on-primary: var(--hue-on-inv);
+    --primary-hover: var(--hue-on-inv);
+    --on-primary-hover: var(--hue-on);
     --alt: #{$c-ink};
     --on-alt: #{$c-white};
-    --error: #{$c-warn-red};
+    --error: var(--hue-warn-accent);
     --deco: #{$c-ink};
     --link-2: #{$c-ink};
     --muted-pct: 90%;
@@ -142,20 +143,20 @@ $theme-ease: 0.45s ease;
     --section-pct: 72%;
   }
 
-  // Theme 3: rot/dunkel auf weiß
+  // Theme 3: Akzent/dunkel auf weiß
   &--light {
     --bg: #{$c-white};
     --surface: #{$c-paper};
     --fg: #{$c-ink};
     --on-fg: #{$c-white};
-    --primary: #{$c-red-text};
+    --primary: var(--hue-text);
     --on-primary: #{$c-white};
     --primary-hover: #{$c-ink};
     --on-primary-hover: #{$c-white};
-    --alt: #{$c-red-text};
+    --alt: var(--hue-text);
     --on-alt: #{$c-white};
-    --error: #{$c-warn-light};
-    --deco: #{$c-red};
+    --error: var(--hue-warn-light);
+    --deco: var(--hue-main);
     --link-2: #{$c-ink};
     --muted-pct: 68%;
     --edge-pct: 55%;
@@ -169,6 +170,28 @@ $theme-ease: 0.45s ease;
   --deco-c: color-mix(in srgb, var(--deco) 8%, transparent);
 }
 
+// Akzentfarbe: ohne Klasse gilt Rot; die Themes lesen nur diese Tokens
+@mixin hue-tokens($h) {
+  --hue-main: #{map.get($h, main)};
+  --hue-bg: #{map.get($h, bg)};
+  --hue-deep: #{map.get($h, deep)};
+  --hue-text: #{map.get($h, text)};
+  --hue-on: #{map.get($h, on)};
+  --hue-on-inv: #{map.get($h, on-inv)};
+  --hue-on-fg: #{map.get($h, on-fg)};
+  --hue-warn-dark: #{map.get($h, warn-dark)};
+  --hue-warn-accent: #{map.get($h, warn-accent)};
+  --hue-warn-light: #{map.get($h, warn-light)};
+}
+.design-wrapper {
+  @include hue-tokens(map.get($accents, "red"));
+}
+@each $name, $h in $accents {
+  .design-wrapper--hue-#{$name} {
+    @include hue-tokens($h);
+  }
+}
+
 // Scrollbar-Spur liegt außerhalb des Wrappers: Seitenhintergrund ans Theme koppeln
 :root {
   transition: background-color $theme-ease;
@@ -178,6 +201,11 @@ $theme-ease: 0.45s ease;
   }
   &:has(.design-wrapper--accent) {
     background-color: $c-red;
+  }
+  @each $name, $h in $accents {
+    &:has(.design-wrapper--accent.design-wrapper--hue-#{$name}) {
+      background-color: map.get($h, bg);
+    }
   }
   &:has(.design-wrapper--light) {
     background-color: $c-white;
